@@ -11,6 +11,7 @@ import {
 import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DragDirection } from 'devextreme/common';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -26,13 +27,13 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   items: string[];
 
-  dropFeedbackMode = 'push';
+  dropFeedbackMode: DxSortableTypes.DragHighlight = 'push';
 
-  itemOrientation = 'vertical';
+  itemOrientation: DxSortableTypes.Orientation = 'vertical';
 
-  dragDirection = 'both';
+  dragDirection: DragDirection = 'both';
 
-  dragDirections = ['both', 'vertical'];
+  dragDirections: DragDirection[] = ['both', 'vertical'];
 
   scrollSpeed = 30;
 
