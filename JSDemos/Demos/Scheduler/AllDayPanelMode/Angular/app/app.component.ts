@@ -2,8 +2,8 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxSchedulerModule, DxRadioGroupModule } from 'devextreme-angular';
+import { DxRadioGroupTypes } from 'devextreme-angular/ui/radio-group';
 import { Appointment, Service } from './app.service';
-import {DxRadioGroupTypes} from "devextreme-angular/ui/radio-group";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
