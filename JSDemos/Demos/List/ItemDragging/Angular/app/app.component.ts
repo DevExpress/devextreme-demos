@@ -9,6 +9,8 @@ if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
+type DxoItemDraggingProperties = DxSortableTypes.Properties;
+
 @Component({
   selector: 'demo-app',
   providers: [Service],
@@ -26,19 +28,19 @@ export class AppComponent {
     this.plannedTasks = service.getPlannedTasks();
   }
 
-  onDragStart: DxSortableTypes.Properties['onDragStart'] = (e) => {
+  onDragStart: DxoItemDraggingProperties['onDragStart'] = (e) => {
     e.itemData = e.fromData[e.fromIndex];
   };
 
-  onAdd: DxSortableTypes.Properties['onAdd'] = (e) => {
+  onAdd: DxoItemDraggingProperties['onAdd'] = (e) => {
     e.toData.splice(e.toIndex, 0, e.itemData);
   };
 
-  onRemove: DxSortableTypes.Properties['onRemove'] = (e) => {
+  onRemove: DxoItemDraggingProperties['onRemove'] = (e) => {
     e.fromData.splice(e.fromIndex, 1);
   };
 
-  onReorder: DxSortableTypes.Properties['onReorder'] = (e) => {
+  onReorder: DxoItemDraggingProperties['onReorder'] = (e) => {
     this.onRemove(e as DxSortableTypes.RemoveEvent);
     this.onAdd(e as DxSortableTypes.AddEvent);
   };
