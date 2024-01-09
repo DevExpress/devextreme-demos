@@ -8,6 +8,7 @@ import {
 } from 'devextreme-angular';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxTabsTypes } from 'devextreme-angular/ui/tabs';
 import { Tab, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -39,11 +40,11 @@ export class AppComponent {
 
   rtlEnabled = false;
 
-  orientations = ['horizontal', 'vertical'];
+  orientations: DxTabsTypes.Orientation[] = ['horizontal', 'vertical'];
 
-  stylingModes = ['primary', 'secondary'];
+  stylingModes: DxTabsTypes.TabsStyle[] = ['primary', 'secondary'];
 
-  iconPositions = ['top', 'start', 'end', 'bottom'];
+  iconPositions: DxTabsTypes.TabsIconPosition[] = ['top', 'start', 'end', 'bottom'];
 
   width = 'auto';
 

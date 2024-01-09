@@ -15,7 +15,6 @@ import {
   DxValidationSummaryModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

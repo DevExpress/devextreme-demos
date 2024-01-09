@@ -6,7 +6,6 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { lastValueFrom } from 'rxjs';
 import { DxSchedulerModule } from 'devextreme-angular';
-
 import DataSource from 'devextreme/data/data_source';
 import CustomStore from 'devextreme/data/custom_store';
 
@@ -20,17 +19,15 @@ if (!/localhost/.test(document.location.host)) {
   styleUrls: ['app/app.component.css'],
 })
 export class AppComponent {
-  dataSource: DataSource;
+  dataSource = new DataSource({
+    store: new CustomStore({
+      load: () => this.getData({ showDeleted: false }),
+    }),
+  });
 
   currentDate = new Date(2017, 4, 25);
 
-  constructor(private http: HttpClient) {
-    this.dataSource = new DataSource({
-      store: new CustomStore({
-        load: () => this.getData({ showDeleted: false }),
-      }),
-    });
-  }
+  constructor(private http: HttpClient) {}
 
   private getData(requestOptions: Record<string, unknown>) {
     const PUBLIC_KEY = 'AIzaSyBnNAISIUKe6xdhq1_rjor2rxoI3UlMY7k';

@@ -1,13 +1,11 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import {
-  DxListModule, DxToolbarModule, DxSelectBoxModule, DxTemplateModule,
-} from 'devextreme-angular';
+import { DxListModule, DxToolbarModule, DxSelectBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
-
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { ProductType, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -27,37 +25,53 @@ export class AppComponent {
 
   productsStore: DataSource;
 
-  backButtonOptions: Record<string, unknown>;
+  selectBoxOptions: DxSelectBoxTypes.Properties;
 
-  refreshButtonOptions: Record<string, unknown>;
+  backButtonOptions: DxButtonTypes.Properties = {
+    icon: 'back',
+    onClick: () => {
+      notify('Back button has been clicked!');
+    },
+  };
 
-  selectBoxOptions: Record<string, unknown>;
+  refreshButtonOptions: DxButtonTypes.Properties = {
+    icon: 'refresh',
+    onClick: () => {
+      notify('Refresh button has been clicked!');
+    },
+  };
 
-  addButtonOptions: Record<string, unknown>;
+  addButtonOptions: DxButtonTypes.Properties = {
+    icon: 'plus',
+    onClick: () => {
+      notify('Add button has been clicked!');
+    },
+  };
 
-  saveButtonOptions: Record<string, unknown>;
+  saveButtonOptions: DxButtonTypes.Properties = {
+    text: 'Save',
+    onClick: () => {
+      notify('Save option has been clicked!');
+    },
+  };
 
-  printButtonOptions: Record<string, unknown>;
+  printButtonOptions: DxButtonTypes.Properties = {
+    text: 'Print',
+    onClick: () => {
+      notify('Print option has been clicked!');
+    },
+  };
 
-  settingsButtonOptions: Record<string, unknown>;
+  settingsButtonOptions: DxButtonTypes.Properties = {
+    text: 'Settings',
+    onClick: () => {
+      notify('Settings option has been clicked!');
+    },
+  };
 
   constructor(service: Service) {
     this.productTypes = service.getProductTypes();
     this.productsStore = new DataSource(service.getProducts());
-
-    this.backButtonOptions = {
-      icon: 'back',
-      onClick: () => {
-        notify('Back button has been clicked!');
-      },
-    };
-
-    this.refreshButtonOptions = {
-      icon: 'refresh',
-      onClick: () => {
-        notify('Refresh button has been clicked!');
-      },
-    };
 
     this.selectBoxOptions = {
       width: 140,
@@ -66,41 +80,14 @@ export class AppComponent {
       displayExpr: 'text',
       value: this.productTypes[0].id,
       inputAttr: { 'aria-label': 'Categories' },
-      onValueChanged: (args) => {
-        if (args.value > 1) {
-          this.productsStore.filter(['type', '=', args.value]);
-        } else {
-          this.productsStore.filter(null);
-        }
+      onValueChanged: ({ value }) => {
+        this.productsStore.filter(
+          (value > 1)
+            ? ['type', '=', value]
+            : null,
+        );
+
         this.productsStore.load();
-      },
-    };
-
-    this.addButtonOptions = {
-      icon: 'plus',
-      onClick: () => {
-        notify('Add button has been clicked!');
-      },
-    };
-
-    this.saveButtonOptions = {
-      text: 'Save',
-      onClick: () => {
-        notify('Save option has been clicked!');
-      },
-    };
-
-    this.printButtonOptions = {
-      text: 'Print',
-      onClick: () => {
-        notify('Print option has been clicked!');
-      },
-    };
-
-    this.settingsButtonOptions = {
-      text: 'Settings',
-      onClick: () => {
-        notify('Settings option has been clicked!');
       },
     };
   }

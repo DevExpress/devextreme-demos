@@ -1,9 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxTreeListModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
-
+import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
+import { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -28,9 +28,9 @@ export class AppComponent {
 
   recursive = true;
 
-  editorOptions = { placeholder: 'Search column' };
+  editorOptions: DxTextBoxTypes.Properties = { placeholder: 'Search column' };
 
-  columnChooserModes = [{
+  columnChooserModes: { key: DxTreeListTypes.ColumnChooser['mode'], name: string }[] = [{
     key: 'dragAndDrop',
     name: 'Drag and drop',
   }, {

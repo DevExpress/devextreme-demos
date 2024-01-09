@@ -3,17 +3,16 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import {
   DxScrollViewModule,
   DxScrollViewComponent,
   DxCheckBoxModule,
   DxSelectBoxModule,
 } from 'devextreme-angular';
+import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxScrollViewTypes } from 'devextreme-angular/ui/scroll-view';
+import { ScrollbarMode } from 'devextreme-angular/common';
 import { Service } from './app.service';
-import {DxCheckBoxTypes} from "devextreme-angular/ui/check-box";
-import {DxSchedulerTypes} from "devextreme-angular/ui/scheduler";
-import {DxScrollViewTypes} from "devextreme-angular/ui/scroll-view";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -29,7 +28,7 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent implements AfterViewInit {
   @ViewChild(DxScrollViewComponent, { static: false }) scrollView: DxScrollViewComponent;
 
-  showScrollbarModes = [
+  showScrollbarModes: { text: string, value: ScrollbarMode }[] = [
     {
       text: 'On Scroll',
       value: 'onScroll',
@@ -53,14 +52,12 @@ export class AppComponent implements AfterViewInit {
 
   scrollByThumb = true;
 
-  scrollbarMode: string;
+  scrollbarMode: ScrollbarMode = this.showScrollbarModes[0].value;
 
   pullDown = false;
 
   constructor(service: Service) {
     this.content = service.getContent();
-
-    this.scrollbarMode = this.showScrollbarModes[0].value;
   }
 
   ngAfterViewInit() {

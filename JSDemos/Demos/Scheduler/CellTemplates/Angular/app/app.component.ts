@@ -3,14 +3,11 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxSchedulerModule, DxTemplateModule } from 'devextreme-angular';
-import dxScheduler, {
-  OptionChangedEvent, AppointmentFormOpeningEvent, AppointmentAddingEvent, AppointmentUpdatingEvent,
-} from 'devextreme/ui/scheduler';
+import {DxSchedulerComponent, DxSchedulerModule, DxTemplateModule} from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import notify from 'devextreme/ui/notify';
 import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
-import dxForm from 'devextreme/ui/form';
+import { DxFormComponent } from 'devextreme-angular/ui/form';
 import { DataService } from './app.service';
 
 @Pipe({ name: 'apply' })
@@ -47,13 +44,13 @@ export class AppComponent {
     });
   }
 
-  onOptionChanged = (e: OptionChangedEvent) => {
+  onOptionChanged = (e: DxSchedulerTypes.OptionChangedEvent) => {
     if (e.name === 'currentView') {
       this.currentView = e.value;
     }
   };
 
-  onAppointmentFormOpening = (e: AppointmentFormOpeningEvent) => {
+  onAppointmentFormOpening = (e: DxSchedulerTypes.AppointmentFormOpeningEvent) => {
     const startDate = e.appointmentData.startDate as Date;
     if (!this.isValidAppointmentDate(startDate)) {
       e.cancel = true;
@@ -62,7 +59,7 @@ export class AppComponent {
     this.applyDisableDatesToDateEditors(e.form);
   };
 
-  onAppointmentAdding = (e: AppointmentAddingEvent) => {
+  onAppointmentAdding = (e: DxSchedulerTypes.AppointmentAddingEvent) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.appointmentData);
     if (!isValidAppointment) {
       e.cancel = true;
@@ -70,7 +67,7 @@ export class AppComponent {
     }
   };
 
-  onAppointmentUpdating = (e: AppointmentUpdatingEvent) => {
+  onAppointmentUpdating = (e: DxSchedulerTypes.AppointmentUpdatingEvent) => {
     const isValidAppointment = this.isValidAppointment(e.component, e.newData);
     if (!isValidAppointment) {
       e.cancel = true;
@@ -108,7 +105,7 @@ export class AppComponent {
     return hours === this.dinnerTime.from && minutes === 0;
   };
 
-  isValidAppointment = (component: dxScheduler, appointmentData: DxSchedulerTypes.Appointment) => {
+  isValidAppointment = (component: DxSchedulerComponent['instance'], appointmentData: DxSchedulerTypes.Appointment) => {
     const startDate = new Date(appointmentData.startDate);
     const endDate = new Date(appointmentData.endDate);
     const cellDuration = component.option('cellDuration');
@@ -137,7 +134,7 @@ export class AppComponent {
 
   isValidAppointmentDate = (date: Date) => !this.isHoliday(date) && !this.isDinner(date) && !this.isWeekend(date);
 
-  applyDisableDatesToDateEditors = (form: dxForm) => {
+  applyDisableDatesToDateEditors = (form: DxFormComponent['instance']) => {
     const holidays = this.dataService.getHolidays();
     const startDateEditor = form.getEditor('startDate');
     startDateEditor.option('disabledDates', holidays);

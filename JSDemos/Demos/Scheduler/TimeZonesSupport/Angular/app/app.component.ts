@@ -19,23 +19,21 @@ if (!/localhost/.test(document.location.host)) {
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  currentDate: Date = new Date(2021, 3, 27);
-
-  currentTimeZone: string;
-
   locations: string[];
 
   dataSource: Data[];
 
-  timeZones: dxSchedulerTimeZone[];
-
   service: Service;
+
+  currentDate: Date = new Date(2021, 3, 27);
+
+  timeZones: dxSchedulerTimeZone[] = this.getDefaultTimeZones(this.currentDate);
+
+  currentTimeZone = this.timeZones[0].id;
 
   constructor(service: Service) {
     this.service = service;
-    this.timeZones = this.getDefaultTimeZones(this.currentDate);
     this.dataSource = service.getData();
-    this.currentTimeZone = this.timeZones[0].id;
   }
 
   getDefaultTimeZones(date: Date) {

@@ -3,7 +3,6 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTagBoxModule, DxPopoverModule, DxTemplateModule } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
-
 import { DxTagBoxTypes } from 'devextreme-angular/ui/tag-box';
 import { Service, Product } from './app.service';
 

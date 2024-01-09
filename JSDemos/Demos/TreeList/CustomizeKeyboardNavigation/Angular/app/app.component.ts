@@ -20,11 +20,11 @@ if (!/localhost/.test(document.location.host)) {
 export class AppComponent {
   employees: Employee[];
 
-  enterKeyActions: Array<string>;
-
-  enterKeyDirections: Array<string>;
-
   editOnkeyPress = true;
+
+  enterKeyActions: DxTreeListTypes.EnterKeyAction[];
+
+  enterKeyDirections: DxTreeListTypes.EnterKeyDirection[];
 
   enterKeyAction: DxTreeListTypes.EnterKeyAction = 'moveFocus';
 

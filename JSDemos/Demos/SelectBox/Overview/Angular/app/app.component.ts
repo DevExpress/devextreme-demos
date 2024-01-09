@@ -2,11 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import notify from 'devextreme/ui/notify';
-import {
-  DxSelectBoxModule,
-  DxTextBoxModule,
-  DxTemplateModule,
-} from 'devextreme-angular';
+import { DxSelectBoxModule, DxTextBoxModule, DxTemplateModule } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Product, Service } from './app.service';

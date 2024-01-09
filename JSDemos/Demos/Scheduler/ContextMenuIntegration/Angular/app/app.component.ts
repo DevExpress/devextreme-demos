@@ -4,8 +4,8 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxContextMenuModule, DxSchedulerModule, DxSchedulerComponent } from 'devextreme-angular';
-import { AppointmentContextMenuEvent, CellContextMenuEvent } from 'devextreme/ui/scheduler';
-import { ItemClickEvent } from 'devextreme/ui/context_menu';
+import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
+import { DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
 import { Appointment, Resource, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -46,7 +46,7 @@ export class AppComponent {
     this.appointmentsData = service.getAppointments();
   }
 
-  onAppointmentContextMenu({ appointmentData, targetedAppointmentData }: AppointmentContextMenuEvent) {
+  onAppointmentContextMenu({ appointmentData, targetedAppointmentData }: DxSchedulerTypes.AppointmentContextMenuEvent) {
     const scheduler = this.scheduler.instance;
     const resourceItems = this.resourcesData
       .map((item) => ({
@@ -80,7 +80,7 @@ export class AppComponent {
     ];
   }
 
-  onCellContextMenu({ cellData }: CellContextMenuEvent) {
+  onCellContextMenu({ cellData }: DxSchedulerTypes.CellContextMenuEvent) {
     const scheduler = this.scheduler.instance;
     this.target = cellClassName;
     this.disabled = false;
@@ -124,7 +124,7 @@ export class AppComponent {
     ];
   }
 
-  onContextMenuItemClick(e: ItemClickEvent) {
+  onContextMenuItemClick(e: DxContextMenuTypes.ItemClickEvent) {
     (e.itemData as unknown & { onItemClick: Function }).onItemClick(e);
   }
 }

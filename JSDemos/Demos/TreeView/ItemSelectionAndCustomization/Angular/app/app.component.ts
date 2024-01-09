@@ -35,7 +35,7 @@ export class AppComponent {
 
   employees: Employee[];
 
-  selectedEmployees: Record<string, unknown>[] = [];
+  selectedEmployees: Employee[] = [];
 
   showCheckBoxesModes: TreeViewCheckBoxMode[] = ['normal', 'selectAll', 'none'];
 
@@ -69,7 +69,7 @@ export class AppComponent {
     const selectedEmployees = treeView.getSelectedNodes()
       .map((node) => node.itemData);
 
-    this.selectedEmployees = selectedEmployees;
+    this.selectedEmployees = selectedEmployees as Employee[];
   }
 
   showCheckBoxesModeValueChanged(e: DxSelectBoxTypes.ValueChangedEvent) {
