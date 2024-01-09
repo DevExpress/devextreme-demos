@@ -15,13 +15,16 @@ import {
   DxValidationSummaryModule,
 } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
+import { DxButtonTypes } from 'devextreme-angular/ui/button';
+import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
+import { ValidationCallbackData } from 'devextreme-angular/common';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
-const sendRequest = function (value) {
+const sendRequest = function (value: string) {
   const invalidEmail = 'test@dx-email.com';
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -44,9 +47,9 @@ export class AppComponent {
 
   confirmPassword = '';
 
-  passwordMode = 'password';
+  passwordMode: DxTextBoxTypes.TextBoxType = 'password';
 
-  confirmPasswordMode = 'password';
+  confirmPasswordMode: DxTextBoxTypes.TextBoxType = 'password';
 
   maxDate = new Date();
 
@@ -58,11 +61,11 @@ export class AppComponent {
 
   countries: string[];
 
-  phoneRules = {
+  phoneRules: DxTextBoxTypes.Properties['maskRules'] = {
     X: /[02-9]/,
   };
 
-  passwordButton = {
+  passwordButton: DxButtonTypes.Properties = {
     icon: 'eyeopen',
     stylingMode: 'text',
     onClick: () => {
@@ -70,7 +73,7 @@ export class AppComponent {
     },
   };
 
-  confirmPasswordButton = {
+  confirmPasswordButton: DxButtonTypes.Properties = {
     icon: 'eyeopen',
     stylingMode: 'text',
     onClick: () => {
@@ -87,7 +90,7 @@ export class AppComponent {
 
   checkComparison = () => true;
 
-  validateVacationDatesRange({ value: [startDate, endDate] }) {
+  validateVacationDatesRange({ value: [startDate, endDate] }: ValidationCallbackData) {
     if (startDate === null || endDate === null) {
       return true;
     }
@@ -98,7 +101,7 @@ export class AppComponent {
     return daysDifference < 25;
   }
 
-  validateVacationDatesPresence({ value: [startDate, endDate] }) {
+  validateVacationDatesPresence({ value: [startDate, endDate] }: ValidationCallbackData) {
     if (startDate === null && endDate === null) {
       return true;
     }
@@ -106,7 +109,7 @@ export class AppComponent {
     return startDate !== null && endDate !== null;
   }
 
-  asyncValidation = (params: Record<string, unknown>) => sendRequest(params.value);
+  asyncValidation = (params: ValidationCallbackData) => sendRequest(params.value);
 
   onPasswordChanged() {
     if (this.confirmPassword) {

@@ -4,12 +4,10 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxTreeViewModule, DxListModule, DxTemplateModule, DxCheckBoxModule, DxSelectBoxModule, DxTreeViewComponent,
+  DxListModule, DxTemplateModule, DxCheckBoxModule, DxSelectBoxModule,
 } from 'devextreme-angular';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
-import { DxTreeView } from 'devextreme-vue';
+import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
-import { SingleOrMultiple, TreeViewCheckBoxMode } from 'devextreme/ui/tree_view';
 import { Service, Employee } from './app.service';
 
 @Pipe({ name: 'title' })
@@ -37,11 +35,11 @@ export class AppComponent {
 
   selectedEmployees: Employee[] = [];
 
-  showCheckBoxesModes: TreeViewCheckBoxMode[] = ['normal', 'selectAll', 'none'];
+  showCheckBoxesModes: DxTreeViewTypes.TreeViewCheckBoxMode[] = ['normal', 'selectAll', 'none'];
 
   showCheckBoxesMode = this.showCheckBoxesModes[0];
 
-  selectionModes: SingleOrMultiple[] = ['multiple', 'single'];
+  selectionModes: DxTreeViewTypes.SingleOrMultiple[] = ['multiple', 'single'];
 
   selectionMode = this.selectionModes[0];
 
@@ -65,7 +63,7 @@ export class AppComponent {
     this.syncSelection(e.component);
   }
 
-  syncSelection(treeView: DxTreeView['instance']) {
+  syncSelection(treeView: DxTreeViewComponent['instance']) {
     const selectedEmployees = treeView.getSelectedNodes()
       .map((node) => node.itemData);
 
