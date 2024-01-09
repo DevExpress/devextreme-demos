@@ -41,9 +41,9 @@ export class AppComponent {
   }
 
   customizeText({ index, start, end }: Record<string, number>) {
-    let text = (index === 0) ? '< 0.5%' : '> 3%';
+    let text = (index === 0) ? '< 0.5%' : `${start}% to ${end}%`;
 
-    return (index === 5) ? text : `${start}% to ${end}%`;
+    return (index === 5) ? '> 3%' : text;
   }
 }
 

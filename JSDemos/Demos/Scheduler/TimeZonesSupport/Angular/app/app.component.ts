@@ -27,18 +27,18 @@ export class AppComponent {
 
   currentDate: Date = new Date(2021, 3, 27);
 
-  timeZones: dxSchedulerTimeZone[] = this.getDefaultTimeZones(this.currentDate);
+  timeZones: dxSchedulerTimeZone[] = [];
 
-  currentTimeZone = this.timeZones[0].id;
+  currentTimeZone = '';
 
   constructor(service: Service) {
     this.service = service;
     this.dataSource = service.getData();
+    this.timeZones = this.getDefaultTimeZones(this.currentDate);
+    this.currentTimeZone = this.timeZones[0].id;
   }
 
-  getDefaultTimeZones(date: Date) {
-    return getTimeZones(date).filter((timeZone) => this.service.getLocations().indexOf(timeZone.id) !== -1);
-  }
+  getDefaultTimeZones = (date: Date) => getTimeZones(date).filter((timeZone) => this.service.getLocations().indexOf(timeZone.id) !== -1);
 
   onAppointmentFormOpening({ form }: DxSchedulerTypes.AppointmentFormOpeningEvent) {
     const startDateDataSource = form.getEditor('startDateTimeZone').option('dataSource') as DataSource;
