@@ -3,9 +3,7 @@ import { DecimalPipe } from '@angular/common';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxVectorMapModule, DxPieChartModule } from 'devextreme-angular';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
-import { DxiLayerComponent } from 'devextreme-angular/ui/nested';
 import { GdpInfo, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

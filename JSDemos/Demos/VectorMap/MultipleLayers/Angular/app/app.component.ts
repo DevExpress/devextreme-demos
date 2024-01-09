@@ -25,7 +25,7 @@ export class AppComponent {
     this.streamsData = service.getStreamsData();
   }
 
-  customizeText = ({ color }) => (color === '#3c20c8' ? 'Cold': 'Warm')
+  customizeText = ({ color }) => (color === '#3c20c8' ? 'Cold' : 'Warm');
 }
 
 @NgModule({

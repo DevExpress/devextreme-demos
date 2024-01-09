@@ -2,7 +2,6 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxVectorMapModule } from 'devextreme-angular';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { Service } from './app.service';
 
@@ -41,7 +40,7 @@ export class AppComponent {
     });
   }
 
-  customizeText({ index, start, end }: { [key: string]: number }) {
+  customizeText({ index, start, end }: Record<string, number>) {
     let text = (index === 0) ? '< 0.5%' : '> 3%';
 
     return (index === 5) ? text : `${start}% to ${end}%`;
