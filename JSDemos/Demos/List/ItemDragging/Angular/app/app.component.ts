@@ -1,15 +1,13 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxListModule, DxListTypes } from 'devextreme-angular/ui/list';
+import { DxListModule } from 'devextreme-angular/ui/list';
+import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
 import { Task, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
-
-type DxoListItemDragging = DxListTypes.Properties['itemDragging'];
-type FirstArgument<T> = T extends (firstArg: infer A, ...args: any) => any ? A : never;
 
 @Component({
   selector: 'demo-app',
@@ -28,21 +26,21 @@ export class AppComponent {
     this.plannedTasks = service.getPlannedTasks();
   }
 
-  onDragStart: DxoListItemDragging['onDragStart'] = (e) => {
+  onDragStart: DxSortableTypes.Properties['onDragStart'] = (e) => {
     e.itemData = e.fromData[e.fromIndex];
   };
 
-  onAdd: DxoListItemDragging['onAdd'] = (e) => {
+  onAdd: DxSortableTypes.Properties['onAdd'] = (e) => {
     e.toData.splice(e.toIndex, 0, e.itemData);
   };
 
-  onRemove: DxoListItemDragging['onRemove'] = (e) => {
+  onRemove: DxSortableTypes.Properties['onRemove'] = (e) => {
     e.fromData.splice(e.fromIndex, 1);
   };
 
-  onReorder: DxoListItemDragging['onReorder'] = (e) => {
-    this.onRemove(e as FirstArgument<typeof this.onRemove>);
-    this.onAdd(e as FirstArgument<typeof this.onAdd>);
+  onReorder: DxSortableTypes.Properties['onReorder'] = (e) => {
+    this.onRemove(e as DxSortableTypes.RemoveEvent);
+    this.onAdd(e as DxSortableTypes.AddEvent);
   };
 }
 
