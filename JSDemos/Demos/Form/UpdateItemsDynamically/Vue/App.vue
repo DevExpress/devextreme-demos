@@ -67,7 +67,7 @@ import service from './data.ts';
 
 const employee = service.getEmployee();
 const phoneOptions = ref(getPhonesOptions(employee.Phones));
-let isHomeAddressVisible = ref(true);
+const isHomeAddressVisible = ref(true);
 
 const checkBoxOptions = {
   text: 'Show Address',
