@@ -54,28 +54,28 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
         public static readonly IEnumerable<TaskItem> NotStartedTaskItems = new[] {
             new TaskItem {
                 status = "Not Started",
-                priority = "hight",
+                priority = "high",
                 text = "Revenue Projections",
                 date = "2023/09/16",
                 assignedBy = "John Heart"
             },
             new TaskItem {
                 status = "Not Started",
-                priority = "hight",
+                priority = "high",
                 text = "New Brochures",
                 date = "2023/09/16",
                 assignedBy = "Samantha Bright"
             },
             new TaskItem {
                 status = "Not Started",
-                priority = "normal",
+                priority = "medium",
                 text = "Training",
                 date = "2023/09/16",
                 assignedBy = "Arthur Miller"
             },
             new TaskItem {
                 status = "Not Started",
-                priority = "normal",
+                priority = "medium",
                 text = "NDA",
                 date = "2023/09/16",
                 assignedBy = "Robert Reagan"
@@ -106,14 +106,14 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new TaskItem {
                 status = "Help Needed",
-                priority = "hight",
+                priority = "high",
                 text = "Shippers",
                 date = "2023/09/16",
                 assignedBy = "Ed Holmes"
             },
             new TaskItem {
                 status = "Help Needed",
-                priority = "normal",
+                priority = "medium",
                 text = "Hardware Upgrade",
                 date = "2023/09/16",
                 assignedBy = "Barb Banks"
@@ -123,14 +123,14 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
         public static readonly IEnumerable<TaskItem> InProgressTaskItems = new[] {
             new TaskItem {
                 status = "In Progress",
-                priority = "normal",
+                priority = "medium",
                 text = "Online Sales",
                 date = "2023/09/16",
                 assignedBy = "Cindy Stanwick"
             },
             new TaskItem {
                 status = "In Progress",
-                priority = "normal",
+                priority = "medium",
                 text = "New Website Design",
                 date = "2023/09/16",
                 assignedBy = "Sammy Hill"
@@ -144,7 +144,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new TaskItem {
                 status = "In Progress",
-                priority = "normal",
+                priority = "medium",
                 text = "Support",
                 date = "2023/09/16",
                 assignedBy = "Victor Norris"
@@ -161,28 +161,28 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
         public static readonly IEnumerable<TaskItem> DeferredTaskItems = new[] {
             new TaskItem {
                 status = "Deferred",
-                priority = "normal",
+                priority = "medium",
                 text = "New Database",
                 date = "2023/09/16",
                 assignedBy = "Samantha Bright"
             },
             new TaskItem {
                 status = "Deferred",
-                priority = "hight",
+                priority = "high",
                 text = "Automation Server",
                 date = "2023/09/16",
                 assignedBy = "Arthur Miller"
             },
             new TaskItem {
                 status = "Deferred",
-                priority = "normal",
+                priority = "medium",
                 text = "Retail Sales",
                 date = "2023/09/16",
                 assignedBy = "Robert Reagan"
             },
             new TaskItem {
                 status = "Deferred",
-                priority = "normal",
+                priority = "medium",
                 text = "Shipping Labels",
                 date = "2023/09/16",
                 assignedBy = "Greta Sims"
@@ -192,28 +192,28 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
         public static readonly IEnumerable<TaskItem> RejectedTaskItems = new[] {
             new TaskItem {
                 status = "Rejected",
-                priority = "hight",
+                priority = "high",
                 text = "Schedule Meeting with Sales Team",
                 date = "2023/09/16",
                 assignedBy = "Sandra Johnson"
             },
             new TaskItem {
                 status = "Rejected",
-                priority = "normal",
+                priority = "medium",
                 text = "Confirm Availability for Sales Meeting",
                 date = "2023/09/16",
                 assignedBy = "Ed Holmes"
             },
             new TaskItem {
                 status = "Rejected",
-                priority = "normal",
+                priority = "medium",
                 text = "Reschedule Sales Team Meeting",
                 date = "2023/09/16",
                 assignedBy = "Barb Banks"
             },
             new TaskItem {
                 status = "Rejected",
-                priority = "hight",
+                priority = "high",
                 text = "Update Database with New Leads",
                 date = "2023/09/16",
                 assignedBy = "Kevin Carter"
@@ -230,7 +230,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
         public static readonly IEnumerable<TaskItem> CompletedTaskItems = new[] {
             new TaskItem {
                 status = "Completed",
-                priority = "normal",
+                priority = "medium",
                 text = "Territory Sales Breakdown Report",
                 date = "2023/09/16",
                 assignedBy = "Sammy Hill"
@@ -244,14 +244,14 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
             },
             new TaskItem {
                 status = "Completed",
-                priority = "hight",
+                priority = "high",
                 text = "Staff Productivity Report",
                 date = "2023/09/16",
                 assignedBy = "Victor Norris"
             },
             new TaskItem {
                 status = "Completed",
-                priority = "normal",
+                priority = "medium",
                 text = "Review HR Budget Company Wide",
                 date = "2023/09/16",
                 assignedBy = "Mary Stern"

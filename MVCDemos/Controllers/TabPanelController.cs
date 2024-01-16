@@ -6,8 +6,11 @@ using System.Web.Mvc;
 
 namespace DevExtreme.MVC.Demos.Controllers {
     public class TabPanelController : Controller {
-        #region Overview
         public ActionResult Overview() {
+            return View();
+        }
+
+        public ActionResult Templates() {
             return View();
         }
 
@@ -24,6 +27,5 @@ namespace DevExtreme.MVC.Demos.Controllers {
         public ActionResult GetTabPanelItems(DataSourceLoadOptions loadOptions) {
             return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(TabPanelData.TabPanelItems, loadOptions)), "application/json");
         }
-        #endregion
     }
 }
