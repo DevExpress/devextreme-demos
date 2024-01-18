@@ -73,7 +73,7 @@ const App = () => {
   }, [setHandle]);
 
   const onDragTemplateChanged = useCallback((e: CheckBoxTypes.ValueChangedEvent) => {
-    setDragComponent(e.value ? DragItem : null);
+    setDragComponent(e.value ? () => DragItem : null);
     setCursorOffset(e.value ? { x: 10, y: 20 } : null);
   }, [setDragComponent, setCursorOffset]);
 
