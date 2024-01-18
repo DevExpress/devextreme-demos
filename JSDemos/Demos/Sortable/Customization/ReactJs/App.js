@@ -86,7 +86,7 @@ const App = () => {
   );
   const onDragTemplateChanged = useCallback(
     (e) => {
-      setDragComponent(e.value ? DragItem : null);
+      setDragComponent(e.value ? () => DragItem : null);
       setCursorOffset(e.value ? { x: 10, y: 20 } : null);
     },
     [setDragComponent, setCursorOffset],
