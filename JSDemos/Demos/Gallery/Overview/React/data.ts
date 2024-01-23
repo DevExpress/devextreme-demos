@@ -1,4 +1,6 @@
-export const gallery = [
+import type { IItemProps } from 'devextreme-react/gallery';
+
+export const gallery: IItemProps[] = [
   {
     imageAlt: 'Image 1',
     imageSrc: '../../../../images/gallery/1.jpg',
