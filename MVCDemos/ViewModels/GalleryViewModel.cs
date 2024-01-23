@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace DevExtreme.MVC.Demos.ViewModels {
+    public class ImageItem {
+        public string imageSrc { get; set; }
+        public string imageAlt { get; set; }
+    }
+
     public class GalleryViewModel {
-        public IEnumerable<string> Images { get; set; }
+        public IEnumerable<ImageItem> Images { get; set; }
     }
 }
