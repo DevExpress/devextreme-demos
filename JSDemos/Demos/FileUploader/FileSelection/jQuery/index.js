@@ -16,7 +16,7 @@ $(() => {
     labelText: '',
     accept: 'image/*',
     uploadMode: 'useForm',
-    inputAttr: { 'aria-label': 'Select photo' },
+    inputAttr: { 'aria-label': 'Select Photo' },
   });
 
   $('#button').dxButton({

@@ -6,7 +6,7 @@ import notify from 'devextreme/ui/notify';
 
 const firstNameLabel = { 'aria-label': 'First Name' };
 const lastNameLabel = { 'aria-label': 'Last Name' };
-const fileUploaderLabel = { 'aria-label': 'Select photo' };
+const fileUploaderLabel = { 'aria-label': 'Select Photo' };
 export default function App() {
   const formElement = useRef(null);
   const onClick = useCallback(() => {
