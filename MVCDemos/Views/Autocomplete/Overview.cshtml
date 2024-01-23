@@ -35,6 +35,7 @@
                     .DataSource(d => d.Mvc().LoadAction("GetPositions"))
                     .Value("CEO")
                     .Disabled(true)
+                    .InputAttr("aria-label", "Position")
                     .OnValueChanged("position_changed")
                 )
             </div>
