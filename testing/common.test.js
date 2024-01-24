@@ -63,7 +63,6 @@ const getTestSpecificSkipRules = (testName) => {
     case 'DataGrid-HorizontalVirtualScrolling':
     case 'DataGrid-PDFCellCustomization':
       return ['empty-table-header'];
-    case 'Autocomplete-Overview':
     case 'DataGrid-Filtering':
     case 'DataGrid-FilterPanel':
     case 'Localization-UsingGlobalize':
