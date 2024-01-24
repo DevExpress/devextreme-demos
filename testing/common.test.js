@@ -82,10 +82,7 @@ const getTestSpecificSkipRules = (testName) => {
     case 'DataGrid-PDFExportImages':
     case 'DataGrid-RowSelection':
     case 'FilterBuilder-WithList':
-    case 'Gallery-Overview':
       return ['image-alt'];
-    case 'FileUploader-FileSelection':
-      return ['label-title-only'];
     default:
       return [];
   }
