@@ -35,7 +35,7 @@ function restorePackages(callback) {
 }
 
 function installAspNetCorePackage(callback) {
-  systemSync('dotnet add NetCoreDemos package DevExtreme.AspNet.Core --prerelease --source NetCoreDemos/NuGet/');
+  systemSync('cd NetCoreDemos && dotnet add package DevExtreme.AspNet.Core --prerelease');
   callback();
 }
 
