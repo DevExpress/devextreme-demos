@@ -30,12 +30,7 @@ function runBuild(callback) {
 }
 
 function restorePackages(callback) {
-  systemSync('dotnet restore NetCoreDemos');
-  callback();
-}
-
-function installAspNetCorePackage(callback) {
-  systemSync('cd NetCoreDemos && dotnet add package DevExtreme.AspNet.Core --prerelease');
+  systemSync('cd NetCoreDemos && dotnet restore');
   callback();
 }
 
@@ -92,5 +87,5 @@ exports.copyAspFiles = series(
     () => src(`${aspnetPackagesPath}/*.nupkg`)
       .pipe(dest('NetCoreDemos/Nuget')),
   ),
-  installAspNetCorePackage,
+  restorePackages,
 );
