@@ -209,6 +209,7 @@ async function main() {
   const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
   const reporters = [reporter]
+  console.log('process.env.THEME', process.env.THEME);
 
   if (process.env.STRATEGY === 'accessibility') {
     reporters.push(accessibilityTestCafeReporter);
