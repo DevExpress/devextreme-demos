@@ -111,7 +111,7 @@ jobs:
       ACCESSIBILITY_TESTCAFE_REPORT_PATH: "accessibility_testcafe_report"
 
     runs-on: ubuntu-latest
-    name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}
+    name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}-${{ matrix.THEME }}
     timeout-minutes: 30
 
     steps:
