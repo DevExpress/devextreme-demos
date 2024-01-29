@@ -1,6 +1,14 @@
 import createTestCafe from 'testcafe';
 import fs from 'fs';
 
+const changeTheme = async(themeName) => createTestCafe.ClientFunction(() => new Promise((resolve) => {
+    // eslint-disable-next-line no-undef
+    window.DevExpress.ui.themes.ready(resolve);
+    // eslint-disable-next-line no-undef
+    window.DevExpress.ui.themes.current(themeName);
+}),
+{ dependencies: { themeName } })();
+
 function reporter() {
   return {
     noColors: false,
@@ -216,11 +224,22 @@ async function main() {
     reporters.push(accessibilityTestCafeReporter);
   }
 
+  const runOptions = { quarantineMode: !!process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false };
+
+  console.log('change theme');
+
+  if(process.env.THEME) {
+    runOptions.hooks.test.before = async() => {
+      await changeTheme(process.env.THEME);
+    };
+  }
+  console.log('theme changed');
+
   const failedCount = await runner
     .reporter(reporters)
     .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
-    .run({ quarantineMode: !!process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false });
+    .run(runOptions);
 
   await tester.close();
   process.exit(failedCount);
