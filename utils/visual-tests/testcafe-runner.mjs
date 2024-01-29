@@ -246,7 +246,7 @@ async function main() {
   if(process.env.THEME) {
     const currentTheme = process.env.THEME;
     runOptions.hooks.test.before = async() => {
-      await changeTheme(currentTheme);
+      await changeTheme('material.blue.light');
     };
   }
   console.log('theme changed');
