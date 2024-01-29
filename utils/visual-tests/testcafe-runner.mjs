@@ -226,6 +226,21 @@ async function main() {
 
   const runOptions = { quarantineMode: !!process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false };
 
+  runOptions.hooks = {
+                test: {
+                    after: async() => {
+
+                         console.log('calling after test');
+  
+                         const result = await new Promise((resolve) => {
+                             resolve('test after resolved');
+                         });
+  
+                         console.log(result);
+                    }
+                },
+  };
+
   console.log('change theme');
 
   if(process.env.THEME) {
