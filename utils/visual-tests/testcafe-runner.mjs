@@ -244,8 +244,9 @@ async function main() {
   console.log('change theme');
 
   if(process.env.THEME) {
+    const currentTheme = process.env.THEME;
     runOptions.hooks.test.before = async() => {
-      await changeTheme(process.env.THEME);
+      await changeTheme(currentTheme);
     };
   }
   console.log('theme changed');
