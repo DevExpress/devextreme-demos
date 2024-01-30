@@ -245,7 +245,7 @@ async function main() {
 
   if(process.env.THEME) {
     const currentTheme = process.env.THEME;
-    runOptions.hooks.test.before = async() => {
+    runOptions.hooks.test.before = async(t) => {
 
 await t.eval(() => {
     console.log('start before test');
