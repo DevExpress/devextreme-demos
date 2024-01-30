@@ -246,7 +246,21 @@ async function main() {
   if(process.env.THEME) {
     const currentTheme = process.env.THEME;
     runOptions.hooks.test.before = async() => {
-      await changeTheme('material.blue.light');
+
+await t.eval(() => {
+    console.log('start before test');
+    const urlSegments = location.href.split('/');
+
+    const newUrl = urlSegments.slice(0, -1).join('/');
+    const newLocation = `${newUrl}/dx.greenmist.css`;
+
+    console.log('newLocation', newLocation);
+
+    location.replace(newLocation);
+    location.reload();
+    console.log('end before test');
+  });
+
     };
   }
   console.log('theme changed');
