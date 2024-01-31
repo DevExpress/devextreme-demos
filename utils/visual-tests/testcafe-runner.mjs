@@ -1,11 +1,11 @@
 import createTestCafe from 'testcafe';
 import fs from 'fs';
 
-const changeTheme = async(themeName) => createTestCafe.ClientFunction(() => new Promise((resolve) => {
-    // eslint-disable-next-line no-undef
-    window.DevExpress.ui.themes.ready(resolve);
-    // eslint-disable-next-line no-undef
-    window.DevExpress.ui.themes.current(themeName);
+const changeTheme = async (themeName) => createTestCafe.ClientFunction(() => new Promise((resolve) => {
+  // eslint-disable-next-line no-undef
+  window.DevExpress.ui.themes.ready(resolve);
+  // eslint-disable-next-line no-undef
+  window.DevExpress.ui.themes.current(themeName);
 }),
 { dependencies: { themeName } })();
 
@@ -225,42 +225,44 @@ async function main() {
   }
 
   console.log('process.env.TCQUARANTINE', process.env.TCQUARANTINE);
-  const runOptions = { quarantineMode: !!process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 1 } : false };
+  const runOptions = { quarantineMode: process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 1 } : false };
 
   runOptions.hooks = {
-                test: {
-                    after: async() => {
+    test: {
+      after: async () => {
+        console.log('calling after test');
 
-                         console.log('calling after test');
-  
-                         const result = await new Promise((resolve) => {
-                             resolve('test after resolved');
-                         });
-  
-                         console.log(result);
-                    }
-                },
+        const result = await new Promise((resolve) => {
+          resolve('test after resolved');
+        });
+
+        console.log(result);
+      },
+    },
   };
 
   console.log('change theme');
 
-  if(process.env.THEME) {
-    const currentTheme = process.env.THEME;
-    runOptions.hooks.test.before = async(t) => {
+  const theme = process.env.THEME;
 
-await t.eval(() => {
-    console.log('start before test_');
-    const linkRel = document.getElementsByTagName('link')[0];
-    const currentUrl = linkRel.href;
-    console.log('current theme url', currentUrl);
+  if (theme) {
+    runOptions.hooks.test.before = async (t) => {
+      t.ctx = theme;
+      console.log('theme', theme);
+      await t.eval(() => {
+        console.log('start before test__');
+        const linkRel = document.getElementsByTagName('link')[0];
+        const currentUrl = linkRel.href;
+        console.log('current theme url__', currentUrl);
+        console.log('theme__', theme);
+        const urlSegments = linkRel.href.split('/');
+        const newUrl = urlSegments.slice(0, -1).join('/');
+        const newLocation = `${newUrl}/dx.${theme}.css`;
+        console.log('new theme url__', newLocation);
 
-    const urlSegments = linkRel.href.split('/');
-    const newUrl = urlSegments.slice(0, -1).join('/');
-    const newLocation = `${newUrl}/dx.material.blue.dark.css`;
-    linkRel.href = newLocation;
-    console.log('end before test_');
-  });
-
+        linkRel.href = newLocation;
+        console.log('end before test__');
+      });
     };
   }
   console.log('theme changed');
