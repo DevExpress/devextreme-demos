@@ -248,7 +248,7 @@ async function main() {
   if (theme) {
     runOptions.hooks.test.before = async (t) => {
       t.ctx = theme;
-      console.log('theme', theme);
+      console.log('theme from ctx', theme);
       await t.eval(() => {
         console.log('start before test__');
         const linkRel = document.getElementsByTagName('link')[0];
@@ -262,6 +262,8 @@ async function main() {
 
         linkRel.href = newLocation;
         console.log('end before test__');
+      }, {
+        dependencies: { theme },
       });
     };
   }
