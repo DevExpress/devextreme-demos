@@ -14,7 +14,7 @@ runManualTest('Charts', 'CustomAnnotations', ['jQuery', 'React', 'Vue', 'Angular
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag($('#chart .dxc-annotations g').nth(0), 90, 40);
-    await takeScreenshot('annotations_drag.png');
+    await takeScreenshot(`annotations_drag(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

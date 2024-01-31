@@ -14,7 +14,7 @@ runManualTest('Charts', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('.dxc-markers').nth(0).find('rect').nth(1));
-    await takeScreenshot('charts_overview_tooltip.png');
+    await takeScreenshot(`charts_overview_tooltip(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

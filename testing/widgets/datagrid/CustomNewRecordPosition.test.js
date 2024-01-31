@@ -36,7 +36,7 @@ const newRowPositionTestTemplate = ({ newRowPosition, pageNumber }) => async (t)
   await setNewRowPosition(t, newRowPosition);
   await clickAddButton(t);
 
-  await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added.png`);
+  await takeScreenshot(`datagrid_CustomNewRecordPosition_${newRowPosition}_added(${t.ctx.theme}).png`);
 
   await clickCancelButton(t);
 
@@ -68,7 +68,7 @@ runManualTest('DataGrid', 'CustomNewRecordPosition', ['jQuery', 'React', 'Vue', 
     await t
       .click('.dx-command-edit .dx-link.dx-icon-add');
 
-    await takeScreenshot('datagrid_CustomNewRecordPosition_insertAfterKey_clicked.png');
+    await takeScreenshot(`datagrid_CustomNewRecordPosition_insertAfterKey_clicked(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

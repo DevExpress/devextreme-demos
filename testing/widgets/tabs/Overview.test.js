@@ -24,27 +24,27 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabs_orientation_vertical.png');
+    await takeScreenshot(`tabs_orientation_vertical(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(1))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabs_stylingmode_secondary.png');
+    await takeScreenshot(`tabs_stylingmode_secondary(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(2))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(2))
       .wait(200);
 
-    await takeScreenshot('tabs_iconposition_end.png');
+    await takeScreenshot(`tabs_iconposition_end(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(3))
       .wait(200);
 
-    await takeScreenshot('tabs_rtlenabled_true.png');
+    await takeScreenshot(`tabs_rtlenabled_true(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(3))
@@ -56,7 +56,7 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
       .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(0))
       .wait(200);
 
-    await takeScreenshot('tabs_shownavbuttons_true.png');
+    await takeScreenshot(`tabs_shownavbuttons_true(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${CHECKBOX_CLASS}`).nth(2))
@@ -64,14 +64,14 @@ runManualTest('Tabs', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) 
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabs_orientation_vertical_without_strict_class.png');
+    await takeScreenshot(`tabs_orientation_vertical_without_strict_class(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(0))
       .wait(200);
 
-    await takeScreenshot('tabs_orientation_horizontal_with_strict_class.png');
+    await takeScreenshot(`tabs_orientation_horizontal_with_strict_class(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

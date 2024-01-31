@@ -36,7 +36,7 @@ fixture('Scheduler.CustomDragAndDrop')
       } = createScreenshotsComparer(t);
 
       await t.dragToElement(fromSelector, toSelector, DRAG_MOUSE_OPTIONS);
-      await takeScreenshot(`scheduler_custom-dnd_${fromName}_${toName}.png`);
+      await takeScreenshot(`scheduler_custom-dnd_${fromName}_${toName}(${t.ctx.theme}).png`);
 
       await t
         .expect(compareResults.isValid())

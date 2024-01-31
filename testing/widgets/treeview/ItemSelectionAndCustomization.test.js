@@ -20,7 +20,7 @@ runManualTest('TreeView', 'ItemSelectionAndCustomization', ['jQuery', 'React', '
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .wait(200);
 
-    await takeScreenshot('treeview_selection_field_is_open.png');
+    await takeScreenshot(`treeview_selection_field_is_open(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -14,10 +14,10 @@ runManualTest('Charts', 'ZoomingOnAreaSelection', ['jQuery', 'React', 'Vue', 'An
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag($('.dxc-series circle').nth(7), 600, 200);
-    await takeScreenshot('zooming_by_selection.png');
+    await takeScreenshot(`zooming_by_selection(${t.ctx.theme}).png`);
 
     await t.click($('#reset-zoom'));
-    await takeScreenshot('reset_zooming_by_selection.png');
+    await takeScreenshot(`reset_zooming_by_selection(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

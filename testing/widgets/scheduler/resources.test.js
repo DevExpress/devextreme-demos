@@ -14,7 +14,7 @@ runManualTest('Scheduler', 'Resources', ['jQuery', 'React', 'Vue', 'Angular'], (
 
     await t.doubleClick('.dx-scheduler-appointment');
 
-    await takeScreenshot('scheduler_resources_appointment_popup.png');
+    await takeScreenshot(`scheduler_resources_appointment_popup(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -14,10 +14,10 @@ runManualTest('DataGrid', 'RowSelection', ['jQuery', 'React', 'Vue', 'Angular'],
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-datagrid-rowsview tr').nth(0));
-    await takeScreenshot('datagrid_row_selection_2_desktop.png');
+    await takeScreenshot(`datagrid_row_selection_2_desktop(${t.ctx.theme}).png`);
 
     await t.click($('.dx-datagrid-rowsview tr').nth(2));
-    await takeScreenshot('datagrid_row_selection_3_desktop.png');
+    await takeScreenshot(`datagrid_row_selection_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-datagrid-rowsview tr').nth(0), {
@@ -25,7 +25,7 @@ runManualTest('DataGrid', 'RowSelection', ['jQuery', 'React', 'Vue', 'Angular'],
           ctrl: true,
         },
       });
-    await takeScreenshot('datagrid_row_selection_4_desktop.png');
+    await takeScreenshot(`datagrid_row_selection_4_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -17,7 +17,7 @@ runManualTest('DataGrid', 'FilteringAPI', ['jQuery', 'React', 'Vue', 'Angular'],
       .click($('.dx-selectbox-container'))
       .click($('.dx-list-item').nth(1));
 
-    await takeScreenshot('datagrid_filtering_API_2_desktop.png');
+    await takeScreenshot(`datagrid_filtering_API_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -23,21 +23,21 @@ runManualTest('TabPanel', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (te
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabpanel_tabsposition_top.png');
+    await takeScreenshot(`tabpanel_tabsposition_top(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(1))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabpanel_stylingmode_primary.png');
+    await takeScreenshot(`tabpanel_stylingmode_primary(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${OPTION_CLASS} .${SELECTBOX_CLASS}`).nth(2))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabpanel_iconposition_start.png');
+    await takeScreenshot(`tabpanel_iconposition_start(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

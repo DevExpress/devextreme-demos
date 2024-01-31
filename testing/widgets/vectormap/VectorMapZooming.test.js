@@ -18,11 +18,11 @@ runManualTest('VectorMap', 'DynamicViewport', ['jQuery', 'React', 'Vue', 'Angula
 
     await t.click(zoomButton);
     await t.click(zoomButton);
-    await takeScreenshot('zoom_vector_map_by_control_bar.png');
+    await takeScreenshot(`zoom_vector_map_by_control_bar(${t.ctx.theme}).png`);
 
     await showSelectBoxItems();
     await t.click(selectItem(4));
-    await takeScreenshot('vector_map_viewport-changing.png');
+    await takeScreenshot(`vector_map_viewport-changing(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

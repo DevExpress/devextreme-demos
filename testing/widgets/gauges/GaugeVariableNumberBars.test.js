@@ -18,12 +18,12 @@ runManualTest('Gauges', 'VariableNumberOfBars', ['jQuery', 'React', 'Vue', 'Angu
     await t.click(checkBoxes.nth(2));
     await t.click(checkBoxes.nth(3));
     await t.wait(1000);
-    await takeScreenshot('bargauge_hide_bars.png', '#gauge');
+    await takeScreenshot(`bargauge_hide_bars(${t.ctx.theme}).png`, '#gauge');
 
     await t.click(checkBoxes.nth(2));
     await t.click(checkBoxes.nth(3));
     await t.wait(1000);
-    await takeScreenshot('bargauge_show_bars.png', '#gauge');
+    await takeScreenshot(`bargauge_show_bars(${t.ctx.theme}).png`, '#gauge');
 
     await t
       .expect(compareResults.isValid())

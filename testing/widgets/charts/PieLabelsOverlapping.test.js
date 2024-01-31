@@ -17,11 +17,11 @@ runManualTest('Charts', 'PieWithResolvedLabelOverlapping', ['jQuery', 'React', '
 
     await showSelectBoxItems();
     await t.click(selectItem(1));
-    await takeScreenshot('pie_resolve_labels_overlapping_hide.png');
+    await takeScreenshot(`pie_resolve_labels_overlapping_hide(${t.ctx.theme}).png`);
 
     await showSelectBoxItems();
     await t.click(selectItem(2));
-    await takeScreenshot('pie_resolve_labels_overlapping_none.png');
+    await takeScreenshot(`pie_resolve_labels_overlapping_none(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

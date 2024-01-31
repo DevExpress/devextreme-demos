@@ -19,7 +19,7 @@ runManualTest('Sortable', 'Kanban', ['jQuery', 'React', 'Vue', 'Angular'], (test
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag(Selector(CLASSES.listTitle).nth(0), 600, 50, { speed: 0.5 });
-    await takeScreenshot('kanban_list_drag-n-drop.png');
+    await takeScreenshot(`kanban_list_drag-n-drop(${t.ctx.theme}).png`);
 
     await t.expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
@@ -31,7 +31,7 @@ runManualTest('Sortable', 'Kanban', ['jQuery', 'React', 'Vue', 'Angular'], (test
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag(Selector(CLASSES.card).nth(3), 25, 200, { speed: 0.5 });
-    await takeScreenshot('kanban_card_drag-n-drop_same-column.png');
+    await takeScreenshot(`kanban_card_drag-n-drop_same-column(${t.ctx.theme}).png`);
 
     await t.expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
@@ -43,7 +43,7 @@ runManualTest('Sortable', 'Kanban', ['jQuery', 'React', 'Vue', 'Angular'], (test
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag(Selector(CLASSES.card).nth(3), 300, 150, { speed: 0.5 });
-    await takeScreenshot('kanban_card_drag-n-drop_different-column.png');
+    await takeScreenshot(`kanban_card_drag-n-drop_different-column(${t.ctx.theme}).png`);
 
     await t.expect(compareResults.isValid())
       .ok(compareResults.errorMessages());

@@ -15,11 +15,11 @@ runManualTest('DataGrid', 'SimpleArray', ['jQuery', 'React', 'Vue', 'Angular'], 
 
     await t.rightClick($('.dx-datagrid-headers .dx-datagrid-action').nth(1));
 
-    await takeScreenshot('datagrid_simple_array_1_desktop.png');
+    await takeScreenshot(`datagrid_simple_array_1_desktop(${t.ctx.theme}).png`);
 
     await t.click($('.dx-menu-item').nth(1));
 
-    await takeScreenshot('datagrid_simple_array_2_desktop.png');
+    await takeScreenshot(`datagrid_simple_array_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

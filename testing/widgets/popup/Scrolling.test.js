@@ -19,12 +19,12 @@ runManualTest('Popup', 'Scrolling', ['jQuery', 'React', 'Vue', 'Angular'], (test
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click(Selector(`.${BUTTON_CLASS}`).nth(0));
-    await takeScreenshot('popup with scrollable container.png');
+    await takeScreenshot(`popup with scrollable container(${t.ctx.theme}).png`);
 
     await t.click(Selector(`.${OVERLAY_WRAPPER_CLASS} .${TOOLBAR_CLASS}.${BOTTOM_TOOLBAR_CLASS} .${BUTTON_CLASS}`));
 
     await t.click(Selector(`.${BUTTON_CLASS}`).nth(1));
-    await takeScreenshot('popup with scrollview.png');
+    await takeScreenshot(`popup with scrollview(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

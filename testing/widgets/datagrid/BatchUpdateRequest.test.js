@@ -33,11 +33,11 @@ runManualTest('DataGrid', 'BatchUpdateRequest', ['jQuery', 'React', 'Vue', 'Angu
       })
       .pressKey('enter');
 
-    await takeScreenshot('datagrid_batch_update_request_1_desktop.png');
+    await takeScreenshot(`datagrid_batch_update_request_1_desktop(${t.ctx.theme}).png`);
 
     // save changes
     await t.click($('.dx-datagrid-save-button'));
-    await takeScreenshot('datagrid_batch_update_request_2_desktop.png');
+    await takeScreenshot(`datagrid_batch_update_request_2_desktop(${t.ctx.theme}).png`);
 
     // go to the last page to check the inserted row
     await t

@@ -20,7 +20,7 @@ runManualTest('DataGrid', 'MasterDetailView', ['jQuery', 'React', 'Vue', 'Angula
         .find('.dx-command-expand'),
     );
 
-    await takeScreenshot('datagrid_master_detail_view_2_desktop.png');
+    await takeScreenshot(`datagrid_master_detail_view_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())
