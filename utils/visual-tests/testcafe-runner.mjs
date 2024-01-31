@@ -248,17 +248,16 @@ async function main() {
     runOptions.hooks.test.before = async(t) => {
 
 await t.eval(() => {
-    console.log('start before test');
-    const urlSegments = location.href.split('/');
+    console.log('start before test_');
+    const linkRel = document.getElementsByTagName('link')[0];
+    const currentUrl = linkRel.href;
+    console.log('current theme url', currentUrl);
 
+    const urlSegments = linkRel.href.split('/');
     const newUrl = urlSegments.slice(0, -1).join('/');
-    const newLocation = `${newUrl}/dx.greenmist.css`;
-
-    console.log('newLocation', newLocation);
-
-    location.replace(newLocation);
-    location.reload();
-    console.log('end before test');
+    const newLocation = `${newUrl}/dx.material.blue.dark.css`;
+    linkRel.href = newLocation;
+    console.log('end before test_');
   });
 
     };
