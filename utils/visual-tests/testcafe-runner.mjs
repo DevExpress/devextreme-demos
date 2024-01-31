@@ -1,14 +1,6 @@
 import createTestCafe from 'testcafe';
 import fs from 'fs';
 
-const changeTheme = async (themeName) => createTestCafe.ClientFunction(() => new Promise((resolve) => {
-  // eslint-disable-next-line no-undef
-  window.DevExpress.ui.themes.ready(resolve);
-  // eslint-disable-next-line no-undef
-  window.DevExpress.ui.themes.current(themeName);
-}),
-{ dependencies: { themeName } })();
-
 function reporter() {
   return {
     noColors: false,
