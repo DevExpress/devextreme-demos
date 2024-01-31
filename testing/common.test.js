@@ -204,7 +204,10 @@ const getTestSpecificSkipRules = (testName) => {
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
           console.log('common tests t.ctx.theme', t.ctx.theme);
+          console.log('common tests expected file name', `${testName}(${t.ctx.theme}).png`);
+
           const comparisonResult = await compareScreenshot(t, `${testName}(${t.ctx.theme}).png`, undefined, comparisonOptions);
+          console.log('common tests expected file name search finished', `${testName}(${t.ctx.theme}).png`);
           const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
