@@ -3,10 +3,8 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
-import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
-import { DxButtonModule } from 'devextreme-angular/ui/button';
-import { DxCalendarModule, DxCalendarComponent, DxCalendarTypes } from 'devextreme-angular/ui/calendar';
+import { DxSelectBoxModule, DxCheckBoxModule, DxButtonModule } from 'devextreme-angular';
+import { DxCalendarComponent, DxCalendarModule, DxCalendarTypes } from 'devextreme-angular/ui/calendar';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

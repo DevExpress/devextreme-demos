@@ -1,14 +1,13 @@
 import {
-  NgModule, Component, ViewChild, enableProdMode,
+  enableProdMode, Component, ViewChild, NgModule
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { DxDropDownBoxModule } from 'devextreme-angular/ui/drop-down-box';
-import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 import CustomStore from 'devextreme/data/custom_store';
-import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxDropDownBoxModule, DxDataGridModule } from 'devextreme-angular';
+import { DxTreeViewComponent, DxTreeViewModule, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

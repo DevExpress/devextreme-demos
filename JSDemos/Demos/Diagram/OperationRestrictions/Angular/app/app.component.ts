@@ -1,9 +1,9 @@
 import {
   NgModule, Component, ViewChild, enableProdMode,
 } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { HttpClientModule } from '@angular/common/http';
 import notify from 'devextreme/ui/notify';
 import ArrayStore from 'devextreme/data/array_store';
 import { DxDiagramModule, DxDiagramComponent, DxDiagramTypes } from 'devextreme-angular/ui/diagram';

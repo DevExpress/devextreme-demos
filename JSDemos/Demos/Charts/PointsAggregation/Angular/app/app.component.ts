@@ -1,9 +1,7 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { enableProdMode, Component, NgModule } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxChartModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxChartModule, DxCheckBoxModule, DxSelectBoxModule } from 'devextreme-angular';
 import {
   Service, WeatherIndicators, AggregationInterval, AggregationFunction,
 } from './app.service';

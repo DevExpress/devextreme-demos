@@ -5,9 +5,9 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { DxChartModule, DxChartComponent } from 'devextreme-angular';
-import DataSource from 'devextreme/data/data_source';
+import { DxChartComponent, DxChartModule } from 'devextreme-angular';
 import { VisualRange } from 'devextreme-angular/common/charts';
+import DataSource from 'devextreme/data/data_source';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
