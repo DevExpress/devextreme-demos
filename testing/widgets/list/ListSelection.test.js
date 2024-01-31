@@ -18,6 +18,8 @@ runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (t
   test('List Selection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    console.log('checking value drilling t.ctx.theme', t.ctx.theme);
+
     await t.click(Selector(`.${CHECKBOX_CONTAINER_CLASS}`).nth(-1));
 
     await t.click(Selector(`.${LIST_ITEM_CONTENT_CLASS}`).nth(3));

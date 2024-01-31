@@ -92,11 +92,11 @@ const getTestSpecificSkipRules = (testName) => {
   fixture(approach)
     .beforeEach(async (t) => {
       // eslint-disable-next-line spellcheck/spell-checker
-      // t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
+      t.ctx.watchDogHandle = setTimeout(() => { throw new Error('test timeout exceeded'); }, 3 * 60 * 1000);
       await t.resizeWindow(1000, 800);
     })
     // eslint-disable-next-line spellcheck/spell-checker
-    // .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
+    .afterEach((t) => clearTimeout(t.ctx.watchDogHandle))
     .clientScripts([
       { module: 'mockdate' },
       { module: 'axe-core/axe.min.js' },

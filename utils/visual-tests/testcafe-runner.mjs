@@ -247,7 +247,7 @@ async function main() {
 
   if (theme) {
     runOptions.hooks.test.before = async (t) => {
-      t.ctx = theme;
+      t.ctx.theme = theme;
       console.log('theme from ctx', theme);
       await t.eval(() => {
         console.log('start before test__');
