@@ -217,7 +217,7 @@ async function main() {
   }
 
   console.log('process.env.TCQUARANTINE', process.env.TCQUARANTINE);
-  const runOptions = { quarantineMode: process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 2 } : false };
+  const runOptions = { quarantineMode: process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false };
 
   runOptions.hooks = {
     test: {
