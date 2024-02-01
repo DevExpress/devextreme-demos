@@ -243,7 +243,9 @@ async function main() {
       console.log('theme from ctx', theme);
       await t.eval(() => {
         console.log('start before test__');
-        const linkRel = document.getElementsByTagName('link')[0];
+        const linkRels = Array.from(document.getElementsByTagName('link'));
+        // for testing
+        const linkRel = linkRels.find((x) => x.href.includes('dx.light.css'));
         const currentUrl = linkRel.href;
         console.log('current theme url__', currentUrl);
         console.log('theme__', theme);
