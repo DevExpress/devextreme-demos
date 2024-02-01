@@ -257,6 +257,8 @@ async function main() {
       }, {
         dependencies: { theme },
       });
+
+      await t.wait(3000);
     };
   }
   console.log('theme changed');
