@@ -105,14 +105,14 @@ jobs:
       fail-fast: false
       matrix:
         STRATEGY: [screenshots, accessibility]
-        THEME: ['light']
+        THEME: ['material.blue.light']
         CONSTEL: [jquery(1/4), jquery(2/4), jquery(3/4), jquery(4/4)]
     env:
       ACCESSIBILITY_TESTCAFE_REPORT_PATH: "accessibility_testcafe_report"
 
     runs-on: ubuntu-latest
     name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}-${{ matrix.THEME }}
-    timeout-minutes: 60
+    timeout-minutes: 40
 
     steps:
     - name: Pin Chrome version
