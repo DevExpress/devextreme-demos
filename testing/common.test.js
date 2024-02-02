@@ -108,6 +108,9 @@ const getTestSpecificSkipRules = (testName) => {
               console.error(e.message); 
           });`,
       },
+      {
+        content: 'console.log(document);',
+      },
     ]);
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
@@ -164,7 +167,7 @@ const getTestSpecificSkipRules = (testName) => {
     }
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
-      .clientScripts({ content: 'console.log(document);' })(testName, async (t) => {
+      .clientScripts(clientScriptSource)(testName, async (t) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
         }
