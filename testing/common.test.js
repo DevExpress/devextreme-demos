@@ -1,7 +1,7 @@
 import { glob } from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { axeCheck, createReport } from '@testcafe-community/axe';
 import {
@@ -163,6 +163,14 @@ const getTestSpecificSkipRules = (testName) => {
       }
     }
 
+    const indexFilePath = `${demoPath}/index.html`;
+
+    readFileSync(indexFilePath, 'utf8', (err, data) => {
+      const updatedContent = data.replace(/dx\.light\.css/g, 'dx.material.blue.light.css');
+
+      writeFileSync(indexFilePath, updatedContent, 'utf8');
+    });
+
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
         if (visualTestStyles) {
@@ -203,7 +211,7 @@ const getTestSpecificSkipRules = (testName) => {
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
-          const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+          const comparisonResult = await compareScreenshot(t, `${testName} (material.blue.light).png`, undefined, comparisonOptions);
           const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
