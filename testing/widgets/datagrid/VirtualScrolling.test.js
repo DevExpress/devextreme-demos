@@ -14,11 +14,11 @@ runManualTest('DataGrid', 'VirtualScrolling', ['jQuery', 'React', 'Vue', 'Angula
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('.dx-scrollbar-vertical .dx-scrollable-scroll'));
-    await takeScreenshot('datagrid_virtual_scrolling_2_desktop.png');
+    await takeScreenshot(`datagrid_virtual_scrolling_2_desktop(${t.ctx.theme}).png`);
 
     await t.scrollBy('.dx-scrollable-container', 0, 2000000);
 
-    await takeScreenshot('datagrid_virtual_scrolling_3_desktop.png');
+    await takeScreenshot(`datagrid_virtual_scrolling_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

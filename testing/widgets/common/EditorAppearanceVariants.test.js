@@ -36,7 +36,7 @@ runManualTest('Common', 'EditorAppearanceVariants', ['React', 'Vue', 'Angular', 
         await changeStylingMode(stylingMode);
         await changeLabelMode(labelMode);
         await clickSaveButton();
-        await takeScreenshot(`common_editor_appearance_variants_${stylingMode}_${labelMode}_desktop.png`);
+        await takeScreenshot(`common_editor_appearance_variants_${stylingMode}_${labelMode}_desktop(${t.ctx.theme}).png`);
       });
     });
 

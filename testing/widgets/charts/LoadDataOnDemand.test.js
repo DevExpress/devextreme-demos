@@ -14,7 +14,7 @@ runManualTest('Charts', 'LoadDataOnDemand', ['jQuery', 'React', 'Vue', 'Angular'
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.drag($('#chart svg'), 20, 0);
-    await takeScreenshot('charts_drag.png');
+    await takeScreenshot(`charts_drag(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -20,11 +20,11 @@ runManualTest('DataGrid', 'StatePersistence', ['jQuery', 'React', 'Vue', 'Angula
       })
       .drag($('.dx-scrollbar-vertical .dx-scrollable-scroll'), 0, 250);
 
-    await takeScreenshot('datagrid_state_persistence_2_desktop.png');
+    await takeScreenshot(`datagrid_state_persistence_2_desktop(${t.ctx.theme}).png`);
 
     await t.eval(() => location.reload(true));
 
-    await takeScreenshot('datagrid_state_persistence_3_desktop.png');
+    await takeScreenshot(`datagrid_state_persistence_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

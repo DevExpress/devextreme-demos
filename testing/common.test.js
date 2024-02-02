@@ -108,6 +108,9 @@ const getTestSpecificSkipRules = (testName) => {
               console.error(e.message); 
           });`,
       },
+      {
+        content: 'console.log("fixture start");',
+      },
     ]);
 
   const getDemoPaths = (platform) => glob.sync('JSDemos/Demos/*/*')
@@ -164,7 +167,8 @@ const getTestSpecificSkipRules = (testName) => {
     }
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
-      .clientScripts(clientScriptSource)(testName, async (t) => {
+      .clientScripts(clientScriptSource,
+        { content: 'const linkRels = Array.from(document.getElementsByTagName("link"));const linkRel = linkRels.find((x) => x.href.includes("dx.light.css"));const urlSegments = linkRel.href.replace("dx.light.css", "dx.material.blue.light.css");linkRel.href = urlSegments;' })(testName, async (t) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
         }
@@ -203,7 +207,10 @@ const getTestSpecificSkipRules = (testName) => {
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
-          const comparisonResult = await compareScreenshot(t, `${testName}.png`, undefined, comparisonOptions);
+          console.log('common tests t.ctx.theme', t.ctx.theme);
+          console.log('common tests expected file name', `${testName}(${t.ctx.theme}).png`);
+
+          const comparisonResult = await compareScreenshot(t, `${testName}(${t.ctx.theme}).png`, undefined, comparisonOptions);
           const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console

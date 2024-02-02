@@ -24,14 +24,14 @@ runManualTest('Tabs', 'Selection', ['jQuery', 'React', 'Vue', 'Angular'], (test)
       .click($(`.${TABS_WRAPPER_CLASS} .${TAB_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('tabs_second_item_selection.png');
+    await takeScreenshot(`tabs_second_item_selection(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${SELECT_BOX_CONTAINER_CLASS} .${SELECTBOX_CLASS}`).nth(0))
       .click($(`.${SELECTBOX_POPUP_WRAPPER_CLASS} .${LIST_ITEM_CLASS}`).nth(2))
       .wait(200);
 
-    await takeScreenshot('tabs_third_item_selection.png');
+    await takeScreenshot(`tabs_third_item_selection(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

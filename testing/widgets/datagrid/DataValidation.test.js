@@ -17,10 +17,10 @@ runManualTest('DataGrid', 'DataValidation', ['jQuery', 'React', 'Vue', 'Angular'
       .click($('.dx-icon-edit-button-addrow'))
       .click($('.dx-icon-edit-button-addrow'))
       .click($('.dx-datagrid-save-button'));
-    await takeScreenshot('datagrid_data_validation_2_desktop.png');
+    await takeScreenshot(`datagrid_data_validation_2_desktop(${t.ctx.theme}).png`);
 
     await t.click($('.dx-datagrid-cancel-button'));
-    await takeScreenshot('datagrid_data_validation_3_desktop.png');
+    await takeScreenshot(`datagrid_data_validation_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-datagrid-rowsview').find('td').nth(3))
@@ -37,10 +37,10 @@ runManualTest('DataGrid', 'DataValidation', ['jQuery', 'React', 'Vue', 'Angular'
         offsetX: 0,
         offsetY: 0,
       });
-    await takeScreenshot('datagrid_data_validation_4_desktop.png');
+    await takeScreenshot(`datagrid_data_validation_4_desktop(${t.ctx.theme}).png`);
 
     await t.click($('.dx-datagrid-rowsview').find('td').nth(3));
-    await takeScreenshot('datagrid_data_validation_5_desktop.png');
+    await takeScreenshot(`datagrid_data_validation_5_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

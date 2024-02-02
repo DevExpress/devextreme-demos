@@ -14,10 +14,10 @@ runManualTest('DataGrid', 'RecordPaging', ['jQuery', 'React', 'Vue', 'Angular'],
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($('.dx-page-size').withText('5'));
-    await takeScreenshot('datagrid_record_paging_2_desktop.png');
+    await takeScreenshot(`datagrid_record_paging_2_desktop(${t.ctx.theme}).png`);
 
     await t.click($('.dx-page').nth(-1));
-    await takeScreenshot('datagrid_record_paging_3_desktop.png');
+    await takeScreenshot(`datagrid_record_paging_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

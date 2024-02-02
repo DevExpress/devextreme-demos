@@ -19,7 +19,7 @@ runManualTest('DataGrid', 'MasterDetailAPI', ['jQuery', 'React', 'Vue', 'Angular
         .nth(1),
     );
 
-    await takeScreenshot('datagrid_master_detail_api_2_desktop.png');
+    await takeScreenshot(`datagrid_master_detail_api_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

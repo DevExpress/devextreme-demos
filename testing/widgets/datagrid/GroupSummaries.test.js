@@ -20,7 +20,7 @@ runManualTest('DataGrid', 'GroupSummaries', ['jQuery', 'React', 'Vue', 'Angular'
         offsetY: 0,
       });
 
-    await takeScreenshot('datagrid_group_summaries_2_desktop.png');
+    await takeScreenshot(`datagrid_group_summaries_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

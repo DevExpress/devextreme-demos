@@ -18,28 +18,31 @@ runManualTest('List', 'ListSelection', ['jQuery', 'React', 'Vue', 'Angular'], (t
   test('List Selection', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
+    console.log('checking value drilling t.ctx.theme', t.ctx.theme);
+    console.log('theme_env', process.env.THEME);
+
     await t.click(Selector(`.${CHECKBOX_CONTAINER_CLASS}`).nth(-1));
 
     await t.click(Selector(`.${LIST_ITEM_CONTENT_CLASS}`).nth(3));
 
-    await takeScreenshot('List after click on item, selectionMode=all.png');
+    await takeScreenshot(`List after click on item, selectionMode=all(${t.ctx.theme}).png`);
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(2));
 
     await t.wait(2000);
 
-    await takeScreenshot('List after change selectionMode to multiple.png');
+    await takeScreenshot(`List after change selectionMode to multiple(${t.ctx.theme}).png`);
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(1));
 
-    await takeScreenshot('List after change selectionMode to single.png');
+    await takeScreenshot(`List after change selectionMode to single(${t.ctx.theme}).png`);
 
     await t.click(Selector(`.${SELECTBOX_CLASS}`).nth(0));
     await t.click(Selector(`.${POPUP_WRAPPER_CLASS} .${LIST_ITEM_CONTENT_CLASS}`).nth(0));
 
-    await takeScreenshot('List after change selectionMode to none.png');
+    await takeScreenshot(`List after change selectionMode to none(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

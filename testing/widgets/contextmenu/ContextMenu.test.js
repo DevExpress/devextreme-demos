@@ -15,7 +15,7 @@ runManualTest('ContextMenu', 'Templates', ['jQuery', 'React', 'Vue', 'Angular'],
 
     await t.rightClick(`#${IMAGE_ID}`);
 
-    await takeScreenshot('ccontext_menu_templates_custom_appearance.png');
+    await takeScreenshot(`ccontext_menu_templates_custom_appearance(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

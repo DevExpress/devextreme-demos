@@ -21,13 +21,13 @@ runManualTest('PivotGrid', 'IntegratedFieldChooser', ['jQuery', 'React', 'Vue', 
     await t.wait(500);
     await t.click(Selector(`.${PIVOTGRID_FIELD_CHOOSER_BUTTON}`));
 
-    await takeScreenshot('Integrated field chooser.png', `.${FIELD_CHOOSER_CONTENT}`);
+    await takeScreenshot(`Integrated field chooser(${t.ctx.theme}).png`, `.${FIELD_CHOOSER_CONTENT}`);
 
     const textEditorInput = Selector(`.${TREEVIEW_SEARCH_FIELD} .${TEXTEDITOR_INPUT}`);
     await t
       .typeText(textEditorInput, 'Product M');
 
-    await takeScreenshot('Integrated field chooser after search of hierarchy field.png', `.${FIELD_CHOOSER_CONTENT}`);
+    await takeScreenshot(`Integrated field chooser after search of hierarchy field(${t.ctx.theme}).png`, `.${FIELD_CHOOSER_CONTENT}`);
 
     await t
       .expect(compareResults.isValid())

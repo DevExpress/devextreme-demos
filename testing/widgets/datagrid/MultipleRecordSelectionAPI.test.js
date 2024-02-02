@@ -21,27 +21,27 @@ runManualTest('DataGrid', 'MultipleRecordSelectionAPI', ['jQuery', 'React', 'Vue
         offsetY: 0,
       });
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_2_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-button-text').withText('Clear Selection'));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_3_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-checkbox-icon').nth(0));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_4_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_4_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-checkbox-icon').nth(0));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_5_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_5_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-datagrid-rowsview tr').nth(1));
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_6_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_6_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-datagrid-rowsview tr').nth(6), {
@@ -50,7 +50,7 @@ runManualTest('DataGrid', 'MultipleRecordSelectionAPI', ['jQuery', 'React', 'Vue
         },
       });
 
-    await takeScreenshot('datagrid_multiple_record_selection_and_API_7_desktop.png');
+    await takeScreenshot(`datagrid_multiple_record_selection_and_API_7_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

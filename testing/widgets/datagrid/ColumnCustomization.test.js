@@ -14,17 +14,17 @@ runManualTest('DataGrid', 'ColumnCustomization', ['jQuery', 'React', 'Vue', 'Ang
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click('.dx-icon-column-chooser');
-    await takeScreenshot('datagrid_column_customization_2.png');
+    await takeScreenshot(`datagrid_column_customization_2(${t.ctx.theme}).png`);
 
     await t.drag(
       $('td').withAttribute('aria-label', 'Column Birth Date'),
       500, 200,
       { offsetX: 5, offsetY: 5 },
     );
-    await takeScreenshot('datagrid_column_customization_3.png');
+    await takeScreenshot(`datagrid_column_customization_3(${t.ctx.theme}).png`);
 
     await t.click('.dx-closebutton');
-    await takeScreenshot('datagrid_column_customization_4.png');
+    await takeScreenshot(`datagrid_column_customization_4(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

@@ -208,17 +208,42 @@ async function main() {
   const runner = tester.createRunner();
   const concurrency = (process.env.CONCURRENCY && (+process.env.CONCURRENCY)) || 1;
 
-  const reporters = [reporter]
+  const reporters = [reporter];
+
+  console.log('current process.env.THEME', process.env.THEME);
 
   if (process.env.STRATEGY === 'accessibility') {
     reporters.push(accessibilityTestCafeReporter);
   }
 
+  console.log('process.env.TCQUARANTINE', process.env.TCQUARANTINE);
+  const runOptions = { quarantineMode: process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false };
+
+  runOptions.hooks = {
+    test: {
+      after: async () => {
+        console.log('calling after test');
+
+        const result = await new Promise((resolve) => {
+          resolve('test after resolved');
+        });
+
+        console.log(result);
+      },
+    },
+  };
+
+  console.log('change theme');
+
+  const theme = process.env.THEME;
+
+  console.log('theme changed');
+
   const failedCount = await runner
     .reporter(reporters)
     .browsers(process.env.BROWSERS || 'chrome:headless --disable-partial-raster --disable-skia-runtime-opts --run-all-compositor-stages-before-draw --disable-new-content-rendering-timeout --disable-threaded-animation --disable-threaded-scrolling --disable-checker-imaging --disable-image-animation-resync --use-gl="swiftshader" --disable-features=PaintHolding --js-flags=--random-seed=2147483647 --font-render-hinting=none --disable-font-subpixel-positioning')
     .concurrency(concurrency || 1)
-    .run({ quarantineMode: !!process.env.TCQUARANTINE ? { successThreshold: 1, attemptLimit: 5 } : false });
+    .run(runOptions);
 
   await tester.close();
   process.exit(failedCount);

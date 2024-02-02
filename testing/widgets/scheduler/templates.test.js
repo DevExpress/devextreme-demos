@@ -18,7 +18,7 @@ runManualTest('Scheduler', 'Overview', 'React', (test) => {
     await t.click('.dx-scheduler-date-table-cell');
     await resetScroll();
 
-    await takeScreenshot('scheduler_overview_selection.png');
+    await takeScreenshot(`scheduler_overview_selection(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

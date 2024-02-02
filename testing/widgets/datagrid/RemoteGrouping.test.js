@@ -20,12 +20,12 @@ runManualTest('DataGrid', 'RemoteGrouping', ['jQuery', 'React', 'Vue', 'Angular'
     await $('.dx-scrollable-container')();
     await scroll(5000);
 
-    await takeScreenshot('datagrid_remote_grouping_2_desktop.png');
+    await takeScreenshot(`datagrid_remote_grouping_2_desktop(${t.ctx.theme}).png`);
 
     await t
       .click($('.dx-group-row td').withText('Madrid Store').prevSibling());
 
-    await takeScreenshot('datagrid_remote_grouping_3_desktop.png');
+    await takeScreenshot(`datagrid_remote_grouping_3_desktop(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

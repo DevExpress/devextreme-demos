@@ -15,11 +15,11 @@ runManualTest('Charts', 'ZoomingAndScrollingAPI', ['jQuery', 'React', 'Vue', 'An
 
     await t.drag($('.slider').nth(0), 500, 0, { offsetX: 10, offsetY: 10 });
     await t.wait(1000);
-    await takeScreenshot('range_selector_slider_drag.png');
+    await takeScreenshot(`range_selector_slider_drag(${t.ctx.theme}).png`);
 
     await t.click($('.area-tracker'), { offsetX: 400 });
     await t.wait(1000);
-    await takeScreenshot('range_selector_click_to_empty_place.png');
+    await takeScreenshot(`range_selector_click_to_empty_place(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

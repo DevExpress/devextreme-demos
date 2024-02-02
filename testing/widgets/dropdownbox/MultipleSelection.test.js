@@ -17,7 +17,7 @@ runManualTest('DropDownBox', 'MultipleSelection', ['jQuery', 'React', 'Vue', 'An
       .click($(`.${DROP_DOWN_BOX_CLASS}`).nth(0))
       .wait(200);
 
-    await takeScreenshot('dropdownbox_multiple_selection_treebox.png');
+    await takeScreenshot(`dropdownbox_multiple_selection_treebox(${t.ctx.theme}).png`);
 
     await t
       .click($(`.${DROP_DOWN_BOX_CLASS}`).nth(0))
@@ -27,7 +27,7 @@ runManualTest('DropDownBox', 'MultipleSelection', ['jQuery', 'React', 'Vue', 'An
       .click($(`.${DROP_DOWN_BOX_CLASS}`).nth(1))
       .wait(200);
 
-    await takeScreenshot('dropdownbox_multiple_selection_gridbox.png');
+    await takeScreenshot(`dropdownbox_multiple_selection_gridbox(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

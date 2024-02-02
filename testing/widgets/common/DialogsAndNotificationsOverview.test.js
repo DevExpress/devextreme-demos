@@ -17,7 +17,7 @@ runManualTest('Common', 'DialogsAndNotificationsOverview', ['jQuery', 'React', '
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.click($(`.${IMAGES_CONTAINER_CLASS} .${ITEM_CONTENT_CLASS}`));
-    await takeScreenshot('common_dialogs_and_notifications_overview_popup.png');
+    await takeScreenshot(`common_dialogs_and_notifications_overview_popup(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())

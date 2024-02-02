@@ -16,7 +16,7 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
     await t
       .click($('.dx-widget').withAttribute('aria-label', 'Month'))
       .expect(
-        await takeScreenshot('scheduler_CellTemplates_month_view.png'),
+        await takeScreenshot(`scheduler_CellTemplates_month_view(${t.ctx.theme}).png`),
       ).ok();
 
     await t.expect(compareResults.isValid())
@@ -28,7 +28,7 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
 
     await t.click('.dx-scheduler-navigator-next');
 
-    await takeScreenshot('scheduler_CellTemplates_view_dates_changed.png');
+    await takeScreenshot(`scheduler_CellTemplates_view_dates_changed(${t.ctx.theme}).png`);
 
     await t
       .expect(compareResults.isValid())
