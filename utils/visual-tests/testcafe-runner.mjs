@@ -237,36 +237,6 @@ async function main() {
 
   const theme = process.env.THEME;
 
-  if (theme) {
-    runOptions.hooks.test.before = async (t) => {
-      t.ctx.theme = theme;
-      console.log('theme from ctx', theme);
-    //   await t.eval(() => {
-    //     console.log('start before test__');
-    //     const linkRels = Array.from(document.getElementsByTagName('link'));
-    //     // for testing
-    //     const linkRel = linkRels.find((x) => x.href.includes('dx.light.css'));
-    //     const currentUrl = linkRel.href;
-    //     console.log('current theme url__', currentUrl);
-    //     console.log('theme__', theme);
-    //     const urlSegments = linkRel.href.split('/');
-    //     const newUrl = urlSegments.slice(0, -1).join('/');
-    //     const newLocation = `${newUrl}/dx.${theme}.css`;
-    //     console.log('new theme url__', newLocation);
-
-    //     linkRel.href = newLocation;
-    //     console.log('end before test__');
-
-    //     window.DevExpress.ui.themes.init({
-    //       _autoInit: true,
-    //       _forceTimeout: true,
-    //     });
-    //   }, {
-    //     dependencies: { theme },
-    //   });
-      
-    // };
-  }
   console.log('theme changed');
 
   const failedCount = await runner
