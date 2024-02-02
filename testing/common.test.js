@@ -164,8 +164,7 @@ const getTestSpecificSkipRules = (testName) => {
     }
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
-      .clientScripts([clientScriptSource,
-        { content: 'console.log("doc__", document);' }])(testName, async (t) => {
+      .clientScripts({ content: 'console.log(document);' })(testName, async (t) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
         }
