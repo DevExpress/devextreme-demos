@@ -109,7 +109,7 @@ const getTestSpecificSkipRules = (testName) => {
           });`,
       },
       {
-        content: 'console.log(document);',
+        content: 'console.log(\'test\');',
       },
     ]);
 
