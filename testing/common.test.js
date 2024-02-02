@@ -163,13 +163,10 @@ const getTestSpecificSkipRules = (testName) => {
       }
     }
 
-    const indexFilePath = `${demoPath}/index.html`;
+    const indexFilePath = join(__dirname, `../${demoPath}/index.html`);
 
-    readFileSync(indexFilePath, 'utf8', (err, data) => {
-      const updatedContent = data.replace(/dx\.light\.css/g, 'dx.material.blue.light.css');
-
-      writeFileSync(indexFilePath, updatedContent, 'utf8');
-    });
+    const updatedContent = globalReadFrom(__dirname, `../${demoPath}/index.html`, (data) => data.replace(/dx\.light\.css/g, 'dx.material.blue.light.css'));
+    writeFileSync(indexFilePath, updatedContent, 'utf8');
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
