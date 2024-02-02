@@ -256,6 +256,11 @@ async function main() {
 
         linkRel.href = newLocation;
         console.log('end before test__');
+
+        window.DevExpress.ui.themes.init({
+          _autoInit: true,
+          _forceTimeout: true,
+        });
       }, {
         dependencies: { theme },
       });
