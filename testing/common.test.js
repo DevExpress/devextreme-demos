@@ -164,8 +164,9 @@ const getTestSpecificSkipRules = (testName) => {
     }
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
-      .clientScripts(clientScriptSource,
-        { content: 'const linkRels = Array.from(document.getElementsByTagName("link"));const linkRel = linkRels[0];const urlSegments = linkRel.href.replace("dx.light.css", "dx.material.blue.dark.css");linkRel.href = urlSegments;' })(testName, async (t) => {
+      .clientScripts(
+        { content: 'const linkRels = Array.from(document.getElementsByTagName("link"));const linkRel = linkRels[0];const urlSegments = linkRel.href.replace("dx.light.css", "dx.material.blue.dark.css");linkRel.href = urlSegments;' },
+      )(testName, async (t) => {
         if (visualTestStyles) {
           await execCode(visualTestStyles);
         }
