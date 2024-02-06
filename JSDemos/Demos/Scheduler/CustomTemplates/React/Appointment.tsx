@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Query from 'devextreme/data/query';
-import localization from 'devextreme/localization';
+import { formatDate } from 'devextreme/localization';
 import { SchedulerTypes } from 'devextreme-react/scheduler';
 import { moviesData } from './data.ts';
 
@@ -14,7 +14,7 @@ const Appointment = (props: AppointmentProps) => {
   const { targetedAppointmentData } = props.data;
   const { movieId } = targetedAppointmentData;
 
-  const movieData = React.useMemo(() => getMovieById(movieId), [movieId]);
+  const movieData = useMemo(() => getMovieById(movieId), [movieId]);
 
   return (
     <div className="showtime-preview">
@@ -23,9 +23,9 @@ const Appointment = (props: AppointmentProps) => {
         Ticket Price: <strong>${ targetedAppointmentData.price }</strong>
       </div>
       <div>
-        {localization.formatDate(targetedAppointmentData.displayStartDate, 'shortTime')}
+        {formatDate(targetedAppointmentData.displayStartDate, 'shortTime')}
         {' - '}
-        {localization.formatDate(targetedAppointmentData.displayEndDate, 'shortTime')}
+        {formatDate(targetedAppointmentData.displayEndDate, 'shortTime')}
       </div>
     </div>
   );
