@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxSelectBoxModule } from 'devextreme-angular/ui/select-box';
+import { DxSelectBoxModule } from 'devextreme-angular';
 import { DxRangeSelectorModule, DxRangeSelectorTypes } from 'devextreme-angular/ui/range-selector';
 
 if (!/localhost/.test(document.location.host)) {

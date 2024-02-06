@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxListModule } from 'devextreme-angular/ui/list';
+import { DxListModule } from 'devextreme-angular';
 import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
 import { Task, Service } from './app.service';
 

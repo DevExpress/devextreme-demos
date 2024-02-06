@@ -5,7 +5,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import config from 'devextreme/core/config';
 import repaintFloatingActionButton from 'devextreme/ui/speed_dial_action/repaint_floating_action_button';
-import { DxSpeedDialActionModule } from 'devextreme-angular/ui/speed-dial-action';
+import { DxSpeedDialActionModule } from 'devextreme-angular';
 import { DxDataGridModule, DxDataGridComponent, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import {

@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxCheckBoxModule } from 'devextreme-angular/ui/check-box';
+import { DxCheckBoxModule } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service, Sale } from './app.service';
