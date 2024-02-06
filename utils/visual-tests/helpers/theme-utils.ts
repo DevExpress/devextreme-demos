@@ -1,6 +1,6 @@
-export const getThemePostfix = (theme?: string): string => {
+export const getThemePostfix = (theme: string): string => {
   const themeName = theme === 'generic.light' ? '' : ` (${theme})`;
-  
+
   return themeName;
 };
 
@@ -18,7 +18,7 @@ export async function testScreenshot(
   } = options ?? {};
 
   await t
-    .expect(await takeScreenshot(screenshotName.replace('.png', `${getThemePostfix(process.env.theme)}.png`), element))
+    .expect(await takeScreenshot(screenshotName.replace('.png', `${getThemePostfix(process.env.THEME)}.png`), element))
     .ok();
 }
 
