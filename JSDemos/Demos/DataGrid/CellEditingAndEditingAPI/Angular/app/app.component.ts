@@ -5,7 +5,7 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxButtonModule } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
-import { DxDataGridModule, DxDataGridComponent,DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { DxDataGridModule, DxDataGridComponent, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, State } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

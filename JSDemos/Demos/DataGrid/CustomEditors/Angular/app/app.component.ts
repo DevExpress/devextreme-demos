@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
   DxDataGridModule, DxListModule, DxDropDownBoxModule, DxTagBoxModule,
 } from 'devextreme-angular';
-import {createStore, CustomStore} from 'devextreme-aspnet-data-nojquery';
+import { createStore, CustomStore } from 'devextreme-aspnet-data-nojquery';
 import { Service, Status } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
