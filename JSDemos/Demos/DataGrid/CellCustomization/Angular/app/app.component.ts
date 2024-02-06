@@ -27,7 +27,7 @@ export class AppComponent {
     this.dataSource = service.getWeekData();
   }
 
-  abs(value) {
+  abs(value: number) {
     return Math.abs(value);
   }
 }

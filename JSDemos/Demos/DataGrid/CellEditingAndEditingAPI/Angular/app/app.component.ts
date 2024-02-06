@@ -3,14 +3,10 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxDataGridModule,
-  DxDataGridComponent,
-  DxButtonModule,
-} from 'devextreme-angular';
+import { DxButtonModule } from 'devextreme-angular';
 import ArrayStore from 'devextreme/data/array_store';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
-import { Service, Employee, State } from './app.service';
+import { DxDataGridModule, DxDataGridComponent,DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { Service, State } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

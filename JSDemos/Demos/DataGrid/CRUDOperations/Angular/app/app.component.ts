@@ -1,13 +1,11 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  HttpClient, HttpClientModule, HttpParams,
-} from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
+import { lastValueFrom, Observable } from 'rxjs';
 import { DxDataGridModule, DxSelectBoxModule, DxButtonModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { formatDate } from 'devextreme/localization';
-import { lastValueFrom, Observable } from 'rxjs';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

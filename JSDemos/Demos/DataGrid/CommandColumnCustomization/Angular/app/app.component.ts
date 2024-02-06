@@ -1,8 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule } from 'devextreme-angular';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Employee, State } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,8 +24,6 @@ export class AppComponent {
   constructor(private service: Service) {
     this.employees = service.getEmployees();
     this.states = service.getStates();
-
-    this.onCloneIconClick = this.onCloneIconClick.bind(this);
   }
 
   private static isChief(position: string) {
@@ -60,12 +57,12 @@ export class AppComponent {
     }
   }
 
-  onCloneIconClick(e: DxDataGridTypes.ColumnButtonClickEvent) {
+  onCloneIconClick = (e: DxDataGridTypes.ColumnButtonClickEvent) => {
     const clonedItem = { ...e.row.data, ID: this.service.getMaxID() };
 
     this.employees.splice(e.row.rowIndex, 0, clonedItem);
     e.event.preventDefault();
-  }
+  };
 }
 
 @NgModule({

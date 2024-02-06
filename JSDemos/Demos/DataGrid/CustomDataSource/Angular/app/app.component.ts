@@ -3,7 +3,6 @@ import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-bro
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-
 import { DxDataGridModule } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { LoadOptions } from 'devextreme/data';
