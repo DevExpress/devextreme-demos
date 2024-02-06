@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridComponent, DxDataGridModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxDataGridComponent, DxDataGridModule } from 'devextreme-angular';
+import { DxCheckBoxModule, DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
 import { Employee, Service } from './app.service';
-import {DxCheckBoxTypes} from "devextreme-angular/ui/check-box";
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

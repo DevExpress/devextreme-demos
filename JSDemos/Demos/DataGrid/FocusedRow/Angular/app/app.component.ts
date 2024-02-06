@@ -5,16 +5,10 @@ import {
   BrowserModule, BrowserTransferStateModule, DomSanitizer, SafeHtml,
 } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxDataGridComponent,
-  DxNumberBoxComponent,
-  DxDataGridModule,
-  DxNumberBoxModule,
-  DxCheckBoxModule,
-} from 'devextreme-angular';
+import { DxNumberBoxComponent, DxNumberBoxModule, DxCheckBoxModule } from 'devextreme-angular';
 import { Options as DataSourceOptions } from 'devextreme/data/data_source';
 import 'devextreme/data/odata/store';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { DxDataGridComponent, DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();

@@ -1,12 +1,9 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule } from 'devextreme-angular';
-import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { jsPDF } from 'jspdf';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { exportDataGrid } from 'devextreme/pdf_exporter';
+import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Company } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

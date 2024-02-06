@@ -1,11 +1,10 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxDataGridModule } from 'devextreme-angular';
-import { DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
 import { PositionConfig } from 'devextreme/animation/position';
+import { DxFilterBuilderTypes } from 'devextreme-angular/ui/filter-builder';
 import { DxoHeaderFilterComponent } from 'devextreme-angular/ui/nested/header-filter';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Order, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -14,27 +14,23 @@ if (!/localhost/.test(document.location.host)) {
   templateUrl: 'app/app.component.html',
 })
 export class AppComponent {
-  dataSource: DataSourceConfig;
-
-  constructor() {
-    this.dataSource = {
-      store: {
-        type: 'odata',
-        version: 2,
-        url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
-        key: 'Product_ID',
-      },
-      select: [
-        'Product_ID',
-        'Product_Name',
-        'Product_Cost',
-        'Product_Sale_Price',
-        'Product_Retail_Price',
-        'Product_Current_Inventory',
-      ],
-      filter: ['Product_Current_Inventory', '>', 0],
-    };
-  }
+  dataSource: DataSourceConfig = {
+    store: {
+      type: 'odata',
+      version: 2,
+      url: 'https://js.devexpress.com/Demos/DevAV/odata/Products',
+      key: 'Product_ID',
+    },
+    select: [
+      'Product_ID',
+      'Product_Name',
+      'Product_Cost',
+      'Product_Sale_Price',
+      'Product_Retail_Price',
+      'Product_Current_Inventory',
+    ],
+    filter: ['Product_Current_Inventory', '>', 0],
+  };
 }
 
 @NgModule({

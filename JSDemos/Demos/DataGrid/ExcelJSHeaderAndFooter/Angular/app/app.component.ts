@@ -1,7 +1,6 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
 import { Workbook } from 'exceljs';
 import { saveAs } from 'file-saver-es';

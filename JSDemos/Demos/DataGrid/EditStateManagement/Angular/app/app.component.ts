@@ -4,10 +4,9 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
-
-import { DxDataGridModule, DxLoadPanelModule } from 'devextreme-angular';
+import { DxLoadPanelModule } from 'devextreme-angular';
 import { Observable, Subscription } from 'rxjs';
-import { DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
+import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
 import { Service, Order, Change } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

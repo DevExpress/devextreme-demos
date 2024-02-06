@@ -7,11 +7,10 @@ import {
   DxDataGridModule,
   DxDataGridComponent,
   DxTemplateModule,
-  DxSelectBoxModule,
   DxButtonModule,
 } from 'devextreme-angular';
 import query from 'devextreme/data/query';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Service, Order } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
