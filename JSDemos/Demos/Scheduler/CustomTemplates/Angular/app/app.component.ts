@@ -3,9 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxSchedulerModule, DxSchedulerComponent, DxTemplateModule } from 'devextreme-angular';
+import { DxTemplateModule } from 'devextreme-angular';
 import Query from 'devextreme/data/query';
-import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
+import { DxSchedulerModule, DxSchedulerComponent, DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
 import {
   Service, MovieData, TheatreData, Data,
 } from './app.service';

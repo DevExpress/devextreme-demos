@@ -3,14 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxScrollViewModule,
-  DxScrollViewComponent,
-  DxCheckBoxModule,
-  DxSelectBoxModule,
-} from 'devextreme-angular';
-import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
-import { DxScrollViewTypes } from 'devextreme-angular/ui/scroll-view';
+import { DxSelectBoxModule } from 'devextreme-angular';
+import { DxCheckBoxModule, DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DxScrollViewModule, DxScrollViewComponent,DxScrollViewTypes } from 'devextreme-angular/ui/scroll-view';
 import { ScrollbarMode } from 'devextreme-angular/common';
 import { Service } from './app.service';
 

@@ -3,9 +3,8 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxTreeViewModule, DxTreeViewComponent, DxSortableModule } from 'devextreme-angular';
-import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxSortableModule, DxSortableTypes } from 'devextreme-angular/ui/sortable';
+import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 import { Service, FileSystemItem } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

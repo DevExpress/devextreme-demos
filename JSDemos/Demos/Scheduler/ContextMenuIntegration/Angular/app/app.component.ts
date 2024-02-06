@@ -3,9 +3,8 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxContextMenuModule, DxSchedulerModule, DxSchedulerComponent } from 'devextreme-angular';
-import { DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
-import { DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
+import { DxSchedulerModule, DxSchedulerComponent, DxSchedulerTypes } from 'devextreme-angular/ui/scheduler';
+import { DxContextMenuModule, DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
 import { Appointment, Resource, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

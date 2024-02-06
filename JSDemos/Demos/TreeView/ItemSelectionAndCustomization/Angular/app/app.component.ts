@@ -3,11 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxListModule, DxTemplateModule, DxCheckBoxModule, DxSelectBoxModule,
-} from 'devextreme-angular';
+import { DxListModule, DxTemplateModule, DxCheckBoxModule } from 'devextreme-angular';
 import { DxTreeViewModule, DxTreeViewComponent, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Service, Employee } from './app.service';
 
 @Pipe({ name: 'title' })

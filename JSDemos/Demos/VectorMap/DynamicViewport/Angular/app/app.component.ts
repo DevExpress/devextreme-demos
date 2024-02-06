@@ -3,12 +3,10 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxVectorMapModule, DxSelectBoxModule, DxTextBoxModule, DxVectorMapComponent, DxSwitchModule,
-} from 'devextreme-angular';
+import { DxTextBoxModule, DxSwitchModule } from 'devextreme-angular';
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
-import { DxVectorMapTypes } from 'devextreme-angular/ui/vector-map';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxVectorMapModule, DxVectorMapComponent, DxVectorMapTypes } from 'devextreme-angular/ui/vector-map';
 import { ViewportCoordinate, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

@@ -1,9 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxTreeListModule, DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
+import { DxSelectBoxModule, DxCheckBoxModule } from 'devextreme-angular';
 import { DxTextBoxTypes } from 'devextreme-angular/ui/text-box';
-import { DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
+import { DxTreeListModule, DxTreeListTypes } from 'devextreme-angular/ui/tree-list';
 import { Employee, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

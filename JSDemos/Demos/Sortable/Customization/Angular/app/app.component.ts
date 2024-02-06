@@ -1,17 +1,11 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxScrollViewModule,
-  DxSortableModule,
-  DxSelectBoxModule,
-  DxCheckBoxModule,
-  DxNumberBoxModule,
-} from 'devextreme-angular';
-import { DxSortableTypes } from 'devextreme-angular/ui/sortable';
-import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
-import { DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
-import { DragDirection } from 'devextreme/common';
+import { DxScrollViewModule, DxNumberBoxModule } from 'devextreme-angular';
+import { DxSortableModule, DxSortableTypes } from 'devextreme-angular/ui/sortable';
+import { DxSelectBoxModule, DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
+import { DxCheckBoxModule, DxCheckBoxTypes } from 'devextreme-angular/ui/check-box';
+import { DragDirection } from 'devextreme-angular/common';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

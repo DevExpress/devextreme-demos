@@ -3,11 +3,9 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-  DxTreeViewModule, DxTreeViewComponent, DxListModule, DxContextMenuModule, DxContextMenuComponent,
-} from 'devextreme-angular';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
-import { DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
+import { DxListModule } from 'devextreme-angular';
+import { DxTreeViewComponent, DxTreeViewModule, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxContextMenuModule, DxContextMenuComponent, DxContextMenuTypes } from 'devextreme-angular/ui/context-menu';
 import { Product, Service, MenuItem } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {

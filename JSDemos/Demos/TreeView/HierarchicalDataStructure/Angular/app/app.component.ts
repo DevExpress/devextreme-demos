@@ -1,8 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxTreeViewModule } from 'devextreme-angular';
-import { DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
+import { DxTreeViewModule, DxTreeViewTypes } from 'devextreme-angular/ui/tree-view';
 import { Product, Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
