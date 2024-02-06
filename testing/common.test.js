@@ -210,7 +210,7 @@ const getTestSpecificSkipRules = (testName) => {
           await t.expect(error).notOk();
           await t.expect(results.violations.length === 0).ok(createReport(results.violations));
         } else {
-          const comparisonResult = await compareScreenshot(t, `${testName}${process.env.THEME === 'generic.light' ? '' : (process.env.THEME)}.png`, undefined, comparisonOptions);
+          const comparisonResult = await compareScreenshot(t, `${testName}${process.env.THEME === 'generic.light' ? '' : ` (${process.env.THEME})`}.png`, undefined, comparisonOptions);
           const consoleMessages = await t.getBrowserConsoleMessages();
           if (!comparisonResult) {
             // eslint-disable-next-line no-console
