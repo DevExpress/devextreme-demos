@@ -1,7 +1,7 @@
 import { glob } from 'glob';
 import { ClientFunction } from 'testcafe';
 import { join } from 'path';
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync } from 'fs';
 import { compareScreenshot } from 'devextreme-screenshot-comparer';
 import { axeCheck, createReport } from '@testcafe-community/axe';
 import {
@@ -9,18 +9,12 @@ import {
   runTestAtPage,
   shouldRunFramework,
   shouldRunTestAtIndex,
+  globalReadFrom,
+  changeTheme,
 } from '../utils/visual-tests/matrix-test-helper';
 import { createMdReport, createTestCafeReport } from '../utils/axe-reporter/reporter';
 import knownWarnings from './known-warnings.json';
 
-const globalReadFrom = (basePath, relativePath, mapCallback) => {
-  const absolute = join(basePath, relativePath);
-  if (existsSync(absolute)) {
-    const result = readFileSync(absolute, 'utf8');
-    return (mapCallback && result && mapCallback(result)) || result;
-  }
-  return null;
-};
 const execCode = ClientFunction((code) => {
   // eslint-disable-next-line no-eval
   const result = eval(code);
@@ -163,12 +157,7 @@ const getTestSpecificSkipRules = (testName) => {
       }
     }
 
-    if (process.env.THEME !== 'generic.light') {
-      const indexFilePath = join(__dirname, `../${demoPath}/index.html`);
-
-      const updatedContent = globalReadFrom(__dirname, `../${demoPath}/index.html`, (data) => data.replace(/dx\.light\.css/g, `dx.${process.env.THEME}.css`));
-      writeFileSync(indexFilePath, updatedContent, 'utf8');
-    }
+    changeTheme(__dirname, demoPath, process.env.THEME);
 
     runTestAtPage(test, `http://127.0.0.1:808${getPortByIndex(index)}/JSDemos/Demos/${widgetName}/${demoName}/${approach}/`)
       .clientScripts(clientScriptSource)(testName, async (t) => {
