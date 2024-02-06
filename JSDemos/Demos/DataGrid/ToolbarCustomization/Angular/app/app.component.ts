@@ -28,6 +28,8 @@ export class AppComponent {
 
   orders: Order[];
 
+  totalCount: number;
+
   expandAll = true;
 
   groupingValues = [{
@@ -38,10 +40,9 @@ export class AppComponent {
     text: 'Grouping by Employee',
   }];
 
-  totalCount = this.getGroupCount('CustomerStoreState');
-
   constructor(service: Service) {
     this.orders = service.getOrders();
+    this.totalCount = this.getGroupCount('CustomerStoreState');
   }
 
   getGroupCount(groupField: string) {
