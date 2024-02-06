@@ -29,7 +29,7 @@
             .Height(418)
             .AnimationEnabled(true)
             .SwipeEnabled(true)
-            .TabsPosition(Position.Top)
+            .TabsPosition(Position.Left)
             .StylingMode(TabsStyle.Secondary)
             .IconPosition(TabsIconPosition.Top)
             .ItemTemplate(new JS("tabPanelTemplate"))
@@ -108,7 +108,7 @@
     }
 
     function getTabPanelInstance() {
-        return $("#tabpanel-container").dxTabPanel("instance");
+        return $("#tabpanel").dxTabPanel("instance");
     }
 
     function tabsPositionChanged({ value }) {

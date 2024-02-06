@@ -1,6 +1,4 @@
-import {
-  NgModule, Component, enableProdMode,
-} from '@angular/core';
+import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxRangeSliderModule, DxNumberBoxModule } from 'devextreme-angular';

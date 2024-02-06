@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataSource from 'devextreme/data/data_source';
 import {
   Chart,
@@ -31,77 +31,21 @@ const wholeRange = {
 };
 
 function App() {
-  const [visualRange, setVisualRange] = React.useState({
+  const [visualRange, setVisualRange] = useState({
     startValue: new Date(2017, 3, 1),
     endValue: new Date(2017, 3, 15),
   });
 
-  const uploadDataByVisualRange = React.useCallback((component) => {
-    const dataSource = component.getDataSource();
-    const storage = dataSource.items();
-    const ajaxArgs = {
-      startVisible: getDateString(visualRange.startValue),
-      endVisible: getDateString(visualRange.endValue),
-      startBound: getDateString(storage.length ? storage[0].date : null),
-      endBound: getDateString(
-        storage.length ? storage[storage.length - 1].date : null,
-      ),
-    };
-
-    if (
-      ajaxArgs.startVisible !== ajaxArgs.startBound
-      && ajaxArgs.endVisible !== ajaxArgs.endBound
-      && !packetsLock
-    ) {
-      packetsLock += 1;
-      component.showLoadingIndicator();
-
-      getDataFrame(ajaxArgs)
-        .then((dataFrame) => {
-          packetsLock -= 1;
-
-          const componentStorage = dataSource.store();
-
-          dataFrame
-            .map((i) => ({
-              date: new Date(i.Date),
-              minTemp: i.MinTemp,
-              maxTemp: i.MaxTemp,
-            }))
-            .forEach((item) => componentStorage.insert(item));
-
-          dataSource.reload();
-
-          onVisualRangeChanged(component);
-        })
-        .catch(() => {
-          packetsLock -= 1;
-          dataSource.reload();
-        });
-    }
-  }, [visualRange]);
-
-  const onVisualRangeChanged = React.useCallback((component) => {
-    const items = component.getDataSource().items();
-    if (
-      !items.length
-      || items[0].date - visualRange.startValue.getTime() >= HALFDAY
-      || visualRange.endValue.getTime() - items[items.length - 1].date >= HALFDAY
-    ) {
-      uploadDataByVisualRange(component);
-    }
-  }, [visualRange, uploadDataByVisualRange]);
-
-  const handleChange = React.useCallback((e: ChartTypes.OptionChangedEvent) => {
+  const handleChange = (e: ChartTypes.OptionChangedEvent) => {
     if (e.fullName === 'argumentAxis.visualRange') {
       const stateStart = visualRange.startValue;
       const currentStart = e.value.startValue;
       if (stateStart.valueOf() !== currentStart.valueOf()) {
         setVisualRange(e.value);
       }
-      onVisualRangeChanged(e.component);
+      onVisualRangeChanged(e.value, e.component);
     }
-  }, [setVisualRange, visualRange, onVisualRangeChanged]);
+  };
 
   return (
     <Chart
@@ -119,7 +63,7 @@ function App() {
         wholeRange={wholeRange}
       />
       <ValueAxis name="temperature" allowDecimals={false}>
-        <Title text='Temperature, °C'>
+        <Title text='Temperature, &deg;C'>
           <Font color="#ff950c" />
         </Title>
         <Label>
@@ -142,6 +86,62 @@ function App() {
     </Chart>
   );
 }
+
+const uploadDataByVisualRange = (visualRange, component) => {
+  const dataSource = component.getDataSource();
+  const storage = dataSource.items();
+  const ajaxArgs = {
+    startVisible: getDateString(visualRange.startValue),
+    endVisible: getDateString(visualRange.endValue),
+    startBound: getDateString(storage.length ? storage[0].date : null),
+    endBound: getDateString(
+      storage.length ? storage[storage.length - 1].date : null,
+    ),
+  };
+
+  if (
+    ajaxArgs.startVisible !== ajaxArgs.startBound
+    && ajaxArgs.endVisible !== ajaxArgs.endBound
+    && !packetsLock
+  ) {
+    packetsLock += 1;
+    component.showLoadingIndicator();
+
+    getDataFrame(ajaxArgs)
+      .then((dataFrame) => {
+        packetsLock -= 1;
+
+        const componentStorage = dataSource.store();
+
+        dataFrame
+          .map((i) => ({
+            date: new Date(i.Date),
+            minTemp: i.MinTemp,
+            maxTemp: i.MaxTemp,
+          }))
+          .forEach((item) => componentStorage.insert(item));
+
+        dataSource.reload();
+
+        onVisualRangeChanged(visualRange, component);
+      })
+      .catch(() => {
+        packetsLock -= 1;
+        dataSource.reload();
+      });
+  }
+};
+
+const onVisualRangeChanged = (visualRange, component) => {
+  const items = component.getDataSource().items();
+  if (
+    !items.length
+    || items[0].date - visualRange.startValue.getTime() >= HALFDAY
+    || visualRange.endValue.getTime() - items[items.length - 1].date >= HALFDAY
+  ) {
+    uploadDataByVisualRange(visualRange, component);
+  }
+};
 
 function getDataFrame(args) {
   let params = '?';
