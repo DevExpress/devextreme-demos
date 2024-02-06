@@ -15,7 +15,7 @@ runManualTest('Charts', 'CustomLegendMarkers', ['jQuery', 'React', 'Vue', 'Angul
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('.dxl-marker').nth(1));
-    await testScreenshot(t, takeScreenshot, 'charts_custom_legend_marker.png', { element: '.dxc-legend' });
+    await testScreenshot(t, takeScreenshot, 'charts_custom_legend_marker.png', '.dxc-legend');
 
     await t
       .expect(compareResults.isValid())

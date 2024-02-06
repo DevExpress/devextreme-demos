@@ -10,10 +10,8 @@ export async function testScreenshot(
   t,
   takeScreenshot,
   screenshotName,
-  options = {},
+  element,
 ) {
-  const element = options;
-
   await t
     .expect(await takeScreenshot(screenshotName.replace('.png', `${getThemePostfix(process.env.THEME || DEFAULT_THEME_NAME)}.png`), element))
     .ok();

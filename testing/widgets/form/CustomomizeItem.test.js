@@ -15,7 +15,7 @@ runManualTest('Form', 'CustomizeItem', ['jQuery', 'Vue', 'Angular'], (test) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.hover($('#helpedInfo'));
-    await testScreenshot(t, takeScreenshot, 'form_customize_item_label_tooltip.png', { element: '.dx-form' });
+    await testScreenshot(t, takeScreenshot, 'form_customize_item_label_tooltip.png', '.dx-form');
 
     await t
       .expect(compareResults.isValid())
