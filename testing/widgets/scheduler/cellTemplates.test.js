@@ -1,6 +1,7 @@
 import { Selector as $ } from 'testcafe';
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
+import { testScreenshot } from '../../../utils/visual-tests/helpers/theme-utils';
 
 fixture('Scheduler.CellTemplates')
   .page('http://localhost:8080/')
@@ -14,10 +15,9 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
-      .click($('.dx-widget').withAttribute('aria-label', 'Month'))
-      .expect(
-        await takeScreenshot('scheduler_CellTemplates_month_view.png'),
-      ).ok();
+      .click($('.dx-widget').withAttribute('aria-label', 'Month'));
+
+    await testScreenshot(t, takeScreenshot, 'scheduler_CellTemplates_month_view.png');
 
     await t.expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
@@ -28,7 +28,7 @@ runManualTest('Scheduler', 'CellTemplates', ['jQuery', 'React', 'Vue', 'Angular'
 
     await t.click('.dx-scheduler-navigator-next');
 
-    await takeScreenshot('scheduler_CellTemplates_view_dates_changed.png');
+    await testScreenshot(t, takeScreenshot, 'scheduler_CellTemplates_view_dates_changed.png');
 
     await t
       .expect(compareResults.isValid())
