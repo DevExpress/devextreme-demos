@@ -65,14 +65,12 @@ export function globalReadFrom(basePath, relativePath, mapCallback) {
 }
 
 export function changeTheme(dirName, relativePath, demoPath, theme) {
-  if (process.env.THEME !== 'generic.light') {
-    const indexFilePath = join(dirName, `${relativePath}${demoPath}/index.html`);
+  const indexFilePath = join(dirName, `${relativePath}${demoPath}/index.html`);
 
-    const updatedContent = globalReadFrom(dirName, `${relativePath}${demoPath}/index.html`, (data) => data.replace(/dx\.light\.css/g, `dx.${theme}.css`));
+  const updatedContent = globalReadFrom(dirName, `${relativePath}${demoPath}/index.html`, (data) => data.replace(/dx(\.\w+)*\.light\.css/g, `dx.${theme}.css`));
 
-    if (existsSync(indexFilePath)) {
-      writeFileSync(indexFilePath, updatedContent, 'utf8');
-    }
+  if (existsSync(indexFilePath)) {
+    writeFileSync(indexFilePath, updatedContent, 'utf8');
   }
 }
 
