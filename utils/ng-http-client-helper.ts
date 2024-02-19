@@ -110,7 +110,7 @@ export function sendRequestFactory(httpClient: HttpClient) {
         },
       )
       .subscribe(
-        (response) => promiseResolve(response.body, 'success', assignResponseProps(xhrSurrogate, response)),
+        (response) => promiseResolve(null, 'success', assignResponseProps(xhrSurrogate, response)),
         (response) => promiseReject(assignResponseProps(xhrSurrogate, response)),
       );
 
