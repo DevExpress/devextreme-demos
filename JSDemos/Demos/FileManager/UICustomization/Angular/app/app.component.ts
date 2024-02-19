@@ -1,6 +1,9 @@
 import {
   NgModule, Component, ViewChild, enableProdMode,
 } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { DxHttpModule } from 'DxHttpModule';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxFileManagerModule, DxFileManagerComponent, DxFileManagerTypes } from 'devextreme-angular/ui/file-manager';
@@ -157,6 +160,7 @@ export class AppComponent {
 
 @NgModule({
   imports: [
+    DxHttpModule,
     BrowserModule,
     BrowserTransferStateModule,
     DxFileManagerModule,

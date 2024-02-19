@@ -1,4 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { DxHttpModule } from 'DxHttpModule';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-grid';
@@ -42,6 +45,7 @@ export class AppComponent {
 
 @NgModule({
   imports: [
+    DxHttpModule,
     BrowserModule,
     BrowserTransferStateModule,
     DxDataGridModule,

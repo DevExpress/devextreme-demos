@@ -1,6 +1,9 @@
 import {
   NgModule, Component, Pipe, PipeTransform, enableProdMode,
 } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { DxHttpModule } from 'DxHttpModule';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
@@ -58,6 +61,7 @@ export class StringifyItemsPipe implements PipeTransform {
 
 @NgModule({
   imports: [
+    DxHttpModule,
     BrowserModule,
     BrowserTransferStateModule,
     HttpClientModule,

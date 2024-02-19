@@ -1,6 +1,9 @@
 import {
   NgModule, Component, ViewChild, AfterViewInit, enableProdMode,
 } from '@angular/core';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { DxHttpModule } from 'DxHttpModule';
 import { CurrencyPipe } from '@angular/common';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -88,6 +91,7 @@ export class AppComponent implements AfterViewInit {
 
 @NgModule({
   imports: [
+    DxHttpModule,
     BrowserModule,
     BrowserTransferStateModule,
     DxPivotGridModule,
