@@ -42,6 +42,7 @@ window.config = {
     'npm:': '../../../../../node_modules/',
   },
   map: {
+    'DxHttpModule': '../../../../../utils/DxHttpModule.ts',
     'ts': 'npm:plugin-typescript/lib/plugin.js',
     'typescript': 'npm:typescript/lib/typescript.js',
     '@angular/core': 'npm:@angular/core',
