@@ -122,7 +122,7 @@ export function sendRequestFactory(httpClient: HttpClient) {
       )
     // eslint-disable-next-line deprecation/deprecation
       .subscribe(
-        (response) => promiseResolve(null, 'success', assignResponseProps(xhrSurrogate, response)),
+        (response) => promiseResolve(response.body, 'success', assignResponseProps(xhrSurrogate, response)),
         (response) => promiseReject(assignResponseProps(xhrSurrogate, response)),
       );
 
