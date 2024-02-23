@@ -6,30 +6,29 @@ import MultiView from 'devextreme-react/multi-view';
 
 import { employees, selectBoxLabel } from './data.ts';
 
-class EmployeeInfo extends React.Component<{
+interface EmployeeInfoProps {
   data: {
     text: string,
     picture: string,
     position: string,
     notes: string
   }
-}> {
-  render() {
-    const {
-      text, picture, position, notes,
-    } = this.props.data;
-
-    return (
-      <div className="employee-info">
-        <img alt={text} className="employee-photo dx-theme-border-color" src={picture} />
-        <p className="employee-notes">
-          <b>Position: {position}</b><br />
-          {notes}
-        </p>
-      </div>
-    );
-  }
 }
+
+const EmployeeInfo = (props: EmployeeInfoProps) => {
+  const {
+    text, picture, position, notes,
+  } = props.data;
+  return (
+    <div className="employee-info">
+      <img alt={text} className="employee-photo dx-theme-border-color" src={picture} />
+      <p className="employee-notes">
+        <b>Position: {position}</b><br />
+        {notes}
+      </p>
+    </div>
+  );
+};
 
 const App = () => {
   const [selectedItem, setSelectedItem] = useState(employees[0]);
