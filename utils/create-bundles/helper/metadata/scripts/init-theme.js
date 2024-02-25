@@ -5,7 +5,7 @@ function DXDemoTheme(version) {
 
   const themeLink = document.createElement('link');
   themeLink.rel = 'stylesheet';
-  themeLink.href = `https://cdnjs.cloudflare.com/ajax/libs/devextreme-dist/23.2.3/css/${theme}.min.css`;
+  themeLink.href = `https://cdnjs.cloudflare.com/ajax/libs/devextreme-dist/23.2.4/css/${theme}.min.css`;
 
   document.head.appendChild(themeLink);
 }
