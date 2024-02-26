@@ -1,7 +1,9 @@
 import {
   existsSync, readFileSync, writeFileSync, readdirSync, copyFileSync, mkdirSync, copySync,
 } from 'fs-extra';
-import { join, basename, extname } from 'path';
+import {
+  join, basename, extname, relative,
+} from 'path';
 import { createHash } from 'crypto';
 import { version as DX_Version } from 'devextreme/package.json';
 import { Demo, Framework } from './types';
@@ -38,8 +40,20 @@ const getTemplateContent = (framework: Framework) => {
 const getBundlePath = (demoPath: string, prefix: string, postfix: string) => readdirSync(demoPath)
   .find((item) => item.startsWith(prefix) && item.endsWith(postfix));
 
+const getSpecificCssPath = (WidgetName: string, demoPath: string) => (
+  relative(
+    demoPath,
+    join(
+      destinationPublishDir,
+      'css',
+      `dx-${WidgetName.toLowerCase()}.css`,
+    ),
+  ).split('\\').join('/')
+);
+
 export const createDemoLayout = (demo: Demo, framework: Framework) => {
   const demoPath = getDestinationPathByDemo(demo, framework);
+  const demoHtmlPath = join(demoPath, 'index.html');
   const templateContent = getTemplateContent(framework);
 
   const metadataScripts = join(destinationPublishDir, 'scripts');
@@ -49,6 +63,7 @@ export const createDemoLayout = (demo: Demo, framework: Framework) => {
     js_bundle_path: getBundlePath(demoPath, 'bundle', '.js'),
     css_bundle_path: getBundlePath(demoPath, 'bundle', '.css'),
     init_theme: getBundlePath(metadataScripts, 'init-theme', '.js'),
+    specific_css: `<link href="${getSpecificCssPath(demo.Widget, demoPath)}" rel="stylesheet" />`,
   };
 
   let result = templateContent;
@@ -56,7 +71,6 @@ export const createDemoLayout = (demo: Demo, framework: Framework) => {
     result = result.replace(`{{${key}}}`, options[key]);
   });
 
-  const demoHtmlPath = join(demoPath, 'index.html');
   writeFileSync(demoHtmlPath, result, { encoding: 'utf-8' });
 };
 
