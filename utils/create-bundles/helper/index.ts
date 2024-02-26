@@ -40,16 +40,19 @@ const getTemplateContent = (framework: Framework) => {
 const getBundlePath = (demoPath: string, prefix: string, postfix: string) => readdirSync(demoPath)
   .find((item) => item.startsWith(prefix) && item.endsWith(postfix));
 
-const getSpecificCssPath = (WidgetName: string, demoPath: string) => (
-  relative(
+const getSpecificCssPath = (WidgetName: string, demoPath: string) => {
+  if (WidgetName !== 'Gantt' && WidgetName !== 'Diagram') {
+    return '';
+  }
+  return relative(
     demoPath,
     join(
       destinationPublishDir,
       'css',
       `dx-${WidgetName.toLowerCase()}.css`,
     ),
-  ).split('\\').join('/')
-);
+  ).split('\\').join('/');
+};
 
 export const createDemoLayout = (demo: Demo, framework: Framework) => {
   const demoPath = getDestinationPathByDemo(demo, framework);
