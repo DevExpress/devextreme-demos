@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using DevExtreme.NETCore.Demos.Models.DataGrid;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using DevExtreme.NETCore.Demos.Models.DataGrid;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class RemoteValidationController : Controller {
