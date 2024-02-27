@@ -15,7 +15,6 @@
       v-model:visible="isVisible"
       v-model:message="message"
       v-model:type="type"
-      :display-time="600"
     />
   </div>
 </template>
