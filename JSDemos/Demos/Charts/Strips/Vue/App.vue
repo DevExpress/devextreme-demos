@@ -4,7 +4,7 @@
     :customize-point="customizePoint"
     :customize-label="customizeLabel"
     :data-source="dataSource"
-    title="Temperature (high) in September, °F"
+    title="Temperature (high) in September, &#176;F"
   >
     <DxSeries
       argument-field="day"
