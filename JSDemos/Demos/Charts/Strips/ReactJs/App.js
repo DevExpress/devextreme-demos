@@ -46,7 +46,7 @@ function App() {
   return (
     <Chart
       id="chart"
-      title="Temperature in September, °F"
+      title="Temperature (high) in September, °F"
       dataSource={temperaturesData}
       customizePoint={customizePoint}
       customizeLabel={customizeLabel}

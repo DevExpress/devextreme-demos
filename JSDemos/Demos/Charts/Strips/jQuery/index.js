@@ -48,7 +48,7 @@ $(() => {
     export: {
       enabled: true,
     },
-    title: 'Temperature in September, °F',
+    title: 'Temperature (high) in September, °F',
     legend: {
       visible: false,
     },
