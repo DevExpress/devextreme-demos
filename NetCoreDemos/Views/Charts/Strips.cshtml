@@ -45,14 +45,14 @@
                 .StartValue(new JS("highAverage"))
                 .Color("rgba(255,155,85,0.15)")
                 .Label(l => l
-                    .Text("Above average")
+                    .Text("Above average high")
                     .Font(f => f.Color(new JS("highAverageColor")))
                 );
             s.Add()
                 .EndValue(new JS("lowAverage"))
                 .Color("rgba(97,153,230,0.10)")
                 .Label(l => l
-                    .Text("Below average")
+                    .Text("Below average low")
                     .Font(f => f.Color(new JS("lowAverageColor")))
                 );
         })
@@ -68,7 +68,7 @@
     )
     .CustomizePoint("customizePoint")
     .CustomizeLabel("customizeLabel")
-    .Title("Temperature in September")
+    .Title("Temperature (high) in September, °F")
     .Legend(l => l.Visible(false))
     .Export(e => e.Enabled(true))
     .DataSource(new[] {
