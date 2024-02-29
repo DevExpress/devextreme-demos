@@ -1,7 +1,6 @@
 <dx-diagram #diagram id="diagram">
   <dxo-nodes
     [dataSource]="flowNodesDataSource"
-    keyExpr="id"
     textExpr="text"
     typeExpr="type"
   >
@@ -9,7 +8,6 @@
   </dxo-nodes>
   <dxo-edges
     [dataSource]="flowEdgesDataSource"
-    keyExpr="id"
     fromExpr="fromId"
     toExpr="toId"
     textExpr="text"
