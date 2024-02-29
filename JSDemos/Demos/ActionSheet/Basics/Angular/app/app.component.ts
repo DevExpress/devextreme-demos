@@ -8,11 +8,14 @@ import notify from 'devextreme/ui/notify';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+// https://stackoverflow.com/a/44448458/22244640
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  moduleId: __moduleName,
+  styleUrls: ['app.component.css'],
 })
 export class AppComponent {
   commands: any[] = [

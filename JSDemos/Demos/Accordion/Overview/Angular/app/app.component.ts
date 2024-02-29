@@ -8,16 +8,14 @@ import {
 
 import { Company, Service } from './app.service';
 
-import 'zone.js';
-
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   providers: [Service],
   preserveWhitespaces: true,
 })
