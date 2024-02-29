@@ -1,9 +1,5 @@
 <dx-diagram #diagram id="diagram">
-  <dxo-nodes
-    [dataSource]="flowNodesDataSource"
-    textExpr="text"
-    typeExpr="type"
-  >
+  <dxo-nodes [dataSource]="flowNodesDataSource" textExpr="text" typeExpr="type">
     <dxo-auto-layout type="layered"></dxo-auto-layout>
   </dxo-nodes>
   <dxo-edges
