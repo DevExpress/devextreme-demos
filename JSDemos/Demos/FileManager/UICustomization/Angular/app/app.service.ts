@@ -81,9 +81,39 @@ const fileItems: FileItem[] = [{
   size: 2048,
 }];
 
+const fileExtensions = {
+  'Text Document': '.txt',
+  'RTF Document': '.rtf',
+  Spreadsheet: '.xls',
+};
+
+const categories = ['Work', 'Important', 'Home', 'None'];
+
 @Injectable()
 export class Service {
   getFileItems(): FileItem[] {
-    return fileItems;
+    return fileItems.map((item) => this.mapFileItem(item));
+  }
+
+  private mapFileItem(item: any): FileItem {
+    const fileItem: FileItem = {
+      name: item.name,
+      isDirectory: item.isDirectory,
+      category: item.category,
+      size: item.size,
+      items: item.items ? item.items.map((subItem) => this.mapFileItem(subItem)) : undefined,
+    };
+
+    return fileItem;
+  }
+
+  getItemInfo(name: string) {
+    const extension = fileExtensions[name];
+    const category = extension ?? categories.find((cat) => cat === name);
+
+    return {
+      extension,
+      category,
+    };
   }
 }
