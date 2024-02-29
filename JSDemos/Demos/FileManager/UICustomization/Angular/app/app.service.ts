@@ -92,19 +92,7 @@ const categories = ['Work', 'Important', 'Home', 'None'];
 @Injectable()
 export class Service {
   getFileItems(): FileItem[] {
-    return fileItems.map((item) => this.mapFileItem(item));
-  }
-
-  private mapFileItem(item: any): FileItem {
-    const fileItem: FileItem = {
-      name: item.name,
-      isDirectory: item.isDirectory,
-      category: item.category,
-      size: item.size,
-      items: item.items ? item.items.map((subItem) => this.mapFileItem(subItem)) : undefined,
-    };
-
-    return fileItem;
+    return fileItems;
   }
 
   getItemInfo(name: string) {
