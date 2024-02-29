@@ -70,7 +70,7 @@ export const fileItems = [{
 const fileExtensions = {
   'Text Document': '.txt',
   'RTF Document': '.rtf',
-  Spreadsheet: '.xls',
+  'Spreadsheet': '.xls',
 };
 
 const categories = ['Work', 'Important', 'Home', 'None'];
