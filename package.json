@@ -125,6 +125,7 @@
         "ts-node": "10.9.1"
     },
     "scripts": {
+        "postinstall": "node utils/shared/create-repository-config.js",
         "test": "jest --coverage --runInBand",
         "clean": "git clean -f -x -d",
         "add-demo": "node utils/interactive/add-demo.js",
