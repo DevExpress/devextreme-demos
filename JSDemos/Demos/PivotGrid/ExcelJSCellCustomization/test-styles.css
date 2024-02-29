@@ -1,5 +1,0 @@
-/* fix pivot sizing issues at Ubuntu+Chrome */
-
-.dx-pivotgrid:first-of-type {
-  height: 100vh !important;
-}
