@@ -17,7 +17,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "./publish-demos/Demos/Accordion/Overview/Angular",
-            "index": "./JSDemos/Demos/Accordion/Overview/Angular/app/index.html",
+            "index": "./utils/create-bundles/Angular/index.html",
             "main": "./JSDemos/Demos/Accordion/Overview/Angular/app/app.component.ts",
             "polyfills": "./JSDemos/Demos/Accordion/Overview/Angular/polyfills.ts",
             "tsConfig": "./JSDemos/Demos/Accordion/Overview/Angular/tsconfig.json",
@@ -38,35 +38,9 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "angular-twelve:build:production"
-            },
-            "development": {
-              "browserTarget": "angular-twelve:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "angular-twelve:build"
-          }
         }
       }
     }

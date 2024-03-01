@@ -1,12 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import yargs from 'yargs';
+
 import { Framework, Args, Item } from './helper/types';
 import { copyMetadata, isSkipDemo } from './helper';
+
 import { ESBundler } from './helper/bundler';
 import ReactBundler from './React/bundler';
+import VueBundler from './Vue/bundler';
+import AngularBundler from './Angular/bundler';
 
 import * as menuMeta from '../../JSDemos/menuMeta.json';
-import VueBundler from './Vue/bundler';
 
 const argv = yargs.options({
   framework: { type: 'string' },
@@ -14,6 +17,9 @@ const argv = yargs.options({
 }).argv as Args;
 
 const getBundler = (framework: Framework): ESBundler => {
+  if (framework === 'Angular') {
+    return new AngularBundler();
+  }
   if (framework === 'React') {
     return new ReactBundler();
   }
