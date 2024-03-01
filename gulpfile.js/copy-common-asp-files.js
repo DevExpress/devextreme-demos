@@ -9,16 +9,23 @@ const minify = require('gulp-minify');
 const { init } = require('../utils/shared/config-helper');
 const { systemSync } = require('../utils/shared/child-process-utils');
 
-const devextremePath = init().devextreme;
+let { devextreme: devextremePath, 'menu-meta': menuMetaPath } = init();
 
 let devextremeDistPath = 'node_modules/devextreme-dist';
 
 const prepareDevextreme = (callback) => {
-  if (devextremePath.length !== 0 && existsSync(devextremePath)) {
+  if (devextremePath.length > 0 && existsSync(devextremePath)) {
     systemSync(`cd ${devextremePath}/packages/devextreme && npm run build-npm-devextreme`);
     devextremeDistPath = `${devextremePath}/packages/devextreme/artifacts/npm/devextreme-dist`;
+    if (!menuMetaPath) {
+        menuMetaPath = `${devextremePath}/packages/apps/demos`;
+    }
   } else {
-    console.warn('Path to DevExtreme monorepo not specified in "repository.config.json", so uses DevExtreme dist from node_modules');
+    console.warn('Path to DevExtreme monorepo is not specified in "repository.config.json", using devextreme-dist from node_modules');
+    if (!menuMetaPath) {
+        console.error('Error: You must specify the path to menuMeta.json in "repository.config.json", if the path to DevExtreme monorepo is not specified!')
+        throw new Error('Path to menuMeta.json is not specified!')
+    }
   }
 
   callback();
@@ -57,7 +64,7 @@ exports.copyCommonAspFiles = series(
       .pipe(dest('MVCDemos/Scripts'))
       .pipe(dest('NetCoreDemos/wwwroot/js')),
 
-    () => src('JSDemos/menuMeta.json')
+    () => src(`${menuMetaPath}/menuMeta.json`)
       .pipe(dest('MVCDemos/App_Data'))
       .pipe(dest('NetCoreDemos')),
   ),

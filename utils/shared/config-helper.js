@@ -7,12 +7,10 @@ const configPath = join(__dirname, '..', '..', 'repository.config.json');
 /* eslint-disable quote-props */
 const config = {
   'devextreme': '',
-  'devextreme-angular': '',
-  'devextreme-react': '',
-  'devextreme-vue': '',
   'devexpress-diagram': '',
   'devexpress-gantt': '',
   'devextreme-aspnet': '',
+  'menu-meta': ''
 };
 /* eslint-enable quote-props */
 
