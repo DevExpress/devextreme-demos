@@ -11,6 +11,7 @@ import { Company, Service } from './app.service';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',

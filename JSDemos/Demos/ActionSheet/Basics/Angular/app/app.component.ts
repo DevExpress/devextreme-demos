@@ -8,6 +8,7 @@ import notify from 'devextreme/ui/notify';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 // https://stackoverflow.com/a/44448458/22244640
 declare var __moduleName: string;
 

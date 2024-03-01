@@ -8,11 +8,13 @@ import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+moduleId: __moduleName,
   preserveWhitespaces: true,
 })
 export class AppComponent {

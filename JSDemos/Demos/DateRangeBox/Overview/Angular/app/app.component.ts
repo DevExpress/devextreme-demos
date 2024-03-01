@@ -6,6 +6,7 @@ import { DxDateRangeBoxModule } from 'devextreme-angular';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 const msInDay = 1000 * 60 * 60 * 24;
 const now = new Date();
@@ -22,8 +23,9 @@ function convertRangeToDays([startDate, endDate]) {
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+moduleId: __moduleName,
 })
 
 export class AppComponent {

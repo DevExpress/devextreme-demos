@@ -10,11 +10,12 @@ import { Service, ZoomingData } from './app.service';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
   providers: [Service],
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app.component.html',
 })
 export class AppComponent {
   zoomingData: ZoomingData[];
