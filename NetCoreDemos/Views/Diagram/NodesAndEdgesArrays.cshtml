@@ -8,7 +8,6 @@
             .Key("ID")
             .Data(Model.Nodes)
         )
-        .KeyExpr("ID")
         .TextExpr("Text")
         .TypeExpr("Type")
         .AutoLayout(al => al
@@ -21,7 +20,6 @@
             .Key("ID")
             .Data(Model.Edges)
         )
-        .KeyExpr("ID")
         .FromExpr("FromID")
         .ToExpr("ToID")
         .TextExpr("Text")

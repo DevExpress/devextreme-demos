@@ -2,12 +2,8 @@
     .ID("diagram")
     .OnContentReady("onContentReady")
     .OnSelectionChanged("onSelectionChanged")
-    .PropertiesPanel(pp => pp
-        .Visibility(DiagramPanelVisibility.Disabled)
-    )
-    .Toolbox(t => t
-        .Visibility(DiagramPanelVisibility.Disabled)
-    )
+    .PropertiesPanel(pp => pp.Visibility(DiagramPanelVisibility.Disabled))
+    .Toolbox(t => t.Visibility(DiagramPanelVisibility.Disabled))
     .Nodes(ns => ns
         .DataSource(d => d
             .Array()
@@ -15,11 +11,9 @@
             .Data(Model)
         )
         .KeyExpr("ID")
-        .TextExpr("FullName")
-        .ParentKeyExpr("HeadID")
-        .AutoLayout(al => al
-            .Type(DiagramDataLayoutType.Tree)
-        )
+        .TextExpr("Full_Name")
+        .ParentKeyExpr("Head_ID")
+        .AutoLayout(al => al.Type(DiagramDataLayoutType.Tree))
     )
 )
 
@@ -33,18 +27,19 @@
         var diagram = e.component;
         // preselect some shape
         var items = diagram.getItems().filter(function (item) {
-            return item.itemType === "shape" && (item.text === "Greta Sims");
+            return item.itemType === "shape" && (item.dataItem.Full_Name === "Greta Sims");
         });
-        if(items.length > 0) {
+        if (items.length > 0) {
             diagram.setSelectedItems(items);
             diagram.scrollToItem(items[0]);
             diagram.focus();
         }
     }
+
     function onSelectionChanged(e) {
         var items = e.items
             .filter(function(item) { return item.itemType === "shape"; })
-            .map(function(item) { return item.text; });
+            .map(function(item) { return item.dataItem.Full_Name; });
         if(items.length > 0)
             $("#selected-items-container").text(items.join(", "));
         else

@@ -33,14 +33,11 @@
                             .Icon("plus")
                             .Items(subItems => {
                                 subItems.Add()
-                                    .Text("Text Document")
-                                    .Option("extension", ".txt");
+                                    .Text("Text Document");
                                 subItems.Add()
-                                    .Text("RTF Document")
-                                    .Option("extension", ".rtf");
+                                    .Text("RTF Document");
                                 subItems.Add()
-                                    .Text("Spreadsheet")
-                                    .Option("extension", ".xls");
+                                    .Text("Spreadsheet");
                             });
                     })
                     .OnItemClick("onItemClick"))
@@ -65,17 +62,13 @@
                             .Icon("tags")
                             .Items(subItems => {
                                 subItems.Add()
-                                    .Text("Work")
-                                    .Option("category", "Work");
+                                    .Text("Work");
                                 subItems.Add()
-                                    .Text("Important")
-                                    .Option("category", "Important");
+                                    .Text("Important");
                                 subItems.Add()
-                                    .Text("Home")
-                                    .Option("category", "Home");
+                                    .Text("Home");
                                 subItems.Add()
-                                    .Text("None")
-                                    .Option("category", "None");
+                                    .Text("None");
                             });
                     })
                     .OnItemClick("onItemClick"))
@@ -95,14 +88,11 @@
                 .Icon("plus")
                 .Items(subItems => {
                     subItems.Add()
-                        .Text("Text Document")
-                        .Option("extension", ".txt");
+                        .Text("Text Document");
                     subItems.Add()
-                        .Text("RTF Document")
-                        .Option("extension", ".rtf");
+                        .Text("RTF Document");
                     subItems.Add()
-                        .Text("Spreadsheet")
-                        .Option("extension", ".xls");
+                        .Text("Spreadsheet");
                 });
 
             items.Add()
@@ -116,17 +106,13 @@
                 .Icon("tags")
                 .Items(subItems => {
                     subItems.Add()
-                        .Text("Work")
-                        .Option("category", "Work");
+                        .Text("Work");
                     subItems.Add()
-                        .Text("Important")
-                        .Option("category", "Important");
+                        .Text("Important");
                     subItems.Add()
-                        .Text("Home")
-                        .Option("category", "Home");
+                        .Text("Home");
                     subItems.Add()
-                        .Text("None")
-                        .Option("category", "");
+                        .Text("None");
                 })
                 .BeginGroup(true);
 
@@ -138,12 +124,12 @@
 <script type="text/javascript">
     function onItemClick(args) {
         var fileManager = getFileManager();
-        var updated = false;
+        var { extension, category } = getItemInfo(args.itemData.text);
 
-        if(args.itemData.extension) {
-            updated = createFile(args.itemData.extension, args.fileSystemItem);
-        } else if(args.itemData.category !== undefined) {
-            updated = updateCategory(args.itemData.category, args.fileSystemItem, args.viewArea);
+        if(extension) {
+            updated = createFile(extension, args.fileSystemItem);
+        } else if(category !== undefined) {
+            updated = updateCategory(category, args.fileSystemItem, args.viewArea);
         }
 
         if(updated) {
