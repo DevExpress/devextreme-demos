@@ -56,7 +56,9 @@ const getSpecificCssPath = (WidgetName: string, demoPath: string) => {
 
 export const createDemoLayout = (demo: Demo, framework: Framework) => {
   const demoPath = getDestinationPathByDemo(demo, framework);
-  const demoHtmlPath = join(demoPath, 'index.html');
+  const demoHtmlPath = framework !== 'Angular'
+    ? join(demoPath, 'index.html')
+    : join(demoPath, '..', 'AngularTemplates', 'index.html');
   const templateContent = getTemplateContent(framework);
 
   const metadataScripts = join(destinationPublishDir, 'scripts');

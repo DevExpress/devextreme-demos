@@ -33,19 +33,24 @@ const getBundler = (framework: Framework): ESBundler => {
 
 const buildDemos = async (bundler: ESBundler) => {
   const menu: Item[] = (menuMeta as any).default;
+  let count = 0;
 
   for (const meta of menu) {
     for (const group of meta.Groups) {
       const demos = group.Demos || [];
       for (const demo of demos) {
+        if (count > 0) {
+          break;
+        }
         if (isSkipDemo(demo)) {
           break;
         }
 
-        console.log(`${bundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
-
         // eslint-disable-next-line no-await-in-loop
         await bundler.buildDemo(demo);
+
+        console.log(`${bundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
+        count += 1;
       }
     }
   }

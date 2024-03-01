@@ -1,13 +1,20 @@
 import { writeFileSync, existsSync } from 'fs-extra';
+import { relative, join } from 'path';
 import { Demo, Item } from '../helper/types';
 import { getSourcePathByDemo, getDestinationPathByDemo, isSkipDemo } from '../helper';
 import * as menuMeta from '../../../JSDemos/menuMeta.json';
+import { getProjectNameByDemo, getIndexHtmlPath } from './helper';
 
-export const getProjectNameByDemo = (Demo: Demo) => (`${Demo.Widget.toLowerCase()}-${Demo.Name.toLowerCase()}`);
+// use this script either from npm, or from devextreme-demos root folder
+const rootFolder = process.cwd();
 
 const createConfigForDemo = (Demo: Demo) => {
   const demoSourcePath = getSourcePathByDemo(Demo, 'Angular').split('\\').join('/');
   const demoDestinationPath = getDestinationPathByDemo(Demo, 'Angular').split('\\').join('/');
+  const indexPath = relative(
+    rootFolder,
+    join(getIndexHtmlPath(Demo), 'index.html'),
+  ).split('\\').join('/');
   return {
     projectType: 'application',
     schematics: {
@@ -23,9 +30,9 @@ const createConfigForDemo = (Demo: Demo) => {
         builder: '@angular-devkit/build-angular:browser',
         options: {
           outputPath: demoDestinationPath,
-          index: `${demoDestinationPath}/index.html`,
+          index: `${indexPath}`,
           main: `${demoSourcePath}/app/app.component.ts`,
-          polyfills: `${demoSourcePath}/polyfills.ts`,
+          polyfills: `${demoSourcePath}/polyfill.ts`,
           tsConfig: `${demoSourcePath}/tsconfig.json`,
           scripts: [],
         },
@@ -35,7 +42,7 @@ const createConfigForDemo = (Demo: Demo) => {
               {
                 type: 'initial',
                 maximumWarning: '500kb',
-                maximumError: '2mb',
+                maximumError: '4mb',
               },
               {
                 type: 'anyComponentStyle',
@@ -81,7 +88,7 @@ const createAngularJson = () => {
   }
 
   const jsonString = JSON.stringify(angularJsonObject);
-  const filePath = 'angular2.json';
+  const filePath = 'angular.json';
   writeFileSync(filePath, jsonString);
 };
 

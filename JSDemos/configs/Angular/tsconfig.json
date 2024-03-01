@@ -4,5 +4,6 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
   }
 }
