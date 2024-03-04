@@ -34,6 +34,17 @@ jobs:
           path: devextreme-aspnet
           token: ${{ secrets.ASPNET_PAT }}
 
+      - name: Clone DevExtreme monorepo
+        uses: actions/checkout@v4
+        with:
+          repository: DevExpress/devextreme
+          ref: ${{ steps.get_version.outputs.version }}
+          path: devextreme
+
+      - name: Run npm install in monorepo
+        working-directory: devextreme
+        run: npm install --no-audit --no-fund
+
       - name: Restore npm cache
         uses: actions/cache@v3
         with:
