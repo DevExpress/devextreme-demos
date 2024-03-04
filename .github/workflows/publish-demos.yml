@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js vs 20
+      - name: Setup Node.js v20
         uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -69,7 +69,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js vs 14
+      - name: Setup Node.js v14
         uses: actions/setup-node@v3
         with:
           node-version: 14
@@ -97,6 +97,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [publish-ES, publish-angular]
     steps: 
+      - name: List files in publish-demos
+        run: ls -R ./publish-demos
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
