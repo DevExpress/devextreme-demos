@@ -87,12 +87,23 @@ if (currentBundler) {
   let batchSize = Math.ceil(allDemos.length / total);
   if (currentBundler.framework === 'Angular') {
     batchSize = 1;
-  }
-  processDemosInBatches(currentBundler, currentDemos, batchSize)
-    .then(() => {
-      console.log('All batches processed successfully.');
-    })
-    .catch((error) => {
-      console.error(`Error processing batches: ${error}`);
+    processDemosInBatches(currentBundler, currentDemos, batchSize)
+      .then(() => {
+        console.log('All batches processed successfully.');
+      })
+      .catch((error) => {
+        console.error(`Error processing batches: ${error}`);
+      });
+  } else {
+    allDemos.forEach(async (demo) => {
+      if (isSkipDemo(demo)) {
+        return;
+      }
+
+      console.log(`${currentBundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
+
+      // eslint-disable-next-line no-await-in-loop
+      await currentBundler.buildDemo(demo, () => {});
     });
+  }
 }

@@ -52,7 +52,7 @@ export default class AngularBundler implements Bundler {
 
     createDemoLayout(demo, this.framework);
 
-    const ngBuildCommand = `ng build ${getProjectNameByDemo(demo)}`;
+    const ngBuildCommand = `npm run build-angular -- ${getProjectNameByDemo(demo)}`;
     const ngBuildProcess = exec(ngBuildCommand);
     ngBuildProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
