@@ -9,8 +9,10 @@ const minify = require('gulp-minify');
 const { init } = require('../utils/shared/config-helper');
 const { systemSync } = require('../utils/shared/child-process-utils');
 
-let { devextreme: devextremePath, 'menu-meta': menuMetaPath } = init();
+const config = init();
 
+const devextremePath = config.devextreme;
+let menuMetaPath = config['menu-meta'];
 let devextremeDistPath = 'node_modules/devextreme-dist';
 
 const prepareDevextreme = (callback) => {
@@ -18,13 +20,13 @@ const prepareDevextreme = (callback) => {
     systemSync(`cd ${devextremePath}/packages/devextreme && npm run build-npm-devextreme`);
     devextremeDistPath = `${devextremePath}/packages/devextreme/artifacts/npm/devextreme-dist`;
     if (!menuMetaPath) {
-        menuMetaPath = `${devextremePath}/packages/apps/demos`;
+      menuMetaPath = `${devextremePath}/apps/demos`;
     }
   } else {
     console.warn('Path to DevExtreme monorepo is not specified in "repository.config.json", using devextreme-dist from node_modules');
     if (!menuMetaPath) {
-        console.error('Error: You must specify the path to menuMeta.json in "repository.config.json", if the path to DevExtreme monorepo is not specified!')
-        throw new Error('Path to menuMeta.json is not specified!')
+      console.error('Error: You must specify the path to menuMeta.json in "repository.config.json", if the path to DevExtreme monorepo is not specified!');
+      throw new Error('Path to menuMeta.json is not specified!');
     }
   }
 
