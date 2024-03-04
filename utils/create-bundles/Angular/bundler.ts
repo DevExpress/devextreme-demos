@@ -8,7 +8,7 @@ import { getIndexHtmlPath, getProjectNameByDemo } from './helper';
 interface Bundler {
   framework: Framework;
   getBuildOptions(demo: Demo): BuildOptions;
-  buildDemo(demo: Demo): Promise<void>;
+  buildDemo(demo: Demo, res): void;
 }
 export default class AngularBundler implements Bundler {
   framework: Framework;
@@ -19,7 +19,7 @@ export default class AngularBundler implements Bundler {
 
   getBuildOptions = (demo: Demo): BuildOptions => ({});
 
-  buildDemo = async (demo: Demo): Promise<void> => {
+  buildDemo = (demo: Demo, res): Promise<void> => {
     const sourceDemoPath = getSourcePathByDemo(demo, this.framework);
     if (!existsSync(sourceDemoPath)) {
       return;
@@ -62,6 +62,7 @@ export default class AngularBundler implements Bundler {
     });
     ngBuildProcess.on('close', (code) => {
       console.log(`child process exited with code ${code}`);
+      res();
     });
   };
 }

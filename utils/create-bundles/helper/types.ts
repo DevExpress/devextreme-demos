@@ -1,6 +1,7 @@
 export type Framework = 'Angular' | 'React' | 'Vue';
 
 export type Args = {
+  current: number;
   framework: Framework,
   'copy-metadata': boolean,
 };
