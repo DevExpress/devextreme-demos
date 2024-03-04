@@ -95,7 +95,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: publish
+    needs: [publish-ES, publish-angular]
     steps: 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
