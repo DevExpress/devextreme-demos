@@ -89,6 +89,9 @@ jobs:
       - name: Copy metadata
         run: npm run make-demos-bundle -- --copy-metadata
 
+      - name: Update angular.json
+        run: npm run update-angular-json
+
       - name: Prepare Angular demo bundles
         run: |
           ${{ matrix.command }}

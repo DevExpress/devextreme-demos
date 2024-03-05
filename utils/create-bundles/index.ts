@@ -95,15 +95,6 @@ if (currentBundler) {
         console.error(`Error processing batches: ${error}`);
       });
   } else {
-    allDemos.forEach(async (demo) => {
-      if (isSkipDemo(demo)) {
-        return;
-      }
-
-      console.log(`${currentBundler.framework} Demo: ${demo.Widget} - ${demo.Name}`);
-
-      // eslint-disable-next-line no-await-in-loop
-      await currentBundler.buildDemo(demo, () => {});
-    });
+    processDemosInBatches(currentBundler, allDemos, 10);
   }
 }
