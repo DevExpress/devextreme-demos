@@ -41,7 +41,7 @@ const createConfigForDemo = (Demo: Demo) => {
             budgets: [
               {
                 type: 'initial',
-                maximumWarning: '500kb',
+                maximumWarning: '1mb',
                 maximumError: '4mb',
               },
               {

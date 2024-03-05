@@ -39,6 +39,12 @@ jobs:
       - name: Prepare Vue demo bundles
         run: npm run make-demos-bundle -- --framework Vue
 
+      - name: Save publish-demos directory for ES as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: publish-demos
+        path: ./publish-demos
+
   publish-angular:
     runs-on: ubuntu-latest
     strategy:
@@ -92,14 +98,28 @@ jobs:
       - name: Update angular.json
         run: npm run update-angular-json
 
+      - name: Create angular entryPoints to compile faster
+        run: npm run launch-ngcc
+
       - name: Prepare Angular demo bundles
         run: |
           ${{ matrix.command }}
+      
+      - name: Save publish-demos directory for Angular as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: publish-demos
+        path: ./publish-demos
 
   deploy:
     runs-on: ubuntu-latest
     needs: [publish-ES, publish-angular]
     steps: 
+      - name: Download publish-demos artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
       - name: List files in publish-demos
         run: ls -R ./publish-demos
       - name: Deploy to gh-pages

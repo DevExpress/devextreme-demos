@@ -22,17 +22,7 @@ export default class AngularBundler implements Bundler {
   buildDemo = (demo: Demo, res): Promise<void> => {
     const sourceDemoPath = getSourcePathByDemo(demo, this.framework);
     if (!existsSync(sourceDemoPath)) {
-      return;
-    }
-
-    const excludedDemos = ['Localization', 'CellCustomization', 'TimeZonesSupport', 'ExportToPDF'];
-    let thisDemoExcluded = false;
-    excludedDemos.forEach((excludedDemo) => {
-      if (sourceDemoPath.includes(excludedDemo)) {
-        thisDemoExcluded = true;
-      }
-    });
-    if (thisDemoExcluded) {
+      res();
       return;
     }
 
