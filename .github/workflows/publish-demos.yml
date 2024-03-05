@@ -40,10 +40,10 @@ jobs:
         run: npm run make-demos-bundle -- --framework Vue
 
       - name: Save publish-demos directory for ES as an artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: publish-demos
-        path: ./publish-demos
+        uses: actions/upload-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
 
   publish-angular:
     runs-on: ubuntu-latest
@@ -106,10 +106,10 @@ jobs:
           ${{ matrix.command }}
       
       - name: Save publish-demos directory for Angular as an artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: publish-demos
-        path: ./publish-demos
+        uses: actions/upload-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
 
   deploy:
     runs-on: ubuntu-latest
