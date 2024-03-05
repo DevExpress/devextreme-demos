@@ -54,7 +54,6 @@ async function processDemosInBatches(bundler: ESBundler, demoList: Demo[], batch
   const batches = [];
   for (let i = 0; i < demoList.length; i += batchSize) {
     const batch = demoList.slice(i, i + batchSize);
-    console.log('AAAAAAAAAAAAAAAAAA', i, 'BBBBBBB', demoList.length);
     // eslint-disable-next-line no-await-in-loop
     batches.push(await processBatch(bundler, batch));
   }
@@ -83,7 +82,6 @@ if (currentBundler) {
   const start = (current - 1) * allDemos.length / total;
   const end = start + allDemos.length / total;
   const currentDemos = allDemos.slice(start, end);
-  console.log('Building demos count: ', currentDemos.length);
   // check for accuracy
   // delete res function
   let batchSize = Math.ceil(allDemos.length / total);
