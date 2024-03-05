@@ -21,6 +21,7 @@ export abstract class ESBundler implements Bundler {
   buildDemo = async (demo: Demo, res): Promise<void> => {
     const sourceDemoPath = getSourcePathByDemo(demo, this.framework);
     if (!existsSync(sourceDemoPath)) {
+      res();
       return;
     }
 
@@ -32,6 +33,7 @@ export abstract class ESBundler implements Bundler {
       }
     });
     if (thisDemoExcluded) {
+      res();
       return;
     }
 

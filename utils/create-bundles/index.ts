@@ -77,7 +77,7 @@ if (argv['copy-metadata']) {
   copyMetadata();
 }
 if (currentBundler) {
-  const CONSTEL = process.env.CONSTEL || '10/10';
+  const CONSTEL = process.env.CONSTEL || '1/1';
   const [current, total] = CONSTEL.split('/').map(Number);
   const start = (current - 1) * allDemos.length / total;
   const end = start + allDemos.length / total;
@@ -95,6 +95,6 @@ if (currentBundler) {
         console.error(`Error processing batches: ${error}`);
       });
   } else {
-    processDemosInBatches(currentBundler, allDemos, 10);
+    processDemosInBatches(currentBundler, allDemos, 5);
   }
 }
