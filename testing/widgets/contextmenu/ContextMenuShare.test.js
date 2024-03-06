@@ -8,13 +8,13 @@ fixture('ContextMenu.Share')
     await t.resizeWindow(900, 600);
   });
 
+const IMAGE_ID = 'image';
+
 runManualTest('DropDownBox', 'Share', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Share', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await t.switchToIframe('#frame');
-
-    await t.debug();
+    await t.rightClick(`#${IMAGE_ID}`);
 
     await t.rightClick($('.dx-menu-item-text').withText('Share'));
 
