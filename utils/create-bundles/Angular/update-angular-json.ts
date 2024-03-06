@@ -32,7 +32,7 @@ const createConfigForDemo = (Demo: Demo) => {
           outputPath: demoDestinationPath,
           index: `${indexPath}`,
           main: `${demoSourcePath}/app/app.component.ts`,
-          polyfills: `${demoSourcePath}/polyfill.ts`,
+          polyfills: join(__dirname, 'polyfill.ts').split('\\').join('/'),
           tsConfig: `${demoSourcePath}/tsconfig.json`,
           scripts: [],
         },
