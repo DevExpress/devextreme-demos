@@ -9,7 +9,7 @@
 }
 
 @{
-    Func<CardTasks, IHtmlContent> CreateCards = @<div class="card dx-card dx-theme-text-color dx-theme-background-color">
+    Func<CardTasks, IHtmlContent> CreateCards = @<div class="card dx-card">
         <div class="card-priority priority-@((int)item.Task.Task_Priority + 1)"></div>
         <div class="card-subject">@item.Task.Task_Subject</div>
         <div class="card-assignee">@Model.Employees.Where(e => e.ID == @item.Task.Task_Assigned_Employee_ID).FirstOrDefault().Name</div>
@@ -17,7 +17,7 @@
 }
 
 <div class="list">
-    <div class="list-title dx-theme-text-color">@Model.Status</div>
+    <div class="list-title">@Model.Status</div>
     @(Html.DevExtreme().ScrollView()
         .ElementAttr("class", "scrollable-list")
         .Direction(ScrollDirection.Vertical)
