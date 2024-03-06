@@ -18,7 +18,7 @@ const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
   selector: 'demo-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
 })
 export class AppComponent {
   ordersStore: any;

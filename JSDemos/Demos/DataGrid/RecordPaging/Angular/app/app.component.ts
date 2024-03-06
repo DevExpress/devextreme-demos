@@ -14,7 +14,7 @@ declare var __moduleName: string;
   templateUrl: 'app.component.html',
   providers: [Service],
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
 })
 export class AppComponent {
   dataSource: Employee[];

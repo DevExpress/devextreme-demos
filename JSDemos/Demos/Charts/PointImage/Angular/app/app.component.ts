@@ -15,7 +15,7 @@ declare var __moduleName: string;
   providers: [Service],
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
 })
 export class AppComponent {
   title = 'Canadian Men’s National Ice Hockey Team\n at the World Championships';

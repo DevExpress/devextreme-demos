@@ -25,7 +25,7 @@ declare var __moduleName: string;
   selector: 'demo-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
   providers: [DataService],
 })
 export class AppComponent {

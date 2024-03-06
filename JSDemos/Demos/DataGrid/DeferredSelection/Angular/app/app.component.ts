@@ -17,7 +17,7 @@ declare var __moduleName: string;
   selector: 'demo-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
   preserveWhitespaces: true,
 })
 export class AppComponent implements AfterViewInit {

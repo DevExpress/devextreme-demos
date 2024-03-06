@@ -57,7 +57,7 @@ connection
   selector: 'demo-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
 })
 export class AppComponent {
   store1: any;

@@ -21,7 +21,7 @@ declare var __moduleName: string;
   selector: 'demo-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
 })
 export class AppComponent {
   types: string[] = ['error', 'info', 'success', 'warning'];

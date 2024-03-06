@@ -12,7 +12,7 @@ declare var __moduleName: string;
 
 @Component({
   styleUrls: ['app.component.css'],
-moduleId: __moduleName,
+  moduleId: __moduleName,
   selector: 'demo-app',
   templateUrl: 'app.component.html',
 })
