@@ -10,8 +10,8 @@ fixture('ContextMenu.Share')
 
 const IMAGE_ID = 'image';
 
-runManualTest('ContextMenu', 'Share', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
-  test('Share', async (t) => {
+runManualTest('ContextMenu', 'Templates', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+  test('Custom Template Share Appearance', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t.rightClick(`#${IMAGE_ID}`);
