@@ -1,3 +1,4 @@
+import { Selector } from 'testcafe';
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
@@ -13,7 +14,8 @@ runManualTest('DropDownButton', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'
 
     await takeScreenshot('dropdown_button_overview_custom_appearance.png');
 
-    await t.click('#one-section');
+    const oneSectionButton = Selector('#one-section');
+    await t.click(oneSectionButton);
 
     await takeScreenshot('dropdown_button_overview_button_action_appearance.png');
 
