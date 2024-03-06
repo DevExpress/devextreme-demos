@@ -16,7 +16,7 @@ runManualTest('ContextMenu', 'Share', ['jQuery', 'React', 'Vue', 'Angular'], (te
 
     await t.rightClick(`#${IMAGE_ID}`);
 
-    await t.cliick($('.dx-menu-item-text').withText('Share'));
+    await t.click($('.dx-menu-item-text').withText('Share'));
 
     await takeScreenshot('context_menu_templates_share_visible.png');
 
