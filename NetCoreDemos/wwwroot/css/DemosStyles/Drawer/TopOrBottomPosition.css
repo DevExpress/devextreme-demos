@@ -61,6 +61,7 @@ label {
 #content {
     height: 100%;
     padding: 10px 20px;
+    background-color: var(--dx-component-color-bg);
 }
 
 #content h2 {

@@ -51,6 +51,7 @@ label {
 
 #content {
     padding: 0 24px;
+    background-color: var(--dx-component-color-bg);
 }
 
 #content h2 {

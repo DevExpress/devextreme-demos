@@ -73,11 +73,7 @@
     }
 
     function toggleDropZoneActive(dropZone, isActive) {
-        if(isActive) {
-            dropZone.classList.add("dropzone-active");
-        } else {
-            dropZone.classList.remove("dropzone-active");
-        }
+        dropZone.classList.toggle('dropzone-active', isActive);
     }
 
     function toggleImageVisible(visible) {
