@@ -10,6 +10,10 @@
     max-width: 250px;
 }
 
+.tabpanel-demo .dx-tabpanel {
+    background-color: var(--dx-component-color-bg);
+  }
+
 .widget-container {
     display: flex;
     align-items: center;
