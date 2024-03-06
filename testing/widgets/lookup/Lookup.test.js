@@ -1,5 +1,5 @@
-import { Selector } from 'testcafe';
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Selector as $ } from "testcafe";
 import { runManualTest } from '../../../utils/visual-tests/matrix-test-helper';
 
 fixture('Lookup.Basics')
@@ -10,18 +10,24 @@ fixture('Lookup.Basics')
 
 runManualTest('Lookup', 'Basics', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Custom Lookup Appearance', async (t) => {
+    const LOOOKUP_BOX_CLASS = 'dx-lookup';
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    const customField = Selector('.dx-lookup-field').withAttribute('aria-label', 'Custom Field Template');
-    await t.click(customField);
+    await t.switchToIframe('#frame');
 
-    const customItem = Selector('.dx-lookup-field').withAttribute('aria-label', 'Custom Item Template');
-    await t.click(customItem);
+    await t.debug();
+
+    await t
+      .click($(`.${LOOOKUP_BOX_CLASS}`).nth(0))
+      .wait(200);
+
+    await t
+      .click($(`.${LOOOKUP_BOX_CLASS}`).nth(1))
+      .wait(200);
 
     await takeScreenshot('lookup_templates_custom_appearance.png');
 
     await t
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
-  });
 });
