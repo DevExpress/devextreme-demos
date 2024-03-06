@@ -10,7 +10,7 @@ fixture('ContextMenu.Share')
 
 const IMAGE_ID = 'image';
 
-runManualTest('DropDownBox', 'Share', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
+runManualTest('ContextMenu', 'Share', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Share', async (t) => {
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
