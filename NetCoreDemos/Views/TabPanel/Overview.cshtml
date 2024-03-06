@@ -23,7 +23,6 @@
     <div class="widget-container">
         @(Html.DevExtreme().TabPanel()
             .ID("tabpanel")
-            .ElementAttr("class", "dx-theme-background-color")
             .DataSource(d => d.Mvc().LoadAction("GetTabPanelItems"))
             .Width("100%")
             .Height(418)
