@@ -146,4 +146,25 @@ const headerOptions = { inputAttr: { 'aria-label': 'Font family' } };
 .option > .label {
   margin-right: 10px;
 }
+
+.dx-htmleditor-content li[data-list="ordered"] {
+  counter-reset: none;
+  counter-set: list-1 0 list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0;
+}
+
+.dx-htmleditor-content li.ql-indent-1 {
+  counter-reset: none;
+  counter-set: list-2 0 list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0;
+}
+
+.dx-htmleditor-content li.ql-indent-2 {
+  counter-reset: none;
+  counter-set: list-3 0 list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0;
+}
+
+.dx-htmleditor-content li.ql-indent-3 {
+  counter-reset: none;
+  counter-set: list-4 0 list-5 0 list-6 0 list-7 0 list-8 0 list-9 0;
+}
+
 </style>
