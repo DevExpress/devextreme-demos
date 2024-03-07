@@ -7,7 +7,7 @@
 
 <div class="flex-container">
         @(Html.DevExtreme().Toolbar()
-        .ID("toolbar")
+            .ID("toolbar")
             .Items(items => {
                 items.Add()
                     .Widget(w => w
@@ -41,7 +41,6 @@
                         .HoverStateEnabled(false)
                         .FocusStateEnabled(false)
                         .ActiveStateEnabled(false)
-                        .Width(200)
                         .ElementAttr("class", "panel-list")
                     )
                 </div>
