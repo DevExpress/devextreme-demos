@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace DevExtreme.MVC.Demos.Models.DataGrid {
     public class EmployeeValidation {
@@ -21,6 +20,7 @@ namespace DevExtreme.MVC.Demos.Models.DataGrid {
 
         [Required]
         [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = @"Email is invalid")]
+        [Remote("CheckUniqueEmailAddress", "RemoteValidation", ErrorMessage = "Email is already registered", HttpMethod = "POST", AdditionalFields = nameof(ID))]
         public string Email { get; set; }
     }
 }

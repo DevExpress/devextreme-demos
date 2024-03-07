@@ -13,12 +13,7 @@
         columns.AddFor(m => m.LastName);
         columns.AddFor(m => m.Position);
         columns.AddFor(m => m.Phone);
-        columns.AddFor(m => m.Email)
-            .ValidationRules(vr => {
-                vr.AddAsync()
-                    .Message("Email address is not unique")
-                    .ValidationCallback("asyncValidation");
-            });
+        columns.AddFor(m => m.Email);
     })
     .DataSource(d => d.Mvc().Controller("DataGridEmployeesValidation")
         .LoadAction("Get")
@@ -27,18 +22,3 @@
         .Key("ID")
     )
 )
-
-<script>
-    function asyncValidation(params) {
-        return $.ajax({
-            url: '@Url.Action("CheckUniqueEmailAddress", "RemoteValidation")',
-            type: "POST",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify({
-                id: params.data.ID,
-                email: params.value
-            })
-        });
-    }
-</script>
