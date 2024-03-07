@@ -8,18 +8,18 @@ namespace DevExtreme.MVC.Demos.Controllers {
         InMemoryEmployeesValidationDataContext db = new InMemoryEmployeesValidationDataContext();
 
         [HttpPost]
-        public JsonResult CheckUniqueEmailAddress(int? id, string email) {
-            bool isValid = !db.Employees.Any(emp => {
-                bool isEqual = string.Equals(emp.Email, email, StringComparison.OrdinalIgnoreCase);
-                return id != null ? id != emp.ID && isEqual : isEqual;
+        public JsonResult CheckUniqueEmailAddress(EmployeeValidation model) {
+            var isValid = !db.Employees.Any(emp => {
+                var equals = string.Equals(emp.Email, model.Email, StringComparison.OrdinalIgnoreCase);
+                return model.ID != emp.ID && equals;
             });
             return Json(isValid);
         }
 
         [HttpPost]
         public JsonResult CheckEmailAddress(string email) {
-            bool isInvalid = string.Equals(email, "test@dx-email.com", StringComparison.OrdinalIgnoreCase);
-            return Json(!isInvalid);
+            var isValid = !string.Equals(email, "test@dx-email.com", StringComparison.OrdinalIgnoreCase);
+            return Json(isValid);
         }
     }
 }

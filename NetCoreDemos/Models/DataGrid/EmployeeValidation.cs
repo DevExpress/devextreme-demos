@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace DevExtreme.NETCore.Demos.Models.DataGrid {
     public class EmployeeValidation {
@@ -22,6 +20,7 @@ namespace DevExtreme.NETCore.Demos.Models.DataGrid {
 
         [Required]
         [RegularExpression(@"^[\d\w._-]+@[\d\w._-]+\.[\w]+$", ErrorMessage = @"Email is invalid")]
+        [Remote("CheckUniqueEmailAddress", "RemoteValidation", ErrorMessage = @"Email address is not unique", HttpMethod = "POST", AdditionalFields = nameof(ID))]
         public string Email { get; set; }
     }
 }
