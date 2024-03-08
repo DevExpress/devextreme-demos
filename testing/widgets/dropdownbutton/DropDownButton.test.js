@@ -10,16 +10,25 @@ fixture('DropDownButton.Overview')
 
 runManualTest('DropDownButton', 'Overview', ['jQuery', 'React', 'Vue', 'Angular'], (test) => {
   test('Custom Overview Appearance', async (t) => {
-    const DROP_DOWN_BUTTON = 'dx-dropdownbutton';
+    const STATIC_BUTTON_CLASS = 'dx-dropdownbutton';
+    const CUSTOM_BUTTON_SELECTOR = 'dx-dropdownbutton-toggle';
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
-    await takeScreenshot('dropdown_button_overview_custom_appearance.png');
-
     await t
-      .click($(`.${DROP_DOWN_BUTTON}`).nth(0))
+      .click($(`.${STATIC_BUTTON_CLASS}`).nth(0))
       .wait(200);
 
-    await takeScreenshot('dropdown_button_overview_button_action_appearance.png');
+    await takeScreenshot('dropdown_button_overview_custom_static_text.png');
+
+    await t
+      .click($(`.${STATIC_BUTTON_CLASS}`).nth(0))
+      .wait(200);
+
+    await t
+      .click($(`.${CUSTOM_BUTTON_SELECTOR}`))
+      .wait(200);
+
+    await takeScreenshot('dropdown_button_overview_custom_button_action.png');
 
     await t
       .expect(compareResults.isValid())
