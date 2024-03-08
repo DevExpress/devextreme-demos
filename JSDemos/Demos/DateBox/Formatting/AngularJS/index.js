@@ -23,6 +23,7 @@ DemoApp.controller('DemoController', ($scope) => {
       showClearButton: true,
       useMaskBehavior: true,
       displayFormat: 'EEEE, d of MMM, yyyy HH:mm',
+      type: 'datetime',
       value: date,
     },
     escape: {
