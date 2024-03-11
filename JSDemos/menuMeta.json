@@ -2054,7 +2054,7 @@
             "DocUrl": "",
             "Widget": "Diagram",
             "MvcAdditionalFiles": [
-              "/Scripts/SampleData/diagram-flow.json"
+              "/Content/SampleData/diagram-flow.json"
             ],
             "DemoType": "Web",
             "WideDemo": true,
