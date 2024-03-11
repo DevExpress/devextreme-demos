@@ -16,6 +16,7 @@ declare var __moduleName: string;
   selector: 'demo-app',
   providers: [Service],
   templateUrl: 'app.component.html',
+  moduleId: __moduleName,
 })
 export class AppComponent {
   zoomingData: ZoomingData[];
