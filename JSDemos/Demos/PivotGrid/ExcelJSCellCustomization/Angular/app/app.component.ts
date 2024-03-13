@@ -16,6 +16,7 @@ declare var __moduleName: string;
 @Component({
   selector: 'demo-app',
   templateUrl: 'app.component.html',
+  moduleId: __moduleName,
   providers: [Service],
 })
 export class AppComponent {

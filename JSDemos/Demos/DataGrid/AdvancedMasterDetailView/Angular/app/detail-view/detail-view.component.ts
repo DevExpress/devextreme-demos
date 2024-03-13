@@ -6,8 +6,8 @@ declare var __moduleName: string;
 
 @Component({
   selector: 'detail-view',
-  templateUrl: 'detail-view/detail-view.component.html',
-  styleUrls: ['detail-view/detail-view.component.css'],
+  templateUrl: 'detail-view.component.html',
+  styleUrls: ['detail-view.component.css'],
   moduleId: __moduleName,
   providers: [],
 })
