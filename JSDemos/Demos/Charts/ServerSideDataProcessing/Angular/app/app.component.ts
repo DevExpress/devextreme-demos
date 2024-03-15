@@ -23,7 +23,7 @@ declare var __moduleName: string;
 export class AppComponent {
   months: Month[];
 
-  chartDataSource: any;
+  chartDataSource: DataSource;
 
   constructor(service: Service) {
     this.months = service.getMonths();

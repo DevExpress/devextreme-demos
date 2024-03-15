@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxCircularGaugeModule } from 'devextreme-angular';
+import { DxCircularGaugeModule, DxCircularGaugeTypes } from 'devextreme-angular/ui/circular-gauge';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -15,9 +15,7 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  customizeText(arg: any) {
-    return `${arg.valueText} °C`;
-  }
+  customizeText: DxCircularGaugeTypes.ScaleLabel['customizeText'] = ({ valueText }) => `${valueText} °C`;
 }
 
 @NgModule({

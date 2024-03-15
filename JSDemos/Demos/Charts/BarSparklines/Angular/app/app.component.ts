@@ -7,7 +7,6 @@ import { lastValueFrom } from 'rxjs';
 import { DxSparklineModule, DxSelectBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 import CustomStore from 'devextreme/data/custom_store';
-import query from 'devextreme/data/query';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -21,9 +20,9 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  source: any;
+  source: DataSource;
 
-  filters: number[] = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+  filters = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
   years: Array<number>;
 

@@ -22,7 +22,7 @@ declare var __moduleName: string;
 export class AppComponent {
   employees: string[];
 
-  dataSource: any;
+  dataSource: DataSource;
 
   constructor(service: Service) {
     this.dataSource = new DataSource({

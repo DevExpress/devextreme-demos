@@ -15,11 +15,9 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  customizeTooltip(arg: any) {
-    return {
-      text: `${arg.valueText} ohm`,
-    };
-  }
+  customizeTooltip = ({ valueText }) => ({
+    text: `${valueText} ohm`,
+  });
 }
 
 @NgModule({

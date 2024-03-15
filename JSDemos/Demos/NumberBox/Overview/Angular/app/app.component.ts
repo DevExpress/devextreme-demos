@@ -1,7 +1,7 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { DxNumberBoxModule } from 'devextreme-angular';
+import { DxNumberBoxModule, DxNumberBoxTypes } from 'devextreme-angular/ui/number-box';
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -14,7 +14,7 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  keyDown(e) {
+  keyDown(e: DxNumberBoxTypes.KeyDownEvent) {
     const event = e.event;
     const str = event.key;
     if (/^[.,e]$/.test(str)) {

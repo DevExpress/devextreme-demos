@@ -21,9 +21,9 @@ declare var __moduleName: string;
 export class AppComponent {
   temperaturesData: Temperature[];
 
-  maxDay: any;
+  maxDay: Temperature;
 
-  minNight: any;
+  minNight: Temperature;
 
   constructor(service: Service) {
     this.temperaturesData = service.getTemperaturesData();

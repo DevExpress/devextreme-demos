@@ -2,13 +2,13 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxPivotGridModule,
   DxPivotGridFieldChooserModule,
   DxRadioGroupModule,
   DxButtonModule,
   DxSelectBoxModule,
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service, Layout, Sale } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -25,17 +25,17 @@ declare var __moduleName: string;
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
   layouts: Layout[];
 
   layout = 0;
 
-  applyChangesModes: any;
+  applyChangesModes: DxPivotGridTypes.ApplyChangesMode[] = ['instantly', 'onDemand'];
 
-  applyChangesMode: any;
+  applyChangesMode = this.applyChangesModes[0];
 
-  state: any;
+  state: Record<string, unknown>;
 
   constructor(service: Service) {
     this.pivotGridDataSource = new PivotGridDataSource({
@@ -80,16 +80,13 @@ export class AppComponent {
     this.state = this.pivotGridDataSource.state();
 
     this.layouts = service.getLayouts();
-
-    this.applyChangesModes = ['instantly', 'onDemand'];
-    this.applyChangesMode = this.applyChangesModes[0];
   }
 
-  applyClick(data) {
+  applyClick() {
     this.pivotGridDataSource.state(this.state);
   }
 
-  cancelClick(data) {
+  cancelClick() {
     this.state = this.pivotGridDataSource.state();
   }
 }

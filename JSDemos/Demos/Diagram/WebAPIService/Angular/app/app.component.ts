@@ -22,7 +22,7 @@ declare var __moduleName: string;
 export class AppComponent {
   url: string;
 
-  dataSource: any;
+  dataSource: AspNetData.CustomStore;
 
   constructor() {
     this.url = 'https://js.devexpress.com/Demos/Mvc/api/DiagramEmployees';

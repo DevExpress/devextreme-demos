@@ -17,7 +17,7 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  dataSource: any;
+  dataSource: CustomStore;
 
   connectionStarted: boolean;
 
@@ -39,7 +39,7 @@ export class AppComponent {
     hubConnection
       .start()
       .then(() => {
-        hubConnection.on('updateStockPrice', (data: any) => {
+        hubConnection.on('updateStockPrice', (data: Record<string, unknown>) => {
           store.push([{ type: 'update', key: data.symbol, data }]);
         });
         this.dataSource = store;

@@ -19,7 +19,7 @@ declare var __moduleName: string;
 })
 
 export class AppComponent {
-  pipe: any = new PercentPipe('en-US');
+  pipe = new PercentPipe('en-US');
 
   populationByRegions: PopulationByRegion[];
 
@@ -27,8 +27,8 @@ export class AppComponent {
     this.populationByRegions = service.getPopulationByRegions();
   }
 
-  customizeTooltip = (arg: any) => ({
-    text: `${arg.valueText} - ${this.pipe.transform(arg.percent, '1.2-2')}`,
+  customizeTooltip = ({ valueText, percent }: { valueText: string, percent: number }) => ({
+    text: `${valueText} - ${this.pipe.transform(percent, '1.2-2')}`,
   });
 }
 

@@ -24,11 +24,12 @@ export class AppComponent {
     this.populationData = service.getPopulationData();
   }
 
-  customizeTooltip(arg: any) {
-    const items = arg.valueText.split('\n');
-    const color = arg.point.getColor();
+  customizeTooltip({ valueText, point, seriesName }) {
+    const items = valueText.split('\n');
+    const color = point.getColor();
+
     items.forEach((item, index) => {
-      if (item.indexOf(arg.seriesName) === 0) {
+      if (item.indexOf(seriesName) === 0) {
         const element = document.createElement('span');
 
         element.textContent = item;
@@ -38,6 +39,7 @@ export class AppComponent {
         items[index] = element.outerHTML;
       }
     });
+
     return { text: items.join('\n') };
   }
 }

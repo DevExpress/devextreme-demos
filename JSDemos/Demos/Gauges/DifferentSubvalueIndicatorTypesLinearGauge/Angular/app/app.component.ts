@@ -15,9 +15,7 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  customizeText(arg: any) {
-    return `$${arg.valueText}`;
-  }
+  customizeText = ({ valueText }) => `$${valueText}`;
 }
 
 @NgModule({

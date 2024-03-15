@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit {
 
   paletteIndex = 0;
 
-  monthWeather: any = {};
+  monthWeather = {} as DataSource;
 
   constructor(private http: HttpClient) {}
 

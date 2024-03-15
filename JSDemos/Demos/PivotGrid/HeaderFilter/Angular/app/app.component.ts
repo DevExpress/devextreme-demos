@@ -18,7 +18,7 @@ declare var __moduleName: string;
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
   searchEnabled = true;
 

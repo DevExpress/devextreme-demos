@@ -19,7 +19,7 @@ declare var __moduleName: string;
   preserveWhitespaces: true,
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
   showTotalsPrior = false;
 
@@ -28,7 +28,7 @@ export class AppComponent {
   treeHeaderLayout = true;
 
   constructor(service: Service) {
-    this.pivotGridDataSource = {
+    this.pivotGridDataSource = new PivotGridDataSource({
       fields: [{
         caption: 'Region',
         dataField: 'region',
@@ -63,7 +63,7 @@ export class AppComponent {
         area: 'data',
       }],
       store: service.getSales(),
-    };
+    });
   }
 }
 

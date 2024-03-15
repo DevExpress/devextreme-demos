@@ -3,10 +3,7 @@ import {
 } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { DxFileManagerModule, DxFileManagerComponent } from 'devextreme-angular';
-import FileManager from 'devextreme/ui/file_manager';
-
+import { DxFileManagerModule, DxFileManagerComponent, DxFileManagerTypes } from 'devextreme-angular/ui/file-manager';
 import { Service, FileItem } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -27,84 +24,63 @@ export class AppComponent {
 
   fileItems: FileItem[];
 
-  newFileMenuOptions: any;
+  newFileMenuOptions = {
+    items: [
+      {
+        text: 'Create new file',
+        icon: 'plus',
+        items: [
+          {
+            text: 'Text Document',
+          },
+          {
+            text: 'RTF Document',
+          },
+          {
+            text: 'Spreadsheet',
+          },
+        ],
+      },
+    ],
+    onItemClick: this.onItemClick.bind(this),
+  };
 
-  changeCategoryMenuOptions: any;
+  changeCategoryMenuOptions = {
+    items: [
+      {
+        text: 'Category',
+        icon: 'tags',
+        beginGroup: true,
+        items: [
+          {
+            text: 'Work',
+          },
+          {
+            text: 'Important',
+          },
+          {
+            text: 'Home',
+          },
+          {
+            text: 'None',
+          },
+        ],
+      },
+    ],
+    onItemClick: this.onItemClick.bind(this),
+  };
+
+  private service: Service;
 
   constructor(service: Service) {
+    this.service = service;
     this.fileItems = service.getFileItems();
-    this.newFileMenuOptions = {
-      items: [
-        {
-          text: 'Create new file',
-          icon: 'plus',
-          items: [
-            {
-              text: 'Text Document',
-              options: {
-                extension: '.txt',
-              },
-            },
-            {
-              text: 'RTF Document',
-              options: {
-                extension: '.rtf',
-              },
-            },
-            {
-              text: 'Spreadsheet',
-              options: {
-                extension: '.xls',
-              },
-            },
-          ],
-        },
-      ],
-      onItemClick: this.onItemClick.bind(this),
-    };
-    this.changeCategoryMenuOptions = {
-      items: [
-        {
-          text: 'Category',
-          icon: 'tags',
-          items: [
-            {
-              text: 'Work',
-              options: {
-                category: 'Work',
-              },
-            },
-            {
-              text: 'Important',
-              options: {
-                category: 'Important',
-              },
-            },
-            {
-              text: 'Home',
-              options: {
-                category: 'Home',
-              },
-            },
-            {
-              text: 'None',
-              options: {
-                category: '',
-              },
-            },
-          ],
-        },
-      ],
-      onItemClick: this.onItemClick.bind(this),
-    };
-
     this.onItemClick = this.onItemClick.bind(this);
   }
 
-  onItemClick({ itemData, viewArea, fileSystemItem }) {
+  onItemClick({ itemData, viewArea, fileSystemItem }: DxFileManagerTypes.ContextMenuItemClickEvent): void {
     let updated = false;
-    const extension = itemData.options ? itemData.options.extension : undefined;
-    const category = itemData.options ? itemData.options.category : undefined;
+    const { extension, category } = this.service.getItemInfo(itemData.text);
 
     if (extension) {
       updated = this.createFile(extension, fileSystemItem);

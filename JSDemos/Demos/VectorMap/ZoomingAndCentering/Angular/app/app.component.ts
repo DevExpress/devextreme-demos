@@ -4,7 +4,6 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxVectorMapComponent, DxVectorMapModule, DxButtonModule } from 'devextreme-angular';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { Marker, Service } from './app.service';
 
@@ -24,7 +23,7 @@ declare var __moduleName: string;
 export class AppComponent {
   @ViewChild(DxVectorMapComponent, { static: false }) vectorMap: DxVectorMapComponent;
 
-  worldMap: any = mapsData.world;
+  worldMap = mapsData.world;
 
   markers: Marker[];
 
@@ -40,9 +39,9 @@ export class AppComponent {
     }
   }
 
-  markerClick(e) {
-    if (e.target && e.target.layer.type === 'marker') {
-      e.component.center(e.target.coordinates()).zoomFactor(10);
+  markerClick({ target, component }) {
+    if (target?.layer.type === 'marker') {
+      component.center(target.coordinates()).zoomFactor(10);
     }
   }
 

@@ -18,7 +18,7 @@ declare var __moduleName: string;
   providers: [Service],
 })
 export class AppComponent {
-  dataSource: any;
+  dataSource: DataSource;
 
   currentDate: Date = new Date(2021, 3, 27);
 

@@ -4,13 +4,14 @@ import {
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {
-  DxPivotGridModule,
   DxDataGridComponent,
   DxDataGridModule,
   DxPopupModule,
   DxTemplateModule,
 } from 'devextreme-angular';
 import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import DataSource from 'devextreme/data/data_source';
+import { DxPivotGridModule, DxPivotGridTypes } from 'devextreme-angular/ui/pivot-grid';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -28,9 +29,9 @@ declare var __moduleName: string;
 export class AppComponent {
   @ViewChild('drillDownDataGrid') drillDownDataGrid: DxDataGridComponent;
 
-  pivotGridDataSource: any;
+  pivotGridDataSource: PivotGridDataSource;
 
-  drillDownDataSource: any;
+  drillDownDataSource: DataSource;
 
   salesPopupVisible = false;
 
@@ -64,7 +65,7 @@ export class AppComponent {
     });
   }
 
-  onPivotCellClick(e) {
+  onPivotCellClick(e: DxPivotGridTypes.CellClickEvent) {
     if (e.area == 'data') {
       const rowPathLength = e.cell.rowPath.length;
       const rowPathName = e.cell.rowPath[rowPathLength - 1];

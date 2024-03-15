@@ -1,7 +1,6 @@
 import { Component, NgModule, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxSliderModule, DxNumberBoxModule } from 'devextreme-angular';
 
 if (!/localhost/.test(document.location.host)) {
@@ -19,9 +18,7 @@ declare var __moduleName: string;
 export class AppComponent {
   value = 10;
 
-  format(value) {
-    return `${value}%`;
-  }
+  format = (value: string) => `${value}%`;
 }
 
 @NgModule({

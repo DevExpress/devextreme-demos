@@ -1,8 +1,23 @@
-import { NgModule, Component, enableProdMode } from '@angular/core';
+import {
+  NgModule, Component, enableProdMode, Pipe, PipeTransform,
+} from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { DxCheckBoxModule, DxFileUploaderModule, DxSelectBoxModule } from 'devextreme-angular';
+import {
+  DxCheckBoxModule, DxFileUploaderModule, DxSelectBoxModule,
+} from 'devextreme-angular';
+
+if (!/localhost/.test(document.location.host)) {
+  enableProdMode();
+}
+
+@Pipe({ name: 'demodate' })
+export class DemoDatePipe<TArgs, TReturn> implements PipeTransform {
+  transform(date: number) {
+    return new Date(date);
+  }
+}
 
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
@@ -16,7 +31,7 @@ declare var __moduleName: string;
   moduleId: __moduleName,
 })
 export class AppComponent {
-  value: any[] = [];
+  value: File[] = [];
 }
 
 @NgModule({
@@ -27,7 +42,7 @@ export class AppComponent {
     DxFileUploaderModule,
     DxSelectBoxModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, DemoDatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -21,7 +21,7 @@ declare var __moduleName: string;
 export class AppComponent {
   contacts: Contact[];
 
-  commands: any[] = [
+  commands: { text: string }[] = [
     { text: 'Call' },
     { text: 'Send message' },
     { text: 'Edit' },
@@ -30,7 +30,7 @@ export class AppComponent {
 
   actionSheetVisible = false;
 
-  actionSheetTarget: any = '';
+  actionSheetTarget = '';
 
   constructor(service: Service) {
     this.contacts = service.getContacts();
@@ -41,8 +41,8 @@ export class AppComponent {
     this.actionSheetVisible = true;
   }
 
-  showNotify(value) {
-    notify(`The "${value}" button is clicked.`);
+  showNotify(text: string) {
+    notify(`The "${text}" button is clicked.`);
   }
 }
 

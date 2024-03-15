@@ -2,7 +2,7 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxPivotGridModule } from 'devextreme-angular';
-import PivotGridDataSource from 'devextreme/ui/pivot_grid/data_source';
+import { Options as DataSourceConfig } from 'devextreme/ui/pivot_grid/data_source';
 import { Service } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -18,10 +18,10 @@ declare var __moduleName: string;
   providers: [Service],
 })
 export class AppComponent {
-  pivotGridDataSource: any;
+  pivotGridDataSource: DataSourceConfig;
 
   constructor(service: Service) {
-    this.pivotGridDataSource = new PivotGridDataSource({
+    this.pivotGridDataSource = {
       fields: [{
         caption: 'Region',
         width: 120,
@@ -66,7 +66,7 @@ export class AppComponent {
         allowCrossGroupCalculation: true,
       }],
       store: service.getSales(),
-    });
+    };
   }
 }
 

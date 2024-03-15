@@ -1,5 +1,4 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxChartModule } from 'devextreme-angular';
@@ -20,8 +19,6 @@ declare var __moduleName: string;
 })
 export class AppComponent {
   populationData: State[];
-
-  pipe: any = new DecimalPipe('en-US');
 
   constructor(service: Service) {
     this.populationData = service.getPopulationData();

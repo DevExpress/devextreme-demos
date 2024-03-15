@@ -21,9 +21,9 @@ export class AppComponent {
 
   shifts: Shift[];
 
-  currentDate: Date = new Date(2021, 2, 30);
-
   currentShift:Shift;
+
+  currentDate: Date = new Date(2021, 2, 30);
 
   constructor(service: Service) {
     this.appointments = service.getAppointments();

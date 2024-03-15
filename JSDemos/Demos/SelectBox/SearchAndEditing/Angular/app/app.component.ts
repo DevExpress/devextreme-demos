@@ -1,10 +1,9 @@
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { DxNumberBoxModule, DxCheckBoxModule, DxSelectBoxModule } from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
-
+import { DxSelectBoxTypes } from 'devextreme-angular/ui/select-box';
 import { Product, Service, SimpleProduct } from './app.service';
 
 if (!/localhost/.test(document.location.host)) {
@@ -30,7 +29,7 @@ export class AppComponent {
 
   searchModeOption = 'contains';
 
-  searchExprOption: any = 'Name';
+  searchExprOption = 'Name';
 
   searchTimeoutOption = 200;
 
@@ -38,7 +37,7 @@ export class AppComponent {
 
   showDataBeforeSearchOption = false;
 
-  searchExprOptionItems: Array<any> = [{
+  searchExprOptionItems = [{
     name: "'Name'",
     value: 'Name',
   }, {
@@ -59,7 +58,7 @@ export class AppComponent {
     });
   }
 
-  addCustomItem(data) {
+  addCustomItem(data: DxSelectBoxTypes.CustomItemCreatingEvent) {
     if (!data.text) {
       data.customItem = null;
       return;

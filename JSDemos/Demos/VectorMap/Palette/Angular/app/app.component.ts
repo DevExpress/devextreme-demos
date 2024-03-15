@@ -2,7 +2,6 @@ import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxVectorMapModule } from 'devextreme-angular';
-
 import * as mapsData from 'devextreme-dist/js/vectormap-data/world.js';
 import { Service } from './app.service';
 
@@ -20,7 +19,7 @@ declare var __moduleName: string;
 })
 
 export class AppComponent {
-  worldMap: any = mapsData.world;
+  worldMap = mapsData.world;
 
   populations: Object;
 
@@ -29,30 +28,24 @@ export class AppComponent {
     this.customizeLayers = this.customizeLayers.bind(this);
   }
 
-  customizeTooltip(arg) {
-    if (arg.attribute('population')) {
+  customizeTooltip({ attribute }: { attribute: Function }) {
+    if (attribute('population')) {
       return {
-        text: `${arg.attribute('name')}: ${arg.attribute('population')}% of world population`,
+        text: `${attribute('name')}: ${attribute('population')}% of world population`,
       };
     }
   }
 
-  customizeLayers(elements) {
+  customizeLayers(elements: { attribute: Function }[]) {
     elements.forEach((element) => {
       element.attribute('population', this.populations[element.attribute('name')]);
     });
   }
 
-  customizeText(arg) {
-    let text;
-    if (arg.index === 0) {
-      text = '< 0.5%';
-    } else if (arg.index === 5) {
-      text = '> 3%';
-    } else {
-      text = `${arg.start}% to ${arg.end}%`;
-    }
-    return text;
+  customizeText({ index, start, end }: Record<string, number>) {
+    let text = (index === 0) ? '< 0.5%' : `${start}% to ${end}%`;
+
+    return (index === 5) ? '> 3%' : text;
   }
 }
 

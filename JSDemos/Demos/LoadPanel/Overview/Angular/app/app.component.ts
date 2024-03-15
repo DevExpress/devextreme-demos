@@ -22,7 +22,7 @@ declare var __moduleName: string;
 export class AppComponent {
   employee: Employee;
 
-  employeeInfo: any = {};
+  employeeInfo: Employee | {} = {};
 
   loadingVisible = false;
 

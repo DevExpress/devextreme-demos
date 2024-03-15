@@ -20,10 +20,11 @@ declare var __moduleName: string;
 export class AppComponent {
   dataSource: CustomStore;
 
-  pattern: any = /^\(\d{3}\) \d{3}-\d{4}$/i;
+  pattern = /^\(\d{3}\) \d{3}-\d{4}$/i;
 
   constructor(private httpClient: HttpClient) {
     const url = 'https://js.devexpress.com/Demos/Mvc/api/DataGridEmployeesValidation';
+
     this.dataSource = AspNetData.createStore({
       key: 'ID',
       loadUrl: url,
@@ -34,10 +35,9 @@ export class AppComponent {
         ajaxOptions.xhrFields = { withCredentials: true };
       },
     });
-    this.asyncValidation = this.asyncValidation.bind(this);
   }
 
-  async asyncValidation(params) {
+  asyncValidation = async (params: Record<string, unknown> & { data: Record<string, unknown> }) => {
     const emailValidationUrl = 'https://js.devexpress.com/Demos/Mvc/RemoteValidation/CheckUniqueEmailAddress';
 
     const result = await lastValueFrom(this.httpClient.post(emailValidationUrl, {
@@ -48,7 +48,7 @@ export class AppComponent {
     }));
 
     return result;
-  }
+  };
 }
 
 @NgModule({
