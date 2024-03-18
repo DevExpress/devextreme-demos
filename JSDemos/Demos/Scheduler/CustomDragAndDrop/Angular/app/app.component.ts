@@ -51,8 +51,8 @@ export class AppComponent {
     e.cancel = true;
   }
 
-  onItemDragStart(e: DxSchedulerTypes.AppointmentDraggingStartEvent) {
-    Object.assign(e.itemData, e.fromData);
+  onItemDragStart(e) {
+    e.itemData = e.fromData;
   }
 
   onItemDragEnd(e: DxSchedulerTypes.AppointmentDraggingEndEvent) {
