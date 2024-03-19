@@ -195,7 +195,7 @@ namespace DevExtreme.MVC.Demos.DemoShell {
 
             if(demo.MvcAdditionalFiles != null) {
                 foreach(var f in demo.MvcAdditionalFiles)
-                    demo.Files.Add(new DemoSourceFile(contentRootPath, "." + Regex.Replace(f, "^/(Content|Scripts)/", "/wwwroot/")));
+                    demo.Files.Add(new DemoSourceFile(contentRootPath, "." + f));
             }
 
             Func<string, int> GetPreSortKey = name => {
