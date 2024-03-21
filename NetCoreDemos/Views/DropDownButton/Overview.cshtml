@@ -22,16 +22,30 @@
             Custom main button action
         </div>
         <div class="dx-field-value">
+            @{
+                var employeeName = "Olyvia Peyton";
+                var employeeIcon = Url.Content("~/images/employees/51.png");
+            }
             @(Html.DevExtreme().DropDownButton()
                 .SplitButton(true)
-                .Text("Olyvia Peyton")
-                .Icon(Url.Content("~/images/employees/51.png"))
+                .Text(employeeName)
+                .Icon(employeeIcon)
                 .DisplayExpr("Text")
                 .KeyExpr("Value")
                 .UseSelectMode(false)
                 .DataSource(Model.ProfileSettings)
                 .OnButtonClick("profileButton_click")
                 .OnItemClick("profileItem_click")
+                .Template(@<text>
+                    <div class="button-img-wrapper">
+                        <div class="button-img-indicator"></div>
+                        <img class="dx-button-img" src="@employeeIcon" alt="imageAlt" />
+                    </div>
+                    <div class="dx-button-wrapper">
+                        <div class="dx-button-title">@employeeName</div>
+                        <div class="dx-button-row">IT Manager</div>
+                    </div>
+                </text>)
             )
         </div>
     </div>
@@ -154,3 +168,76 @@
         }
     }
 </script>
+
+<style>
+    .demo-container .dx-fieldset:first-child {
+        width: 500px;
+    }
+
+    .custom-color-picker {
+        width: 82px;
+        padding: 5px;
+    }
+
+    .dx-button-content img.dx-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .color {
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .dx-button-wrapper {
+        padding-inline-start: 12px;
+        padding-inline-end: 4px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .button-img-wrapper {
+        position: relative;
+        height: 32px;
+    }
+
+    .dx-button-img {
+        width: 32px;
+        height: 32px;
+        position: relative;
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--dx-color-border);
+        border-radius: 50%;
+    }
+
+    .button-img-indicator {
+        position: absolute;
+        background-color: var(--dx-color-danger);
+        top: -1px;
+        right: -1px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border-width: 2px;
+        border-style: solid;
+        border-color: var(--dx-color-main-bg);
+        z-index: 1;
+    }
+
+    .dx-button-title {
+        line-height: 20px;
+    }
+
+    .dx-button-row {
+        font-size: 12px;
+        line-height: 14px;
+        opacity: 0.6;
+    }
+
+    #two-sections .dx-button {
+        min-height: 46px;
+        height: 46px;
+    }
+</style>
