@@ -17,11 +17,7 @@
     font-size: 18px;
 }
 
-#text {
-    line-height: 1.35;
-}
-
-.dx-button-wrapper {
+.text-container {
     padding-inline-start: 12px;
     padding-inline-end: 4px;
     display: flex;
@@ -29,7 +25,7 @@
     flex-direction: column;
 }
 
-.button-img-wrapper {
+.button-img-container {
     position: relative;
     height: 32px;
 }
