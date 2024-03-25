@@ -9,11 +9,13 @@
         .Items(items => {
             items.AddGroup()
                 .Caption("System Information")
+                .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('info',data); }"))
                 .Items(groupItems => {
                     groupItems.AddSimpleFor(m => m.ID).IsRequired(false);
 
                     groupItems.AddGroup()
                         .Caption("Main Information")
+                        .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('user',data); }"))
                         .Items(innerGroupItems => {
                             groupItems.AddSimpleFor(m => m.FirstName);
                             groupItems.AddSimpleFor(m => m.LastName);
@@ -25,12 +27,14 @@
 
             items.AddGroup()
                 .Caption("Personal Data")
+                .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('accountbox',data); }"))
                 .Items(groupItems => {
                     groupItems.AddSimpleFor(m => m.BirthDate)
                         .IsRequired(false);
 
                     groupItems.AddGroup()
                         .Caption("Home Address")
+                        .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('home',data); }"))
                         .Items(innerGroupItems => {
                             innerGroupItems.AddSimpleFor(m => m.Address);
                             innerGroupItems.AddSimpleFor(m => m.City);
@@ -41,6 +45,7 @@
 
             items.AddGroup()
                 .Caption("Contact Information")
+                .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('tel',data); }"))
                 .Items(groupItems => {
                     groupItems.AddTabbed()
                         .TabPanelOptions(o => {
@@ -64,3 +69,10 @@
         .FormData(Model)
     )
 </div>
+<script>
+
+function groupCaptionTemplate(icon, data) {
+    return `<i class='dx-icon dx-icon-${icon}'></i><span>${data.caption}</span>`;
+}
+
+</script>
