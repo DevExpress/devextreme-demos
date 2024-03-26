@@ -4,64 +4,52 @@
             .ID("splitter")
             .Items(items => {
                 items.Add()
-                .Resizable(true)
-                .Size("140px")
-                .MinSize("70px")
-                .Template((data) => {
-                    return "<script>paneContentTemplate(data, 'Left Pane');</script>";
-                });
+                    .Resizable(true)
+                    .Size("140px")
+                    .MinSize("70px")
+                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Left Pane');</script>"));
 
                 items.Add().Splitter(s => {
                     s.Orientation('vertical');
                     s.Items(verticalItems => {
                         verticalItems.Add()
-                        .Resizable(true)
-                        .Collapsible(true)
-                        .MaxSize("75%")
-                        .Template((data) => {
-                            return "<script>paneContentTemplate(data, 'Central Pane');</script>";
-                        });
+                            .Resizable(true)
+                            .Collapsible(true)
+                            .MaxSize("75%")
+                            .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Central Pane');</script>"));
 
                         verticalItems.Add()
-                        .Collapsible(true)
-                        .Splitter(horizontalSplitter => {
-                            horizontalSplitter.Orientation('horizontal');
-                            horizontalSplitter.Items(horizontalItems => {
-                                horizontalItems.Add()
-                                .Resizable(true)
-                                .Collapsible(true)
-                                .Size("30%")
-                                .MinSize("5%")
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Left Pane');</script>";
-                                });
+                            .Collapsible(true)
+                            .Splitter(horizontalSplitter => {
+                                horizontalSplitter.Orientation('horizontal');
+                                horizontalSplitter.Items(horizontalItems => {
+                                    horizontalItems.Add()
+                                        .Resizable(true)
+                                        .Collapsible(true)
+                                        .Size("30%")
+                                        .MinSize("5%")
+                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Left Pane');</script>"));
 
-                                horizontalItems.Add()
-                                .Collapsible(false)
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Central Pane');</script>";
-                                });
+                                    horizontalItems.Add()
+                                        .Collapsible(false)
+                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Central Pane');</script>"));
 
-                                horizontalItems.Add()
-                                .Resizable(true)
-                                .Collapsible(true)
-                                .Size("30%")
-                                .MinSize("5%")
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Right Pane');</script>";
+                                    horizontalItems.Add()
+                                        .Resizable(true)
+                                        .Collapsible(true)
+                                        .Size("30%")
+                                        .MinSize("5%")
+                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Right Pane');</script>"));
                                 });
                             });
-                        });
                     });
                 });
 
                 items.Add()
-                .Resizable(false)
-                .Size("140px")
-                .Collapsible(false)
-                .Template((data) => {
-                    return "<script>paneContentTemplate(data, 'Right Pane');</script>";
-                });
+                    .Resizable(false)
+                    .Size("140px")
+                    .Collapsible(false)
+                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Right Pane');</script>"));
             })
         )
     </div>
@@ -72,7 +60,7 @@
         if (data.resizable !== false && !data.collapsible) {
             return 'Resizable only';
         }
-        return `${data.resizable ? 'Resizable' : 'Non-resizable'} and ${data.collapsible ? 'collapsible' : 'non-collapsible'}`;
+        return (data.resizable ? 'Resizable' : 'Non-resizable') + ' and ' + (data.collapsible ? 'collapsible' : 'non-collapsible');
     }
 
     function paneContentTemplate(data, paneName) {
