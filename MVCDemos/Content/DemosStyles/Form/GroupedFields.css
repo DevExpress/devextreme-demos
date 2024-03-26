@@ -1,5 +1,5 @@
 ﻿#form-container {
-	margin: 10px;
+    margin: 10px;
 }
 
 .long-title h3 {
@@ -10,9 +10,8 @@
 
 .dx-form-group-custom-caption .dx-icon {
     color: var(--dx-color-spin-icon);
-  }
-  
-  .dx-form-group-custom-caption span {
+}
+
+.dx-form-group-custom-caption span {
     line-height: 1;
-  }
-  
+}
