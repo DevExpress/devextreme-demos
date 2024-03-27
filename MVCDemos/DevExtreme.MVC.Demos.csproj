@@ -291,6 +291,7 @@
     <Compile Include="Controllers\ResizableController.cs" />
     <Compile Include="Controllers\LookupController.cs" />
     <Compile Include="Controllers\MultiViewController.cs" />
+    <Compile Include="Controllers\SplitterController.cs" />
     <Compile Include="Controllers\SortableController.cs" />
     <Compile Include="Controllers\TabsController.cs" />
     <Compile Include="Controllers\RangeSliderController.cs" />
@@ -975,6 +976,7 @@
     <Content Include="Content\DemosStyles\SelectBox\GroupedItems.css" />
     <Content Include="Content\DemosStyles\Sortable\Customization.css" />
     <Content Include="Content\DemosStyles\Sortable\Kanban.css" />
+    <Content Include="Content\DemosStyles\Splitter\Overview.css" />
     <Content Include="Content\DemosStyles\TabPanel\SortableClosableTabs.css" />
     <Content Include="Content\DemosStyles\Tabs\Overview.css" />
     <Content Include="Content\DemosStyles\Tabs\Selection.css" />

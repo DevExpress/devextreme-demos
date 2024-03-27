@@ -7,7 +7,7 @@
                     .Resizable(true)
                     .Size("140px")
                     .MinSize("70px")
-                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Left Pane');</script>"));
+                    .Template(new JS("function(data){return paneContentTemplate(data, 'Left Pane')}"));
 
                 items.Add().Splitter(s => {
                     s.Orientation(Orientation.Vertical);
@@ -16,7 +16,7 @@
                             .Resizable(true)
                             .Collapsible(true)
                             .MaxSize("75%")
-                            .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Central Pane');</script>"));
+                            .Template(new JS("function(data){return paneContentTemplate(data, 'Central Pane')}"));
 
                         verticalItems.Add()
                             .Collapsible(true)
@@ -28,18 +28,18 @@
                                         .Collapsible(true)
                                         .Size("30%")
                                         .MinSize("5%")
-                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Left Pane');</script>"));
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Left Pane')}"));
 
                                     horizontalItems.Add()
                                         .Collapsible(false)
-                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Central Pane');</script>"));
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Central Pane')}"));
 
                                     horizontalItems.Add()
                                         .Resizable(true)
                                         .Collapsible(true)
                                         .Size("30%")
                                         .MinSize("5%")
-                                        .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Right Pane');</script>"));
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Right Pane')}"));
                                 });
                             });
                     });
@@ -49,7 +49,7 @@
                     .Resizable(false)
                     .Size("140px")
                     .Collapsible(false)
-                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Right Pane');</script>"));
+                    .Template(new JS("function(data){return paneContentTemplate(data, 'Right Pane')}"));
             })
         )
     </div>
