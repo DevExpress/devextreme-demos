@@ -1,10 +1,10 @@
 ﻿@model DevExtreme.NETCore.Demos.ViewModels.DropDownButtonViewModel
 
 <div class="dx-fieldset">
-    <div class="dx-fieldset-header">Single usage</div>
+    <div class="dx-fieldset-header">Standalone button</div>
     <div class="dx-field">
         <div class="dx-field-label">
-            Custom static text
+            Text and icon
         </div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DropDownButton()
@@ -19,26 +19,35 @@
 
     <div class="dx-field">
         <div class="dx-field-label">
-            Custom main button action
+            Custom template and actions
         </div>
         <div class="dx-field-value">
             @(Html.DevExtreme().DropDownButton()
+                .ID("custom-template")
                 .SplitButton(true)
-                .Text("Sandra Johnson")
-                .Icon(Url.Content("~/images/gym/coach-woman.png"))
                 .DisplayExpr("Text")
                 .KeyExpr("Value")
                 .UseSelectMode(false)
                 .DataSource(Model.ProfileSettings)
                 .OnButtonClick("profileButton_click")
                 .OnItemClick("profileItem_click")
+                .Template(@<text>
+                    <div class="button-img-container">
+                        <div class="button-img-indicator"></div>
+                        <img class="button-img" src="@Url.Content("~/images/employees/51.png")" alt="employee" />
+                    </div>
+                    <div class="text-container">
+                        <div class="button-title">Olivia Peyton</div>
+                        <div class="button-row">IT Manager</div>
+                    </div>
+                </text>)
             )
         </div>
     </div>
 </div>
 
 <div class="dx-fieldset">
-    <div class="dx-fieldset-header">Usage in a toolbar</div>
+    <div class="dx-fieldset-header">Embedded in a Toolbar</div>
     <div class="dx-field">
         @(Html.DevExtreme().Toolbar()
             .Items(items => {
@@ -114,7 +123,7 @@
     }
 
     function profileButton_click(e) {
-        DevExpress.ui.notify("Go to " + e.component.option("text") + "'s profile", "success", 600);
+        DevExpress.ui.notify("Go to " + $(e.element).find('.button-title').text() + "'s profile", "success", 600);
     }
 
     function profileItem_click(e) {
