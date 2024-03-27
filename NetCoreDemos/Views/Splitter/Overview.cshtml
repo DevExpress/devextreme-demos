@@ -12,7 +12,7 @@
 
                 items.Add().Splitter(s =>
                 {
-                    s.Orientation(DevExtreme.AspNet.Mvc.Orientation.Vertical); // Use the enum value for vertical orientation
+                    s.Orientation(Orientation.Vertical); // Use the enum value for vertical orientation
                     s.Items(verticalItems =>
                 {
                     verticalItems.Add()
@@ -25,7 +25,7 @@
                 .Collapsible(true)
                 .Splitter(horizontalSplitter =>
                 {
-                    horizontalSplitter.Orientation(DevExtreme.AspNet.Mvc.Orientation.Horizontal); // Use the enum value for horizontal orientation
+                    horizontalSplitter.Orientation(Orientation.Horizontal); // Use the enum value for horizontal orientation
                     horizontalSplitter.Items(horizontalItems =>
                 {
                     horizontalItems.Add()

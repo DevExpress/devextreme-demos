@@ -2247,6 +2247,7 @@
     <Content Include="Views\DataGrid\ColumnChooser.cshtml" />
     <Content Include="Views\DataGrid\ColumnHeaderFilter.cshtml" />
     <Content Include="Views\Scheduler\WorkShifts.cshtml" />
+    <Content Include="Views\Splitter\Overview.cshtml" />
     <None Include="Web.Daily.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

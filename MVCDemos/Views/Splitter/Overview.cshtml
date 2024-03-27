@@ -10,7 +10,7 @@
                     .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Left Pane');</script>"));
 
                 items.Add().Splitter(s => {
-                    s.Orientation('vertical');
+                    s.Orientation(Orientation.Vertical);
                     s.Items(verticalItems => {
                         verticalItems.Add()
                             .Resizable(true)
@@ -21,7 +21,7 @@
                         verticalItems.Add()
                             .Collapsible(true)
                             .Splitter(horizontalSplitter => {
-                                horizontalSplitter.Orientation('horizontal');
+                                horizontalSplitter.Orientation(Orientation.Horizontal);
                                 horizontalSplitter.Items(horizontalItems => {
                                     horizontalItems.Add()
                                         .Resizable(true)
@@ -56,7 +56,7 @@
 </div>
 
 <script>
-    function GetStateText(data) {
+    function getStateText(data) {
         if (data.resizable !== false && !data.collapsible) {
             return 'Resizable only';
         }
@@ -66,7 +66,7 @@
     function paneContentTemplate(data, paneName) {
         var content = "<div class='pane-content'>" +
             "<div class='pane-title'>" + paneName + "</div>" +
-            "<div class='pane-state'>" + GetStateText(data) + "</div>";
+            "<div class='pane-state'>" + getStateText(data) + "</div>";
 
         if (data.size) {
             content += "<div class='pane-option'>size: " + data.size + "</div>";
