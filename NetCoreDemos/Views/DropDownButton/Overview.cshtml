@@ -22,12 +22,8 @@
             Custom template and actions
         </div>
         <div class="dx-field-value">
-            @{
-                var employeeName = "Olivia Peyton";
-            }
             @(Html.DevExtreme().DropDownButton()
                 .SplitButton(true)
-                .Text(employeeName)
                 .DisplayExpr("Text")
                 .KeyExpr("Value")
                 .UseSelectMode(false)
@@ -40,7 +36,7 @@
                         <img class="button-img" src="@Url.Content("~/images/employees/51.png")" alt="imageAlt" />
                     </div>
                     <div class="text-container">
-                        <div class="button-title">@employeeName</div>
+                        <div class="button-title">Olivia Peyton</div>
                         <div class="button-row">IT Manager</div>
                     </div>
                 </text>)
