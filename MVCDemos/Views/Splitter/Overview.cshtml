@@ -60,26 +60,34 @@
         if (data.resizable !== false && !data.collapsible) {
             return 'Resizable only';
         }
-        return (data.resizable ? 'Resizable' : 'Non-resizable') + ' and ' + (data.collapsible ? 'collapsible' : 'non-collapsible');
+        return `${data.resizable ? 'Resizable' : 'Non-resizable'} and ${data.collapsible ? 'collapsible' : 'non-collapsible'}`;
     }
 
     function paneContentTemplate(data, paneName) {
-        var content = "<div class='pane-content'>" +
-            "<div class='pane-title'>" + paneName + "</div>" +
-            "<div class='pane-state'>" + getStateText(data) + "</div>";
+        const dimensionOptions = new Set(['size', 'minSize', 'maxSize']);
+        const filteredData = Object.fromEntries(
+            Object.entries(data)
+                .filter(([key]) => dimensionOptions.has(key))
+        );
 
-        if (data.size) {
-            content += "<div class='pane-option'>size: " + data.size + "</div>";
-        }
-        if (data.minSize) {
-            content += "<div class='pane-option'>minSize: " + data.minSize + "</div>";
-        }
-        if (data.maxSize) {
-            content += "<div class='pane-option'>maxSize: " + data.maxSize + "</div>";
+        let content = `
+        <div class='pane-content'>
+            <div class='pane-title'> 
+                ${paneName}  
+            </div>
+            <div class='pane-state'>
+                 ${getStateText(data)}
+            </div>
+        `;
+        
+        for (const [key, value] of Object.entries(filteredData)) {
+            content += `<div class="pane-option">${key}: ${value}</div>`;
         }
 
-        content += "</div>";
-
+        content += `
+                </div>
+            </div>
+        `;
         return content;
     }
 </script>
