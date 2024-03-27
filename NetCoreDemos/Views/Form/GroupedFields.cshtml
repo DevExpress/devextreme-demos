@@ -27,7 +27,7 @@
 
             items.AddGroup()
                 .Caption("Personal Data")
-                .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('accountbox', data); }"))
+                .CaptionTemplate(new JS("function(data) { return groupCaptionTemplate('card', data); }"))
                 .Items(groupItems => {
                     groupItems.AddSimpleFor(m => m.BirthDate)
                         .IsRequired(false);
@@ -69,10 +69,9 @@
         .FormData(Model)
     )
 </div>
-<script>
 
+<script>
 function groupCaptionTemplate(icon, data) {
     return `<i class='dx-icon dx-icon-${icon}'></i><span>${data.caption}</span>`;
 }
-
 </script>
