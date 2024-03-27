@@ -70,24 +70,18 @@
                 .filter(([key]) => dimensionOptions.has(key))
         );
 
-        let content = `
-        <div class='pane-content'>
-            <div class='pane-title'> 
-                ${paneName}  
-            </div>
-            <div class='pane-state'>
-                 ${getStateText(data)}
-            </div>
-        `;
-        
-        for (const [key, value] of Object.entries(filteredData)) {
-            content += `<div class="pane-option">${key}: ${value}</div>`;
-        }
-
-        content += `
+        return `
+            <div class='pane-content'>
+                <div class='pane-title'>
+                    ${paneName}
                 </div>
+                <div class='pane-state'>
+                    ${getStateText(data)}
+                </div>
+                ${Object.entries(filteredData).map(([key, value]) => `
+                    <div class="pane-option">${key}: ${value}</div>
+                `).join('')}
             </div>
         `;
-        return content;
     }
 </script>
