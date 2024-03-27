@@ -2,83 +2,75 @@
     <div class="demo-container">
         @(Html.DevExtreme().Splitter()
             .ID("splitter")
-            .Items(items => {
+            .Items(items =>
+            {
                 items.Add()
                 .Resizable(true)
                 .Size("140px")
                 .MinSize("70px")
-                .Template((data) => {
-                    return "<script>paneContentTemplate(data, 'Left Pane');</script>";
+                .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Left Pane');</script>"));
+
+                items.Add().Splitter(s =>
+                {
+                    s.Orientation(DevExtreme.AspNet.Mvc.Orientation.Vertical); // Use the enum value for vertical orientation
+                    s.Items(verticalItems =>
+                {
+                    verticalItems.Add()
+                .Resizable(true)
+                .Collapsible(true)
+                .MaxSize("75%")
+                .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Central Pane');</script>"));
+
+                    verticalItems.Add()
+                .Collapsible(true)
+                .Splitter(horizontalSplitter =>
+                {
+                    horizontalSplitter.Orientation(DevExtreme.AspNet.Mvc.Orientation.Horizontal); // Use the enum value for horizontal orientation
+                    horizontalSplitter.Items(horizontalItems =>
+                {
+                    horizontalItems.Add()
+                    .Resizable(true)
+                    .Collapsible(true)
+                    .Size("30%")
+                    .MinSize("5%")
+                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Left Pane');</script>"));
+
+                    horizontalItems.Add()
+                    .Collapsible(false)
+                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Central Pane');</script>"));
+
+                    horizontalItems.Add()
+                    .Resizable(true)
+                    .Collapsible(true)
+                    .Size("30%")
+                    .MinSize("5%")
+                    .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Nested Right Pane');</script>"));
                 });
-
-                items.Add().Splitter(s => {
-                    s.Orientation('vertical');
-                    s.Items(verticalItems => {
-                        verticalItems.Add()
-                        .Resizable(true)
-                        .Collapsible(true)
-                        .MaxSize("75%")
-                        .Template((data) => {
-                            return "<script>paneContentTemplate(data, 'Central Pane');</script>";
-                        });
-
-                        verticalItems.Add()
-                        .Collapsible(true)
-                        .Splitter(horizontalSplitter => {
-                            horizontalSplitter.Orientation('horizontal');
-                            horizontalSplitter.Items(horizontalItems => {
-                                horizontalItems.Add()
-                                .Resizable(true)
-                                .Collapsible(true)
-                                .Size("30%")
-                                .MinSize("5%")
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Left Pane');</script>";
-                                });
-
-                                horizontalItems.Add()
-                                .Collapsible(false)
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Central Pane');</script>";
-                                });
-
-                                horizontalItems.Add()
-                                .Resizable(true)
-                                .Collapsible(true)
-                                .Size("30%")
-                                .MinSize("5%")
-                                .Template((data) => {
-                                    return "<script>paneContentTemplate(data, 'Nested Right Pane');</script>";
-                                });
-                            });
-                        });
-                    });
-                });
+            });
+        });
+    });
 
                 items.Add()
                 .Resizable(false)
                 .Size("140px")
                 .Collapsible(false)
-                .Template((data) => {
-                    return "<script>paneContentTemplate(data, 'Right Pane');</script>";
-                });
-            })
-        )
+                .Template((data) => Html.Raw("<script>paneContentTemplate(data, 'Right Pane');</script>"));
+    }))
     </div>
 </div>
 
 <script>
-    function GetStateText(data) {
+    function getStateText(data) {
         if (data.resizable !== false && !data.collapsible) {
             return 'Resizable only';
         }
-        return `${data.resizable ? 'Resizable' : 'Non-resizable'} and ${data.collapsible ? 'collapsible' : 'non-collapsible'}`;
+        return (data.resizable ? 'Resizable' : 'Non-resizable') + ' and ' + (data.collapsible ? 'collapsible' : 'non-collapsible');
     }
 
     function paneContentTemplate(data, paneName) {
         var content = "<div class='pane-content'>" +
             "<div class='pane-title'>" + paneName + "</div>" +
-            "<div class='pane-state'>" + GetStateText(data) + "</div>";
+            "<div class='pane-state'>" + getStateText(data) + "</div>";
 
         if (data.size) {
             content += "<div class='pane-option'>size: " + data.size + "</div>";
