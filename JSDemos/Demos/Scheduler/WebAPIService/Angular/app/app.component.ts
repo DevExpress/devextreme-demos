@@ -7,12 +7,14 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/SchedulerData';
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app.component.html',
+  moduleId: __moduleName,
 })
 export class AppComponent {
   currentDate = new Date(2021, 3, 27);

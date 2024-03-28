@@ -8,12 +8,14 @@ import { DxTextBoxModule, DxTextBoxTypes } from 'devextreme-angular/ui/text-box'
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
   providers: [],
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
   preserveWhitespaces: true,
 })
 

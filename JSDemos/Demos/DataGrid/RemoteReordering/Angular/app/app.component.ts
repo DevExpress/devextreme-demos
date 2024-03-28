@@ -7,13 +7,15 @@ import { DxDataGridModule, DxDataGridTypes } from 'devextreme-angular/ui/data-gr
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 const url = 'https://js.devexpress.com/Demos/Mvc/api/RowReordering';
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
 })
 export class AppComponent {
   tasksStore = AspNetData.createStore({

@@ -8,10 +8,12 @@ import { DetailGridComponent } from './detail-grid/detail-grid.component';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app.component.html',
+  moduleId: __moduleName,
 })
 export class AppComponent {
   customersData: AspNetData.CustomStore;

@@ -7,13 +7,15 @@ import { Service, Employee, State } from './app.service';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 type FirstArgument<T> = T extends (...args: any) => any ? Parameters<T>[0]: never;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
   providers: [Service],
 })
 export class AppComponent {

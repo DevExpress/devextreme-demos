@@ -22,14 +22,16 @@ import {
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 type ExportMode = Parameters<typeof exportGanttToPdf>[0]['exportMode'];
 type DateRange = Parameters<typeof exportGanttToPdf>[0]['dateRange'];
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
   providers: [Service],
   preserveWhitespaces: true,
 })

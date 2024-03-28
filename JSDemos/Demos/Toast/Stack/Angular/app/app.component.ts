@@ -13,14 +13,16 @@ import hideToasts from 'devextreme/ui/toast/hide_toasts';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 type Position = Parameters<typeof notify>[1]['position'];
 type Direction = Parameters<typeof notify>[1]['direction'];
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
 })
 export class AppComponent {
   types: string[] = ['error', 'info', 'success', 'warning'];

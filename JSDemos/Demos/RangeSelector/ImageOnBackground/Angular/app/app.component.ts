@@ -6,11 +6,13 @@ import { DxRangeSelectorModule } from 'devextreme-angular';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
 })
 export class AppComponent {
   startValue: Date = new Date(2012, 8, 29, 0, 0, 0);

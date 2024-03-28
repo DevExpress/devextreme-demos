@@ -9,13 +9,15 @@ import { DxDataGridComponent, DxDataGridModule, DxDataGridTypes } from 'devextre
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 const URL = 'https://js.devexpress.com/Demos/Mvc/api/DataGridBatchUpdateWebApi';
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
 })
 export class AppComponent {
   ordersStore: AspNetData.CustomStore;
