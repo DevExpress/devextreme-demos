@@ -9,10 +9,11 @@ import { version as DX_Version } from 'devextreme/package.json';
 import { Demo, Framework } from './types';
 
 export const isSkipDemo = (demo: Demo) => {
-  const { Widget } = demo;
-  const isLocalization = Widget === 'Localization';
+  const { Widget, Name } = demo;
+  const excluded = ['Localization', 'RowTemplate', 'CellCustomization', 'TimeZonesSupport', 'ExportToPDF'];
+  const shouldSkip = excluded.includes(Widget) || excluded.includes(Name);
 
-  return isLocalization;
+  return shouldSkip;
 };
 
 const sourceDemosDir = join(__dirname, '..', '..', '..', 'JSDemos', 'Demos');

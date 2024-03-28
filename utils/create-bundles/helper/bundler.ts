@@ -25,18 +25,6 @@ export abstract class ESBundler implements Bundler {
       return;
     }
 
-    const excludedDemos = ['Localization', 'CellCustomization', 'TimeZonesSupport', 'ExportToPDF'];
-    let thisDemoExcluded = false;
-    excludedDemos.forEach((excludedDemo) => {
-      if (sourceDemoPath.includes(excludedDemo)) {
-        thisDemoExcluded = true;
-      }
-    });
-    if (thisDemoExcluded) {
-      res();
-      return;
-    }
-
     const destinationDemoPath = getDestinationPathByDemo(demo, this.framework);
     if (existsSync(destinationDemoPath)) {
       removeSync(destinationDemoPath);

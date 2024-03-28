@@ -120,8 +120,6 @@ jobs:
         with:
           name: publish-demos
           path: ./publish-demos
-      - name: List files in publish-demos
-        run: ls -R ./publish-demos
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:

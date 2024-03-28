@@ -16,7 +16,6 @@ import * as menuMeta from '../../JSDemos/menuMeta.json';
 const argv = yargs.options({
   framework: { type: 'string' },
   'copy-metadata': { type: 'boolean' },
-  current: { type: 'number' },
 }).argv as Args;
 
 const getBundler = (framework: Framework): ESBundler => {
@@ -82,8 +81,7 @@ if (currentBundler) {
   const start = (current - 1) * allDemos.length / total;
   const end = start + allDemos.length / total;
   const currentDemos = allDemos.slice(start, end);
-  // check for accuracy
-  // delete res function
+
   let batchSize = Math.ceil(allDemos.length / total);
   if (currentBundler.framework === 'Angular') {
     batchSize = 1;
