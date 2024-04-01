@@ -7,14 +7,16 @@ import { Service, Temperature } from './app.service';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 const customizeText: DxChartTypes.ArgumentAxisLabel['customizeText'] = ({ valueText }) => `${valueText}&#176F`;
 
 @Component({
   selector: 'demo-app',
   providers: [Service],
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
 })
 export class AppComponent {
   highAverageColor = '#ff9b52';

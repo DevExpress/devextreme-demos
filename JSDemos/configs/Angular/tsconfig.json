@@ -4,5 +4,7 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-  }
+    "skipLibCheck": true,
+  },
+  "include": ["**/*", "../../../../../utils/create-bundles/Angular/polyfill.ts"]
 }

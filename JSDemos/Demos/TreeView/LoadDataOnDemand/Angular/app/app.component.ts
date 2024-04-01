@@ -8,10 +8,12 @@ import { DxTreeViewComponent, DxTreeViewModule } from 'devextreme-angular';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app.component.html',
+  moduleId: __moduleName,
   providers: [],
 })
 export class AppComponent {

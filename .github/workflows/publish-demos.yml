@@ -7,16 +7,16 @@ on:
       - 'release-*'
 
 jobs:
-  publish:
+  publish-ES:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node.js v20
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install jq
         run: sudo apt-get install -y jq
@@ -39,6 +39,87 @@ jobs:
       - name: Prepare Vue demo bundles
         run: npm run make-demos-bundle -- --framework Vue
 
+      - name: Save publish-demos directory for ES as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
+
+  publish-angular:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Check generated demos (1/10)
+            command: CONSTEL=1/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (2/10)
+            command: CONSTEL=2/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (3/10)
+            command: CONSTEL=3/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (4/10)
+            command: CONSTEL=4/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (5/10)
+            command: CONSTEL=5/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (6/10)
+            command: CONSTEL=6/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (7/10)
+            command: CONSTEL=7/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (8/10)
+            command: CONSTEL=8/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (9/10)
+            command: CONSTEL=9/10 npm run make-demos-bundle -- --framework Angular
+          - name: Check generated demos (10/10)
+            command: CONSTEL=10/10 npm run make-demos-bundle -- --framework Angular
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js v14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Read version from package.json and append "-stable"
+        run: echo echo "STABLE_VERSION=$(jq -r '.version' package.json | awk -F. '{print $1 "." $2}')-stable" >> $GITHUB_ENV
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install stable devextreme pacakges
+        run: npm install devextreme@${{ env.STABLE_VERSION }} devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
+
+      - name: Copy metadata
+        run: npm run make-demos-bundle -- --copy-metadata
+
+      - name: Update angular.json
+        run: npm run update-angular-json
+
+      - name: Create angular entryPoints to compile faster
+        run: npm run launch-ngcc
+
+      - name: Prepare Angular demo bundles
+        run: |
+          ${{ matrix.command }}
+      
+      - name: Save publish-demos directory for Angular as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [publish-ES, publish-angular]
+    steps: 
+      - name: Download publish-demos artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: publish-demos
+          path: ./publish-demos
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:

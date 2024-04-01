@@ -10,6 +10,7 @@ import { Service, FileSystemItem } from './app.service';
 if (!/localhost/.test(document.location.host)) {
   enableProdMode();
 }
+declare var __moduleName: string;
 
 type TreeView = ReturnType<AppComponent['getTreeView']>;
 type Node = DxTreeViewTypes.Node;
@@ -17,8 +18,9 @@ type Item = DxTreeViewTypes.Item;
 
 @Component({
   selector: 'demo-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  moduleId: __moduleName,
   providers: [Service],
 })
 export class AppComponent {
