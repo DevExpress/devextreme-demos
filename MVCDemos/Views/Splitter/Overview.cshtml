@@ -1,0 +1,90 @@
+<div class="dx-viewport">
+    <div class="demo-container">
+        @(Html.DevExtreme().Splitter()
+            .ID("splitter")
+            .Items(items => {
+                items.Add()
+                    .Resizable(true)
+                    .Size("140px")
+                    .MinSize("70px")
+                    .Template(new JS("function(data){return paneContentTemplate(data, 'Left Pane')}"));
+
+                items.Add().Splitter(s => {
+                    s.Orientation(Orientation.Vertical);
+                    s.Items(verticalItems => {
+                        verticalItems.Add()
+                            .Resizable(true)
+                            .Collapsible(true)
+                            .MaxSize("75%")
+                            .Template(new JS("function(data){return paneContentTemplate(data, 'Central Pane')}"));
+
+                        verticalItems.Add()
+                            .Collapsible(true)
+                            .Splitter(horizontalSplitter => {
+                                horizontalSplitter.Orientation(Orientation.Horizontal);
+                                horizontalSplitter.Items(horizontalItems => {
+                                    horizontalItems.Add()
+                                        .Resizable(true)
+                                        .Collapsible(true)
+                                        .Size("30%")
+                                        .MinSize("5%")
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Left Pane')}"));
+
+                                    horizontalItems.Add()
+                                        .Collapsible(false)
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Central Pane')}"));
+
+                                    horizontalItems.Add()
+                                        .Resizable(true)
+                                        .Collapsible(true)
+                                        .Size("30%")
+                                        .MinSize("5%")
+                                        .Template(new JS("function(data){return paneContentTemplate(data, 'Nested Right Pane')}"));
+                                });
+                            });
+                    });
+                });
+
+                items.Add()
+                    .Resizable(false)
+                    .Collapsible(false)
+                    .Size("140px")
+                    .Template(new JS("function(data){return paneContentTemplate(data, 'Right Pane')}"));
+            })
+        )
+    </div>
+</div>
+
+<script>
+    function getStateText(data) {
+        if (data.resizable !== false && !data.collapsible) {
+            return 'Resizable only';
+        }
+        const resizableText = data.resizable ? 'Resizable' : 'Non-resizable';
+        const collapsibleText = data.collapsible ? 'collapsible' : 'non-collapsible';
+
+        return `${resizableText} and ${collapsibleText}`;
+    }
+
+    function paneContentTemplate(data, paneName) {
+        const dimensionOptions = new Set(['size', 'minSize', 'maxSize']);
+        const filteredData = Object.fromEntries(
+            Object.entries(data)
+                .filter(([key]) => dimensionOptions.has(key))
+        );
+
+        return `
+            <div class='pane-content'>
+                <div class='pane-title'>
+                    ${paneName}
+                </div>
+                <div class='pane-state'>
+                    ${getStateText(data)}
+                </div>
+                ${Object.entries(filteredData).map(([key, value]) => `
+                    <div class="pane-option">${key}: ${value}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+</script>
