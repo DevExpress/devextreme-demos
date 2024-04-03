@@ -5,6 +5,10 @@ html, body {
     overflow: hidden;
 }
 
+body {
+    padding: 20px;
+}
+
 .demo-container {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
