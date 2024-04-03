@@ -12,6 +12,7 @@ html, body {
     position: relative;
     overflow: hidden;
     min-height: 100%;
+    padding: 20px;
 }
 
 .demo-container .long-title h3 {

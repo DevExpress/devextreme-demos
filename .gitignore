@@ -22,6 +22,11 @@ screenshots
 bundles
 changed-files.json
 
+JSDemos/shared/empty-file.js
+
+JSDemos/Demos/**/config.js
+JSDemos/Demos/**/tsconfig.json
+
 !.vscode/settings.json
 gulpfile.js/.eslintrc.js
 
