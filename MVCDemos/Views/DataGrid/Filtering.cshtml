@@ -50,7 +50,7 @@
         columns.AddFor(m => m.SaleAmount)
             .Alignment(HorizontalAlignment.Right)
             .Format(Format.Currency)
-            .EditorOptions(new { format = "currency", showClearButton = true })
+            .EditorOptions(new JS("amountEditorOptions"))
             .HeaderFilter(filter => filter.DataSource(new[] {
                 new {
                     text = "Less than $3000",
@@ -150,6 +150,14 @@
 </div>
 
 <script>
+    var amountEditorOptions = {
+        format: 'currency',
+        showClearButton: true,
+        inputAttr: {
+            'aria-label': 'Filter Cell',
+        },
+    };
+
     function getOrderDay(rowData) {
         return (new Date(rowData.OrderDate)).getDay();
     }
