@@ -21,7 +21,7 @@
                 .Caption(new JS("formatMessage('Amount')"))
                 .DataType(GridColumnDataType.Number)
                 .Format(Format.Currency)
-                .EditorOptions(new { format = "currency", showClearButton = true });
+                .EditorOptions(new JS("amountEditorOptions"));
             columns.Add().DataField("PaymentDate")
                 .Caption(new JS("formatMessage('PaymentDate')"))
                 .DataType(GridColumnDataType.Date);
@@ -58,6 +58,14 @@
 </div>
 
 <script>
+    var amountEditorOptions = {
+        format: 'currency',
+        showClearButton: true,
+        inputAttr: {
+            'aria-label': 'Filter Cell',
+        },
+    };
+
     var dictionary = {
         "en": {
             "Number": "Number",
