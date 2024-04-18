@@ -25,7 +25,7 @@
     .OnSelectionChanged("selection_changed")
 )
 <div id="employeeInfo">
-    <img class="employeePhoto" />
+    <img class="employeePhoto" alt="Employee Photo" style="visibility: hidden"/>
     <p class="employeeNotes"></p>
 </div>
 
@@ -34,7 +34,7 @@
         var data = selectedItems.selectedRowsData[0];
         if(data) {
             $(".employeeNotes").text(data.Notes);
-            $(".employeePhoto").attr("src", data.Picture);
+            $(".employeePhoto").attr("src", data.Picture).attr('style', null);
         }
     }
 </script>
