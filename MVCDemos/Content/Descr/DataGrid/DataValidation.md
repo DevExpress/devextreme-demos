@@ -1,1 +1,5 @@
 The DataGrid UI component supports data validation against a set of predefined or custom validation rules. These rules are generated based on Data Annotations that decorate the model properties (see the _EmployeeValidation.cs_ file). For the validation to work, the DataGrid should be cast to the model type and its columns should be declared using the `AddFor()` method.
+
+The [AdditionalFields](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-8.0#additional-fields) property of the Remote attribute allows you validate combinations of fields against data on the server. 
+
+In this demo, the data validation process will not be successfully completed if an already existing email is entered. To accomplish that, apply a Remote attribute to Email and include ID in AdditionalFields. The validation parameter will then have access to both ID and Email, which allows you to compare them with source data.
