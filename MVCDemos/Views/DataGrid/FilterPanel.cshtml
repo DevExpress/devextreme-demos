@@ -43,7 +43,7 @@
         columns.AddFor(m => m.OrderDate);
         columns.AddFor(m => m.SaleAmount)
             .Format(Format.Currency)
-            .EditorOptions(new { format = "currency", showClearButton = true })
+            .EditorOptions(new JS("amountEditorOptions"))
             .HeaderFilter(filter => filter.DataSource(new[] {
                 new {
                     text = "Less than $3000",
@@ -73,6 +73,13 @@
 )
 
 <script>
+    var amountEditorOptions = {
+        format: 'currency',
+        showClearButton: true,
+        inputAttr: {
+            'aria-label': 'Filter cell',
+        },
+    };
     function calculateFilterExpression() {
         return [[getOrderDay, '=', 0], 'or', [getOrderDay, '=', 6]];
     }

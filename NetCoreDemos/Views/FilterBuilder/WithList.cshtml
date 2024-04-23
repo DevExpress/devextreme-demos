@@ -59,7 +59,7 @@
         .DataSourceOptions(d => d.Filter("$('#filterBuilder').dxFilterBuilder('instance').getFilterExpression()"))
         .ItemTemplate(@<text>
             <div class="product">
-                <img src="<%- ImageSrc %>">
+                <img src="<%- ImageSrc %>" alt="Picture of <%- Name %>">
                 <div><%- Name %></div>
                 <div class="price"><%- formatCurrency(Price) %></div>
             </div>
