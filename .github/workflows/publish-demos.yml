@@ -27,8 +27,13 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Internal Packages
+        uses: DevExpress/github-actions/install-internal-package@main
+        with:
+          install-dist: true
+
       - name: Install stable devextreme pacakges
-        run: npm install devextreme@${{ env.STABLE_VERSION }} devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
+        run: npm install devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
 
       - name: Copy metadata
         run: npm run make-demos-bundle -- --copy-metadata
@@ -88,9 +93,14 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+      
+      - name: Install Internal Packages
+        uses: DevExpress/github-actions/install-internal-package@main
+        with:
+          install-dist: true
 
       - name: Install stable devextreme pacakges
-        run: npm install devextreme@${{ env.STABLE_VERSION }} devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
+        run: npm install devextreme-angular@${{ env.STABLE_VERSION }} devextreme-react@${{ env.STABLE_VERSION }} devextreme-vue@${{ env.STABLE_VERSION }}
 
       - name: Copy metadata
         run: npm run make-demos-bundle -- --copy-metadata
