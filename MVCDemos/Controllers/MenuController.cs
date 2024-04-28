@@ -23,7 +23,7 @@ namespace DevExtreme.MVC.Demos.Controllers {
         [HttpGet]
         public ActionResult GetScrollingProducts(DataSourceLoadOptions loadOptions) {
              return Content(JsonConvert.SerializeObject(DataSourceLoader.Load(MenuScrollingData.Products, loadOptions)), "application/json");
-         }
+        }
         #endregion
     }
 }
