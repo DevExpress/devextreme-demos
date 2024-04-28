@@ -1,0 +1,40 @@
+<div class="demo-container">
+    <div class="content">
+        <div class="label">Catalog:</div>
+        @(Html.DevExtreme().Menu()
+            .ID("menu")
+            .DataSource(d => d.Mvc().LoadAction("GetScrollingProducts"))
+            .OnItemClick("menuItem_click")
+            .OnSubmenuShowing("onSubmenu_showing")
+        )
+    </div>
+    <div class="options">
+        <div class="caption">Options</div>
+        <div class="option">
+            @(Html.DevExtreme().CheckBox()
+                .Value(false)
+                .Text("Limit submenus height by 200 px")
+                .OnValueChanged("checkBoxValue_changed")
+            )
+        </div>
+    </div>
+</div>
+
+<script>
+    const SUBMENU_HEIGHT = 200;
+    let submenuMaxHeight = 0;
+
+    function menuItem_click(e) {
+        if (!e.itemData.items) {
+            DevExpress.ui.notify(`The "${e.itemData.text}" item was clicked`, 'success', 1500);
+        }
+    }
+
+    function checkBoxValue_changed(data) {
+        submenuMaxHeight = data.value ? SUBMENU_HEIGHT : 0;
+    }
+
+    function onSubmenu_showing({submenuContainer}) {
+        $(submenuContainer).css("maxHeight", submenuMaxHeight || '');
+    }
+</script>
