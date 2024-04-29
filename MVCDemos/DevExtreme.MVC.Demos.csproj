@@ -376,7 +376,9 @@
     <Compile Include="Models\OrgItems.cs" />
     <Compile Include="Models\ContextMenuItem.cs" />
     <Compile Include="Models\RowReorderingTask.cs" />
+    <Compile Include="Models\ContextMenuScrollingItem.cs" />
     <Compile Include="Models\SampleData\ActiveCompanies.cs" />
+    <Compile Include="Models\SampleData\ContextMenuData.cs" />
     <Compile Include="Models\SampleData\AdaptabilityAppointments.cs" />
     <Compile Include="Models\SampleData\AgendaTasks.cs" />
     <Compile Include="Models\SampleData\AnnotationData.cs" />
@@ -676,6 +678,7 @@
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
     <Content Include="Content\demo-template.css" />
+    <Content Include="Content\DemosStyles\ContextMenu\Scrolling.css" />
     <Content Include="Content\DemosStyles\Charts\AxisCustomPosition.css" />
     <Content Include="Content\DemosStyles\Charts\CustomAnnotations.css" />
     <Content Include="Content\DemosStyles\Charts\CustomLegendMarkers.css" />
@@ -1943,6 +1946,7 @@
     <Content Include="Views\Lookup\Basics.cshtml" />
     <Content Include="Views\Gallery\ItemTemplate.cshtml" />
     <Content Include="Views\ContextMenu\Basics.cshtml" />
+    <Content Include="Views\ContextMenu\Scrolling.cshtml" />
     <Content Include="Views\Charts\PiesWithEqualSize.cshtml" />
     <Content Include="Views\Charts\AxisLabelsOverlapping.cshtml" />
     <Content Include="Views\ContextMenu\Templates.cshtml" />

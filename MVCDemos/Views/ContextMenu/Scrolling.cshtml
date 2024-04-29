@@ -1,0 +1,16 @@
+<div class="target-area">
+    Right click here to show the context menu
+</div>
+
+@(Html.DevExtreme().ContextMenu()
+    .Width(200)
+    .Target(".target-area")
+    .OnItemClick("contextMenu_ItemClick")
+    .DataSource(d => d.Mvc().LoadAction("GetScrollingProducts"))
+)
+
+<script>function contextMenu_ItemClick(e) {
+        if(!e.itemData.Items) {
+            DevExpress.ui.notify("The \"" + e.itemData.text + "\" item was clicked", "success", 1500);
+        }
+    }</script>
