@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
+using DevExtreme.NETCore.Demos.Models.SampleData;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class ContextMenuController : Controller {
@@ -9,8 +10,18 @@ namespace DevExtreme.NETCore.Demos.Controllers {
             return View();
         }
 
+        public ActionResult Scrolling() {
+            return View();
+        }
+
         public ActionResult Templates() {
             return View();
+        }
+
+        [HttpGet]
+        
+        public ActionResult GetScrollingProducts(DataSourceLoadOptions loadOptions) {
+            return Json(DataSourceLoader.Load(ContextMenuData.Products, loadOptions));
         }
     }
 }
