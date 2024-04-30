@@ -61,6 +61,9 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+@devexpress/devextreme-internal
+SEE LICENSE IN README.md
+
 @devextreme/runtime
 SEE LICENSE IN LICENSE
 
@@ -88,9 +91,6 @@ THE SOFTWARE.
 
 
 devexpress-gantt
-SEE LICENSE IN README.md
-
-devextreme
 SEE LICENSE IN README.md
 
 devextreme-angular
