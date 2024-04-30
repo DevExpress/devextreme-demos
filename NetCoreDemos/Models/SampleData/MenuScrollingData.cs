@@ -107,7 +107,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 },
             },
             new MenuItem {
-                text = "Cameras and camcorders",
+                text = "Cameras",
                 items = new[] {
                     new MenuItem {
                         text = "Camcorders",
