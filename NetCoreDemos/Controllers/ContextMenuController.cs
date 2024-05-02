@@ -2,7 +2,6 @@
 using DevExtreme.AspNet.Mvc;
 using DevExtreme.NETCore.Demos.Models.SampleData;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace DevExtreme.NETCore.Demos.Controllers {
     public class ContextMenuController : Controller {
