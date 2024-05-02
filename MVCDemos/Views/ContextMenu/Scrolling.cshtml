@@ -9,8 +9,10 @@
     .DataSource(d => d.Mvc().LoadAction("GetScrollingProducts"))
 )
 
-<script>function contextMenu_ItemClick(e) {
+<script>
+    function contextMenu_ItemClick(e) {
         if(!e.itemData.Items) {
-            DevExpress.ui.notify("The \"" + e.itemData.text + "\" item was clicked", "success", 1500);
+            DevExpress.ui.notify(`The "${e.itemData.text}" item was clicked`, "success", 1500);
         }
-    }</script>
+    }
+</script>
