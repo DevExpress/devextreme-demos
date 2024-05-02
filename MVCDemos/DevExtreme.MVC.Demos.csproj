@@ -622,6 +622,7 @@
     <Compile Include="Models\SampleData\PopulationData.cs" />
     <Compile Include="Models\SampleData\Products.cs" />
     <Compile Include="Models\SampleData\MenuData.cs" />
+    <Compile Include="Models\SampleData\MenuScrollingData.cs" />
     <Compile Include="Models\SampleData\ScatterData.cs" />
     <Compile Include="Models\SampleData\Electronics.cs" />
     <Compile Include="Models\SampleData\TreeViewHierarchicalData.cs" />
@@ -632,6 +633,7 @@
     <Compile Include="Models\SampleData\States.cs" />
     <Compile Include="Models\State.cs" />
     <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\MenuScrollingItem.cs" />
     <Compile Include="Models\StockPrice.cs" />
     <Compile Include="Models\Intraday.cs" />
     <Compile Include="Models\CinemaDataItem.cs" />
@@ -1073,6 +1075,7 @@
     <Content Include="Content\DemosStyles\FileUploader\FileUploading.css" />
     <Content Include="Content\DemosStyles\Form\Overview.css" />
     <Content Include="Content\DemosStyles\Menu\Overview.css" />
+    <Content Include="Content\DemosStyles\Menu\Scrolling.css" />
     <Content Include="Content\DemosStyles\Gallery\Overview.css" />
     <Content Include="Content\DemosStyles\SelectBox\Overview.css" />
     <Content Include="Content\DemosStyles\SelectBox\SearchAndEditing.css" />
@@ -2305,6 +2308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Menu\Overview.cshtml" />
+    <Content Include="Views\Menu\Scrolling.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\TabPanel\Overview.cshtml" />
