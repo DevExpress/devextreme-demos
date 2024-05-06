@@ -6,9 +6,9 @@
                 items.Add()
                     .Resizable(true)
                     .Size("140px")
-                    .MinSize("70px")              
+                    .MinSize("70px")
                     .Template(new JS("function(data, itemIndex, itemElement){return paneContentTemplate(data, itemElement, 'Left Pane')}"));
-                
+
                 items.Add().Splitter(s => {
                     s.Orientation(Orientation.Vertical);
                     s.Items(verticalItems => {
