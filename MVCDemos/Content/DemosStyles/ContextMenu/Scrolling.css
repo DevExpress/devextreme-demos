@@ -1,11 +1,7 @@
-﻿body {
-    margin: 0;
-}
-
-.target-area {
+﻿.target-area {
     color: var(--dx-color-text);
     background-color: var(--dx-color-border);
-    height: 100vh;
+    height: 450px;
     width: 100%;
     display: flex;
     justify-content: center;
