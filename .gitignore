@@ -37,8 +37,8 @@ MVCDemos/Content/Descr/Temp
 !MVCDemos/Content/demo-template.css
 MVCDemos/Content/SampleData/SampleImages
 MVCDemos/Scripts/*
+!MVCDemos/Scripts/jquery.signalR*.js
 !MVCDemos/Scripts/data
-!MVCDemos/Scripts/signalr
 !MVCDemos/Scripts/utils
 !MVCDemos/Scripts/_references\.js
 MVCDemos/App_Data/menuMeta.json
