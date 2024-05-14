@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DevExtreme.MVC.Demos.Models.SampleData {
     public static class ContextMenuData {
