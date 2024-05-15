@@ -1,14 +1,10 @@
 ﻿@(Html.DevExtreme().BarGauge()
     .ID("gauge")
-    .StartValue(-50)
-    .EndValue(50)
+    .StartValue(-5)
+    .EndValue(5)
     .BaseValue(0)
-    .Values(new[] { -21.3, 14.8, -30.9, 45.2 })
-    .Label(l => l.CustomizeText(@<text>
-        function (arg) {
-            return arg.valueText + " mm";
-        }
-    </text>))
+    .Values(new[] { -2.13, 1.48, -3.09, 4.52, 4.9, 3.9 })
+    .Label(l => l.Format("##.## mm;-##.## mm"))
     .Export(e => e.Enabled(true))
     .Palette(VizPalette.Ocean)
     .Title(t => t
