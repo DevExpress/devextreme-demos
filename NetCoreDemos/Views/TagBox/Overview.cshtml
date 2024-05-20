@@ -106,7 +106,7 @@
                     .ValueExpr("ID")
                     .ItemTemplate(@<text>
                         <div class="custom-item">
-                            <img src="<%- ImageSrc %>" />
+                            <img src="<%- ImageSrc %>" alt="<%- Name %>. Picture" />
                             <div class="product-name"><%- Name %></div>
                         </div>
                     </text>)
@@ -139,7 +139,7 @@
         const popover = $('#popover').dxPopover('instance')
         const tagImg = $('<img>', { class: 'tag-img' }).attr({
             src: data.ImageSrc,
-            alt: data.Name
+            alt: `${data.Name}. Picture`
         })
         const tag = $('<div>')
             .attr('aria-disabled', isDisabled)
