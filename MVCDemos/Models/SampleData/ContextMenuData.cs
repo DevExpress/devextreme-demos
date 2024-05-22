@@ -64,7 +64,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                                 text = "Mobile Broadband Devices"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Cell Phones Accessories"
+                                text = "Cell Phone Accessories"
                             },
                         }
                     },

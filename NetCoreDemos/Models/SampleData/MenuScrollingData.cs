@@ -64,7 +64,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                                 text = "Mobile Broadband Devices"
                             },
                             new MenuItem {
-                                text = "Cell Phones Accessories"
+                                text = "Cell Phone Accessories"
                             },
                         }
                     },
