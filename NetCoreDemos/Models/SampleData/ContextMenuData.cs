@@ -42,20 +42,20 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                                 text = "Projectors & Screens"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Computers Accessories",
+                                text = "Computer Accessories",
                             },
                         }
                     },
                     new ContextMenuScrollingItem
                     {
-                        text = "Cell phones",
+                        text = "Cell Phones",
                         items = new[]
                         {
                             new ContextMenuScrollingItem {
                                 text = "Home & Office Phones"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Smart phones & PDAs"
+                                text = "Smart Phones & PDAs"
                             },
                             new ContextMenuScrollingItem {
                                 text = "Senior Cell Phones"
@@ -64,7 +64,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                                 text = "Mobile Broadband Devices"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Cell phones Accessories"
+                                text = "Cell Phones Accessories"
                             },
                         }
                     },
@@ -115,7 +115,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                                 text = "Underwater Video & Photography"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Cameras Accessories"
+                                text = "Camera Accessories"
                             },
                         }
                     },
@@ -237,7 +237,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                         items = new []
                         {
                             new ContextMenuScrollingItem {
-                                text = "PC games"
+                                text = "PC Games"
                             },
                             new ContextMenuScrollingItem {
                                 text = "Virtual Reality"
@@ -267,7 +267,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 {
                     new ContextMenuScrollingItem
                     {
-                        text = "Sport & Outdoors",
+                        text = "SportS & Outdoors",
                         items = new []
                         {
                             new ContextMenuScrollingItem {
@@ -292,7 +292,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                                 text = "Sport Apparel"
                             },
                             new ContextMenuScrollingItem {
-                                text = "Sport Shoes"
+                                text = "Trainers & Tennis Shoes"
                             }
                         }
                     },
