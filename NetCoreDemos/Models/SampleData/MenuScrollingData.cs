@@ -267,7 +267,7 @@ namespace DevExtreme.NETCore.Demos.Models.SampleData {
                 {
                     new MenuItem
                     {
-                        text = "SportS & Outdoors",
+                        text = "Sports & Outdoors",
                         items = new []
                         {
                             new MenuItem {
