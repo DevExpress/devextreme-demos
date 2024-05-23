@@ -41,20 +41,20 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                                 text = "Projectors & Screens"
                             },
                             new MenuItem {
-                                text = "Computers Accessories",
+                                text = "Computer Accessories",
                             },
                         }
                     },
                     new MenuItem
                     {
-                        text = "Cell phones",
+                        text = "Cell Phones",
                         items = new[]
                         {
                             new MenuItem {
                                 text = "Home & Office Phones"
                             },
                             new MenuItem {
-                                text = "Smart phones & PDAs"
+                                text = "Smart Phones & PDAs"
                             },
                             new MenuItem {
                                 text = "Senior Cell Phones"
@@ -63,7 +63,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                                 text = "Mobile Broadband Devices"
                             },
                             new MenuItem {
-                                text = "Cell phones Accessories"
+                                text = "Cell Phone Accessories"
                             },
                         }
                     },
@@ -114,7 +114,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                                 text = "Underwater Video & Photography"
                             },
                             new MenuItem {
-                                text = "Cameras Accessories"
+                                text = "Camera Accessories"
                             },
                         }
                     },
@@ -236,7 +236,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                         items = new []
                         {
                             new MenuItem {
-                                text = "PC games"
+                                text = "PC Games"
                             },
                             new MenuItem {
                                 text = "Virtual Reality"
@@ -266,7 +266,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                 {
                     new MenuItem
                     {
-                        text = "Sport & Outdoors",
+                        text = "Sports & Outdoors",
                         items = new []
                         {
                             new MenuItem {
@@ -291,7 +291,7 @@ namespace DevExtreme.MVC.Demos.Models.SampleData {
                                 text = "Sport Apparel"
                             },
                             new MenuItem {
-                                text = "Sport Shoes"
+                                text = "Trainers & Tennis Shoes"
                             }
                         }
                     },
