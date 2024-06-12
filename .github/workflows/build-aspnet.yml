@@ -24,7 +24,7 @@ jobs:
         id: get_version
         run: |
           $env:version=$(node -p -e "require('./package.json').version.slice(0, 4).replace('.', '_')")
-          echo "version=$env:version" >> $GITHUB_OUTPUT
+          echo "version=$env:version" >> $Env:GITHUB_OUTPUT
 
       - name: Clone devextreme-aspnet repo
         uses: actions/checkout@v4
