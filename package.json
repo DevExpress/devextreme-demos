@@ -105,7 +105,7 @@
         "eslint-plugin-spellcheck": "0.0.20",
         "eslint-plugin-vue": "7.20.0",
         "express": "4.19.2",
-        "glob": "10.3.3",
+        "glob": "10.5.0",
         "gulp": "4.0.2",
         "gulp-clean": "0.4.0",
         "gulp-minify": "3.1.0",
