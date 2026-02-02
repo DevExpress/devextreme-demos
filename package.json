@@ -38,7 +38,7 @@
         "globalize": "1.7.0",
         "html-react-parser": "1.4.14",
         "jquery": "3.6.3",
-        "jspdf": "2.5.1",
+        "jspdf": "4.1.0",
         "jspdf-autotable": "3.5.28",
         "mustache": "4.2.0",
         "plugin-typescript": "8.0.0",
